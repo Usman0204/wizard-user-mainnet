@@ -20,7 +20,7 @@ const useAuth = () => {
         }
       }
       else if (chain === '1116') {
-        console.log(chain, 'coretestnet');
+        console.log(chain, 'core mainnet');
         const hasSetup = await setupNetwork(chain);
         if (hasSetup) {
           await connector.activate(parseInt(chain));

@@ -550,6 +550,7 @@ const Navbar = () => {
           <div className="connectmain" onClick={() => {
             // setclickedbtn(false);
             handleClose();
+            handleClose1();
             trustWallet("1116")
 
           }}>

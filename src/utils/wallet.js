@@ -141,14 +141,14 @@ export const setupNetwork = async (chainId) => {
               method: 'wallet_addEthereumChain',
               params: [{
                 chainId: 'Ox5',
-                chainName: 'Core Blockchain Testnet',
+                chainName: 'Core Blockchain',
                 nativeCurrency: {
-                  name: 'tCORE',
-                  symbol: 'tCORE',
+                  name: 'CORE',
+                  symbol: 'CORE',
                   decimals: 18,
                 },
-                rpcUrls: ['https://rpc.test.btcs.network'],
-                blockExplorerUrls: ['https://scan.test.btcs.network/'],
+                rpcUrls: ['https://rpc.ankr.com/core'],
+                blockExplorerUrls: ['https://scan.coredao.org'],
                 iconUrls: [''],
               }],
             });
