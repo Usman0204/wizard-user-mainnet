@@ -84,86 +84,8 @@ export const setupNetwork = async (chainId) => {
       });
       return true;
     } catch (error) {
-      if (error.code === 4902) {
-        try {
-          if (chainId === 80001) {
-            await provider.request({
-              method: 'wallet_addEthereumChain',
-              params: [{
-                chainId: '0x61',
-                chainName: 'Mumbai Testnet',
-                nativeCurrency: {
-                  name: 'Matic',
-                  symbol: 'MATIC',
-                  decimals: 18,
-                },
-                rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
-                blockExplorerUrls: ['https://mumbai.polygonscan.com/'],
-                iconUrls: [''],
-              }],
-            });
-          } else if (chainId === 56) {
-            await provider.request({
-              method: 'wallet_addEthereumChain',
-              params: [{
-                chainId: '0x38',
-                chainName: 'Binance Smart Chain Mainnet',
-                nativeCurrency: {
-                  name: 'BNB',
-                  symbol: 'BNB',
-                  decimals: 18,
-                },
-                rpcUrls: ['https://bsc-dataseed1.binance.org/'],
-                blockExplorerUrls: ['https://bscscan.com/'],
-                iconUrls: [''],
-              }],
-            });
-          } else if (chainId === 5) {
-            await provider.request({
-              method: 'wallet_addEthereumChain',
-              params: [{
-                chainId: 'Ox5',
-                chainName: 'Goerli',
-                nativeCurrency: {
-                  name: 'ETH',
-                  symbol: 'ETH',
-                  decimals: 18,
-                },
-                rpcUrls: ['https://rpc.ankr.com/eth_goerli'],
-                blockExplorerUrls: ['https://goerli.etherscan.io'],
-                iconUrls: [''],
-              }],
-            });
-
-          }
-          else if (chainId === 1116) {
-            await provider.request({
-              method: 'wallet_addEthereumChain',
-              params: [{
-                chainId: 'Ox5',
-                chainName: 'Core Blockchain',
-                nativeCurrency: {
-                  name: 'CORE',
-                  symbol: 'CORE',
-                  decimals: 18,
-                },
-                rpcUrls: ['https://rpc.ankr.com/core'],
-                blockExplorerUrls: ['https://scan.coredao.org'],
-                iconUrls: [''],
-              }],
-            });
-
-          }
-
-          else {
-            console.error('Unsupported network');
-          }
-          return true;
-        } catch (addError) {
-          console.error('Failed to add network:', addError);
-          return false;
-        }
-      }
+      console.error(error)
+      return false
     }
   } else {
     console.error("Can't set up the network on MetaMask because window.ethereum is undefined");
