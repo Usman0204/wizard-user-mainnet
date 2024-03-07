@@ -88,8 +88,8 @@ const Authorcollection = ({ tab }) => {
             <section className="author-collection-tab">
                 <div className="bottom-cards">
                     {dataset?.userCollections?.map((card, index) => (
-                        <Link href={`collectiondetailpage?id=${card?._id}`}>
-                        <div className="main-card" key={index}>
+                        <Link key={index} href={`collectiondetailpage?id=${card?._id}`}>
+                        <div className="main-card">
                             <div className="main-img">
                                 <img src={card.imageUrl} alt="img" className='img-fluid' />
                             </div>
