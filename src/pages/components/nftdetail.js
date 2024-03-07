@@ -256,6 +256,7 @@ const Nftdetail = () => {
             }
             // let res = 
         } catch (error) {
+            console.log("error metamask here", error)
             setLoader(false)
             // console.log("value",error)
         }
@@ -413,20 +414,51 @@ const Nftdetail = () => {
         }
     };
 
-    const checkBalance = async () => {
-        try {
-            if (account) {
-                console.log();
-                let response = await web3.eth.getBalance(account);
-                if (response) {
-                    // console.log("Balance:", response);
-                    seBalance((response?.toString() / 1e18).toFixed(3));
-                }
-            }
-        } catch (err) {
-            console.error("Error checking balance:", err);
+    // const checkBalance = async () => {
+    //     try {
+    //         if (account) {
+    //             console.log();
+    //             let response = await web3.eth.getBalance(account);
+    //             if (response) {
+    //                 // console.log("Balance:", response);
+    //                 seBalance((response?.toString() / 1e18).toFixed(3));
+    //             }
+    //         }
+    //     } catch (err) {
+    //         console.error("Error checking balance:", err);
+    //     }
+    // };
+
+    async function getCoreBalance() {
+        // Check if MetaMask is installed
+        if (window.ethereum) {
+          // Connect to the Ethereum network through MetaMask
+          // const web3 = new Web3(window.ethereum);
+          try {
+            // Request account access from the user
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            // Get the user's Ethereum address
+            const accounts = await web3.eth.getAccounts();
+            const userAddress = accounts[0];
+            
+            // Query the balance of the user's address
+            const balance = await web3.eth.getBalance(userAddress);
+            
+            // Convert the balance from Wei to Ether
+            // const coreBalance = web3.utils.fromWei(balance, 'ether');
+            seBalance((balance?.toString() / 1e18).toFixed(3));
+            // Display the core balance on your website
+            // console.log(`Core Balance: ${balance} ETH`);
+            // return coreBalance;
+          } catch (error) {
+            // Handle errors
+            console.error('Error:', error);
+          }
+        } else {
+          // MetaMask is not installed
+          console.error('MetaMask is not installed');
         }
-    };
+      }
 
     const getBalance = async () => {
         // let result = await GetBal(account);
@@ -540,7 +572,7 @@ const Nftdetail = () => {
 
     useEffect(() => {
         if (account) {
-            checkBalance();
+            getCoreBalance();
         }
     }, [account, balance, web3]);
     // console.log("sdsdsdsds", balance)

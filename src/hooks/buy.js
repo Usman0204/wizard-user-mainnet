@@ -42,6 +42,7 @@ export const BuyTokens = () => {
           })
           .catch((error) => {
             throw error;
+            console.log("error metamask here", error)
           });
         return staked;
       } catch (e) {

@@ -110,24 +110,56 @@ const Navbar = () => {
   //   console.log("res we have here is ", res)
 
   // }
-  const checkBalance = async () => {
-    try {
-      if (account) {
-        console.log();
-        let balance = await web3.eth.getBalance(account);
-        if (balance) {
-          console.log("Balance:", balance);
-          seBalance((balance?.toString() / 1e18).toFixed(3));
-        }
+  // const checkBalance = async () => {
+  //   try {
+  //     if (account) {
+  //       // console.log();
+  //       let balance = await web3?.eth?.getBalance(account);
+  //       if (balance) {
+  //         console.log("Balance:", balance);
+  //         seBalance((balance?.toString() / 1e18).toFixed(3));
+  //       }
+  //     }
+  //   } catch (err) {
+  //     console.error("Error checking balance:", err);
+  //   }
+  // };
+
+  async function getCoreBalance() {
+    // Check if MetaMask is installed
+    if (window.ethereum) {
+      // Connect to the Ethereum network through MetaMask
+      // const web3 = new Web3(window.ethereum);
+      try {
+        // Request account access from the user
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        // Get the user's Ethereum address
+        const accounts = await web3.eth.getAccounts();
+        const userAddress = accounts[0];
+        
+        // Query the balance of the user's address
+        const balance = await web3.eth.getBalance(userAddress);
+        
+        // Convert the balance from Wei to Ether
+        // const coreBalance = web3.utils.fromWei(balance, 'ether');
+        seBalance((balance?.toString() / 1e18).toFixed(3));
+        // Display the core balance on your website
+        // console.log(`Core Balance: ${balance} ETH`);
+        // return coreBalance;
+      } catch (error) {
+        // Handle errors
+        console.error('Error:', error);
       }
-    } catch (err) {
-      console.error("Error checking balance:", err);
+    } else {
+      // MetaMask is not installed
+      console.error('MetaMask is not installed');
     }
-  };
+  }
 
   useEffect(() => {
     if (account) {
-      checkBalance();
+      // checkBalance();
+      getCoreBalance();
     }
   }, [account, balance, web3]);
   useEffect(() => {
