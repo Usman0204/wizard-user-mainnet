@@ -48,7 +48,7 @@ export const BuyTokens = () => {
         throw e;
       }
     },
-    [contract]
+    [contract, web3]
   );
 
   return { Buy: Buy };
