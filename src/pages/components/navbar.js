@@ -420,7 +420,7 @@ const Navbar = () => {
                   {/* <Link href="/launchpad?tab=edition" className="dropitem">Open Editions</Link> */}
                   {/* <Link href="https://wizardnft-creator.vercel.app" className="dropitem">Creator Dashboard</Link> */}
                   <Link href="/launchpad" className="dropitem">Launchpad</Link>
-                  <Link href="https://wizardnft-creator.vercel.app" className="dropitem">Apply For launchpad</Link>
+                  <Link href="https://creatorwizard.vercel.app/" className="dropitem">Apply For launchpad</Link>
                   {/* <p className="dropitem marginleft">Presale</p> */}
                 </Dropdown.Menu>
               </Dropdown>
@@ -614,7 +614,7 @@ const Navbar = () => {
             <Link href="/launchpad" className="dropitemmbl marginleft">Launchpad</Link>
             {/* <Link href="/launchpad?tab=edition" className="dropitemmbl marginleft">Open Editions</Link> */}
             {/* <Link href="/collectiondashbord" className="dropitemmbl">Creator Dashboard</Link> */}
-            <Link href="https://wizardnft-creator.vercel.app/" className="dropitemmbl marginleft">Apply for launchpad</Link>
+            <Link href="https://creatorwizard.vercel.app/" className="dropitemmbl marginleft">Apply for launchpad</Link>
             {/* <p className="dropitemmbl marginleft">Presale</p> */}
 
           </div>
