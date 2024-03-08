@@ -381,7 +381,7 @@ const Navbar = () => {
                           </div>
                           :
                           (
-                            <p>No Data Found</p>
+                            <p style={{color: "#fff"}}>No Data Found</p>
                           )
                         }
                       </>
