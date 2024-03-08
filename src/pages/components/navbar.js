@@ -420,7 +420,7 @@ const Navbar = () => {
                   {/* <Link href="/launchpad?tab=edition" className="dropitem">Open Editions</Link> */}
                   {/* <Link href="https://wizardnft-creator.vercel.app" className="dropitem">Creator Dashboard</Link> */}
                   <Link href="/launchpad" className="dropitem">Launchpad</Link>
-                  <Link href="https://creatorwizard.vercel.app/" className="dropitem">Apply For launchpad</Link>
+                  <Link href="https://creatorwizard.vercel.app/" target='_blank' className="dropitem">Apply For launchpad</Link>
                   {/* <p className="dropitem marginleft">Presale</p> */}
                 </Dropdown.Menu>
               </Dropdown>
