@@ -1,0 +1,81 @@
+.faqs-section {
+    padding-top: 120px;
+    padding-bottom: 100px;
+
+    .main-heading {
+        margin-bottom: 50px;
+
+        h6 {
+            color: #FFF;
+            text-align: center;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 110%;
+        }
+    }
+
+    .parent {
+        max-width: 972px;
+        width: 100%;
+        margin: 0 auto;
+
+        .accordion {
+            .accordion-item {
+                border-radius: 15px;
+                border: 1px solid #282131;
+                background: #11091B;
+                margin-bottom: 10px;
+
+                .accordion-button {
+                    border-radius: 15px;
+                    border: 1px solid #282131;
+                    background: #11091B;
+                    color: #FFF;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    padding: 27px 30px;
+                    box-shadow: none;
+
+                    &::after {
+                        background: url("../../public/bg-assets/plus-icon.svg");
+                    }
+                }
+
+                .accordion-button:not(.collapsed)::after {
+                    background: url("../../public/bg-assets/minus-icon.svg");
+                }
+
+                .accordion-button:not(.collapsed) {
+                    border-radius: 15px 15px 0px 0px;
+                    background: #11091B;
+                }
+
+                .accordion-body {
+                    padding: 27px 30px;
+                    color: #BABABA;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 150%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:1024px){
+    .faqs-section .main-heading h6{
+        font-size: 24px;
+    }
+    .faqs-section .parent .accordion .accordion-item .accordion-button{
+        font-size: 14px;
+        padding: 15px;
+    }
+    .faqs-section .parent .accordion .accordion-item .accordion-body{
+        padding: 15px;
+        font-size: 14px;
+    }
+}

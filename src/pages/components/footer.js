@@ -26,6 +26,8 @@ const Footer = () => {
               </div>
                 <div className="footerlinksinner">
                   <h6 className="footerhead">Resources</h6>
+                  <Link href="/faqs" className="footerpara">FAQS</Link>
+                  <Link href="/walletguide" className="footerpara">Wallet Guide</Link>
                   <Link href="/termsandcondition" className="footerpara">Terms of Service</Link>
                   <Link href="/privacypolicy" className="footerpara">Privacy Policy</Link>
                 </div>
