@@ -18,8 +18,8 @@ const Walletguide = () => {
                             <p>To start the process, open the MetaMask extension in your browser by clicking on the MetaMask icon located in the top-right corner. This will open the MetaMask interface, which provides an intuitive and user-friendly interface for managing your assets.</p>
                         </div>
                         <div className="sub-heading">
-                            <h6>Step 2: Select "Custom RPC"</h6>
-                            <p>In the MetaMask interface, click on the network dropdown in the top-right corner. From the list of options, select "Custom RPC". This will open a new window where you can enter the details of the Core Dao chain mainnet.</p>
+                            <h6>Step 2: Select &quot;Custom RPC&quot;</h6>
+                            <p>In the MetaMask interface, click on the network dropdown in the top-right corner. From the list of options, select &quot;Custom RPC&quot;. This will open a new window where you can enter the details of the Core Dao chain mainnet.</p>
                         </div>
                         <div className="main-heading" style={{marginTop: "50px"}}>
                             <h6>Core Dao chain mainnet</h6>
@@ -33,15 +33,15 @@ const Walletguide = () => {
                         </div>
                         <div className="sub-heading">
                             <h6>Step 3: Enter the Core Mainnet Network URL</h6>
-                            <p>In the "New RPC URL" field, enter the URL of the Core Mainnet Network, which is "https://rpc.coredao.org/". It is important to double-check the URL to ensure you are connecting to the correct network.</p>
+                            <p>In the &quot;New RPC URL&quot; field, enter the URL of the Core Mainnet Network, which is &quot;https://rpc.coredao.org/&quot;. It is important to double-check the URL to ensure you are connecting to the correct network.</p>
                         </div>
                         <div className="sub-heading">
                             <h6>Step 4: Give the Network a Name</h6>
-                            <p>In the "Network Name" field, give the network a name. For example, you can call it " Core Blockchain ". This will help you identify the network easily in MetaMask.</p>
+                            <p>In the &quot;Network Name&quot; field, give the network a name. For example, you can call it &quot; Core Blockchain &quot;. This will help you identify the network easily in MetaMask.</p>
                         </div>
                         <div className="sub-heading">
                             <h6>Step 5: Save the Network</h6>
-                            <p>Click on the "Save" button to add the Core Mainnet Network to your MetaMask interface.</p>
+                            <p>Click on the &quot;Save&quot; button to add the Core Mainnet Network to your MetaMask interface.</p>
                         </div>
                         <div className="sub-heading">
                             <h6>Step 6: Select the Core Mainnet</h6>
