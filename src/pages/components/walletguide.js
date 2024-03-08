@@ -11,7 +11,7 @@ const Walletguide = () => {
                     <div className="parent">
                         <div className="main-heading">
                             <h6>Adding Core Dao Mainnet Network & Testnet Network.</h6>
-                            <p>If you're looking to interact with decentralized applications (dapps) on the Core Blockchain (CORE) mainnet, MetaMask is the perfect browser extension for you. MetaMask, which is widely used for Ethereum blockchain interactions, also supports other networks like BSC. In this article, we'll guide you through the process of adding the CORE mainnet to MetaMask for the best user experience.</p>
+                            <p>If you&apos;re looking to interact with decentralized applications (dapps) on the Core Blockchain (CORE) mainnet, MetaMask is the perfect browser extension for you. MetaMask, which is widely used for Ethereum blockchain interactions, also supports other networks like BSC. In this article, we&apos;ll guide you through the process of adding the CORE mainnet to MetaMask for the best user experience.</p>
                         </div>
                         <div className="sub-heading">
                             <h6>Step 1: Open MetaMask Wallet</h6>
@@ -45,7 +45,7 @@ const Walletguide = () => {
                         </div>
                         <div className="sub-heading">
                             <h6>Step 6: Select the Core Mainnet</h6>
-                            <p>Now you need to select the Core Mainnet from the network dropdown. Once you select it, your MetaMask will be connected to the Core Mainnet, and you'll be able to interact with Core Mainnet dapps & Tokens.</p>
+                            <p>Now you need to select the Core Mainnet from the network dropdown. Once you select it, your MetaMask will be connected to the Core Mainnet, and you&apos;ll be able to interact with Core Mainnet dapps & Tokens.</p>
                         </div>
                     </div>
                 </div>
