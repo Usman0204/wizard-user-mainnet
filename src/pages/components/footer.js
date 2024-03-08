@@ -31,10 +31,10 @@ const Footer = () => {
                 </div>
                 <div className="footerlinksinner">
                   <h6 className="footerhead">follow</h6>
-                  <p className="footerpara">Twitter</p>
-                  <p className="footerpara">Discord</p>
-                  <p className="footerpara">Youtube</p>
-                  <p className="footerpara">Instagram</p>
+                  <a href='https://twitter.com/wizardgallery_' target='_blank' className="footerpara">Twitter</a>
+                  <a href='https://t.me/+i7xcJ-EBosFjYjVk' target='_blank' className="footerpara">TG Announcement</a>
+                  <a href='https://t.me/+76DP_bkMEUpjMzNk' target='_blank' className="footerpara">Telegram</a>
+                  <a href='https://medium.com/@wizardgallery.xyz' target='_blank' className="footerpara">Medium</a>
                 </div>
               </div>
             </div>
