@@ -10,6 +10,7 @@ import Signature from '@/hooks/userSign';
 import { toast } from "react-toastify";
 import { useWeb3React } from '@web3-react/core';
 import useWeb3 from '@/hooks/useWeb3';
+import { browserName, isBrowser } from 'react-device-detect';
 const Navbar = () => {
   let { account } = useWeb3React();
   const [balance, seBalance] = useState(0)
@@ -420,7 +421,7 @@ const Navbar = () => {
                   {/* <Link href="/launchpad?tab=edition" className="dropitem">Open Editions</Link> */}
                   {/* <Link href="https://wizardnft-creator.vercel.app" className="dropitem">Creator Dashboard</Link> */}
                   <Link href="/launchpad" className="dropitem">Launchpad</Link>
-                  <Link href="https://wizardnft-creator.vercel.app" className="dropitem">Apply For launchpad</Link>
+                  <Link href="https://creatorwizard.vercel.app/" target='_blank' className="dropitem">Apply For launchpad</Link>
                   {/* <p className="dropitem marginleft">Presale</p> */}
                 </Dropdown.Menu>
               </Dropdown>
@@ -569,7 +570,7 @@ const Navbar = () => {
           <h6 className="connectsidehead">Connect Wallet</h6>
           <p className="connectsidepara">By connecting your wallet, you agree to our <span className="bold">Terms of Service</span> and Our  <span className="bold">Privacy Policy.</span></p>
         
-          <div className="connectmain " onClick={() => {
+          <div className="connectmain d-sm-flex d-none" onClick={() => {
             // setclickedbtn(() => { (false), localStorage.setItem("wallet", false) });
             // loginUserss()
             // loginUser()
@@ -592,7 +593,37 @@ const Navbar = () => {
 
 
 
+          {isBrowser ?
+            <div className="connectmain d-sm-none d-flex " onClick={() => {
+              connectWallet('1116')
+              handleClose();
+            }}>
+              <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
+              <p className="connectpara">Metamask</p>
+            </div>
+            :
+            <>
+              {browserName === 'Safari' || browserName === "Mobile Safari" || browserName === "Brave" || browserName === 'Firefox' || browserName === 'Chrome' ?
+                <a id="speicalAZ213" href="https://metamask.app.link/dapp/wizard-nft.vercel.app/" className="hideBTN">
+                  <div className="connectmain d-sm-none d-flex "
+                  >
+                    <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
+                    <p className="connectpara">Metamask</p>
+                  </div>
+                </a>
+                :
+                <div className="connectmain d-sm-none d-flex " onClick={() => {
 
+                  connectWallet('1116')
+                  handleClose();
+                }}>
+                  <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
+                  <p className="connectpara">Metamask</p>
+                </div>
+              }</>
+
+
+          }
 
 
 
@@ -614,7 +645,7 @@ const Navbar = () => {
             <Link href="/launchpad" className="dropitemmbl marginleft">Launchpad</Link>
             {/* <Link href="/launchpad?tab=edition" className="dropitemmbl marginleft">Open Editions</Link> */}
             {/* <Link href="/collectiondashbord" className="dropitemmbl">Creator Dashboard</Link> */}
-            <Link href="https://wizardnft-creator.vercel.app/" className="dropitemmbl marginleft">Apply for launchpad</Link>
+            <Link href="https://creatorwizard.vercel.app/" className="dropitemmbl marginleft">Apply for launchpad</Link>
             {/* <p className="dropitemmbl marginleft">Presale</p> */}
 
           </div>

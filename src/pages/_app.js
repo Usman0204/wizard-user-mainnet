@@ -36,6 +36,8 @@ import "@/styles/launchpad.scss"
 import "@/styles/contactus.scss"
 import "@/styles/login.scss"
 import "@/styles/privacypolicy.scss"
+import "@/styles/faqs.scss"
+import "@/styles/walletguide.scss"
 
 export default function App({ Component, pageProps }) {
   useEagerConnect();
