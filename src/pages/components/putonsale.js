@@ -417,7 +417,12 @@ const Putonsale = () => {
 
         // console.log("item", offerid, idd)
 
-
+    useEffect(() => {
+       
+        if (dataset && dataset.currentOwner?.[0]?.walletAddress !== account?.toLowerCase()){
+            router.push(`/nftdetail?id=${dataset._id}`);
+        }
+    }, [account, dataset, router]);
 
     return (
         <>

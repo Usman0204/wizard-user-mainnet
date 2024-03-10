@@ -104,5 +104,4 @@ const Authorcollection = ({ tab }) => {
         </>
     )
 }
-
 export default Authorcollection
