@@ -48,8 +48,6 @@ const Navbar = () => {
   const handleShow2 = () => setShow2(true);
   const { login, logout } = useAuth();
 
-
-
   const loginUser = async () => {
     const tok = localStorage.getItem("accessToken");
     const wall = localStorage.getItem("wallet");
