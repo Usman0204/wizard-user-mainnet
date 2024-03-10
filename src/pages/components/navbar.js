@@ -569,7 +569,7 @@ const Navbar = () => {
           <h6 className="connectsidehead">Connect Wallet</h6>
           <p className="connectsidepara">By connecting your wallet, you agree to our <span className="bold">Terms of Service</span> and Our  <span className="bold">Privacy Policy.</span></p>
         
-          <div className="connectmain d-sm-flex d-none" onClick={() => {
+          <div className="connectmain " onClick={() => {
             // setclickedbtn(() => { (false), localStorage.setItem("wallet", false) });
             // loginUserss()
             // loginUser()
@@ -579,7 +579,7 @@ const Navbar = () => {
             <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
             <p className="connectpara">Metamask</p>
           </div>
-          <div className="connectmain" onClick={() => {
+          <div className="connectmain d-sm-flex d-none" onClick={() => {
             // setclickedbtn(false);
             handleClose();
             handleClose1();
