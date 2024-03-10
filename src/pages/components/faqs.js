@@ -42,7 +42,7 @@ const Faqs = () => {
                                 <Accordion.Header>3. What Fees does the platform charge?</Accordion.Header>
                                 <Accordion.Body>
                                     At Wizard Gallery, we've kept our fee structure simple and transparent to ensure a seamless
-                                    experience for both creators and collectors. Here's a quick overview:Transaction Fees:We charge a modest fee of 2% on all transactions conducted on our platform.
+                                    experience for both creators and collectors. Here's a quick overview.Transaction Fees.We charge a modest fee of 2% on all transactions conducted on our platform.
                                     This fee is applied to sales, purchases, and trades of NFTs, ensuring that we can continue to
                                     provide a secure and innovative marketplace for our users.
                                     Launchpad FeesFor creators looking to launch their NFT collections via our Launchpad, a
@@ -56,9 +56,9 @@ const Faqs = () => {
                                 <Accordion.Body>
                                     At Wizard Gallery, we take your privacy seriously. We're committed to protecting your personal
                                     information and ensuring your experience is secure. Our platform uses advanced encryption
-                                    and security measures to safeguard your data, adhering to strict privacy policies. We collect
+                                    and security measures to safeguard your data,adhering to strict privacy policies.We collect
                                     only what's necessary for enhancing your experience and maintain transparency about how
-                                    your information is used. Rest assured, your privacy is a top priority for us.
+                                    your information is used.Rest assured,your privacy is a top priority for us.
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="4">
@@ -74,7 +74,7 @@ const Faqs = () => {
                             <Accordion.Item eventKey="5">
                                 <Accordion.Header>6. How to Set Up the CORE network on Wizard NFT?</Accordion.Header>
                                 <Accordion.Body>
-                                    Here is a complete guide on how to set up your wallet for the platform using CORE Network:
+                                    Here is a complete guide on how to set up your wallet for the platform using CORE Network.
                                     https://www.wizardgallery.xyz/walletguide
                                 </Accordion.Body>
                             </Accordion.Item>
