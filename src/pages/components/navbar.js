@@ -594,7 +594,7 @@ const Navbar = () => {
 
 
           {isBrowser ?
-            <div className="connectmain d-sm-none d-flex " onClick={() => {
+            <div className="connectmain  " onClick={() => {
               connectWallet('1116')
               handleClose();
             }}>
@@ -605,14 +605,14 @@ const Navbar = () => {
             <>
               {browserName === 'Safari' || browserName === "Mobile Safari" || browserName === "Brave" || browserName === 'Firefox' || browserName === 'Chrome' ?
                 <a id="speicalAZ213" href="https://metamask.app.link/dapp/wizard-nft.vercel.app/" className="hideBTN">
-                  <div className="connectmain d-sm-none d-flex "
+                  <div className="connectmain  "
                   >
                     <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
                     <p className="connectpara">Metamask</p>
                   </div>
                 </a>
                 :
-                <div className="connectmain d-sm-none d-flex " onClick={() => {
+                <div className="connectmain  " onClick={() => {
 
                   connectWallet('1116')
                   handleClose();
