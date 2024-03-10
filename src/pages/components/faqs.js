@@ -41,9 +41,9 @@ const Faqs = () => {
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>3. What Fees does the platform charge?</Accordion.Header>
                                 <Accordion.Body>
-                                    At Wizard Gallery, we've kept our fee structure simple and transparent to ensure a seamless
-                                    experience for both creators and collectors. Here's a quick overview.Transaction Fees.We charge a modest fee of 2% on all transactions conducted on our platform.
-                                    This fee is applied to sales, purchases, and trades of NFTs, ensuring that we can continue to
+                                    At Wizard Gallery,we have kept our fee structure simple and transparent to ensure a seamless
+                                    experience for both creators and collectors.Here is a quick overview.Transaction Fees.We charge a modest fee of 2% on all transactions conducted on our platform.
+                                    This fee is applied to sales,purchases,and trades of NFTs,ensuring that we can continue to
                                     provide a secure and innovative marketplace for our users.
                                     Launchpad FeesFor creators looking to launch their NFT collections via our Launchpad, a
                                     slightly higher fee of 5% is applied. This fee covers the additional services, support, and
@@ -54,10 +54,10 @@ const Faqs = () => {
                             <Accordion.Item eventKey="3">
                                 <Accordion.Header>4. What about my privacy?</Accordion.Header>
                                 <Accordion.Body>
-                                    At Wizard Gallery, we take your privacy seriously. We're committed to protecting your personal
+                                    At Wizard Gallery, we take your privacy seriously. We are committed to protecting your personal
                                     information and ensuring your experience is secure. Our platform uses advanced encryption
                                     and security measures to safeguard your data,adhering to strict privacy policies.We collect
-                                    only what's necessary for enhancing your experience and maintain transparency about how
+                                    only what is necessary for enhancing your experience and maintain transparency about how
                                     your information is used.Rest assured,your privacy is a top priority for us.
                                 </Accordion.Body>
                             </Accordion.Item>
