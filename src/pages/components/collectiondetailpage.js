@@ -147,7 +147,7 @@ const Collectiondetailpage = () => {
     // let mintedNfts = await mintNftsInfo(dataset?.projectId)
     // console.log(mintedNfts);
     if (parseInt(count) > parseFloat(mintedNfts?.maxMintLimit)){
-      toast.error(`You can't mint more then ${mintedNfts?.maxMintLimit} nfts at a time`)
+      toast.error(`You can't mint more than ${mintedNfts?.maxMintLimit} nfts at a time`)
       return 
     }
     if(!account){

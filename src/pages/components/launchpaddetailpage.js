@@ -191,7 +191,7 @@ const Launchpaddetailpage = () => {
     // let mintedNfts = await mintNftsInfo(dataset?.projectId)
     // console.log(mintedNfts);
     if (parseFloat(parseInt(mintedNfts?.NFTsBuy) + parseInt(count)) > parseFloat(dataset?.perWalletLimit)){
-      toast.error(`You can't mint more then ${dataset?.perWalletLimit} nfts`)
+      toast.error(`You can't mint more than ${dataset?.perWalletLimit} nfts`)
       return 
     }
     if(!account){

@@ -10,7 +10,7 @@ const Privacypolicy = () => {
         <div className="custom-container">
           <h4 className="privacyhead">Privacy Policy</h4>
           <p className="privacypara">
-            Welcome to the website (the “<span className="bold">Site</span>”) of Wizard Art. Wizard art provides a platform for purchasing, selling, transferring, managing, and browsing Digital Artwork (collectively, including the Site, the “<span className="bold">Service</span>”). <br />
+            Welcome to the website (the “<span className="bold">Site</span>”) of Wizard Gallery. Wizard gallery provides a platform for purchasing, selling, transferring, managing, and browsing Digital Artwork (collectively, including the Site, the “<span className="bold">Service</span>”). <br />
             This Privacy Policy explains what personal information we collect, how we use and share that information, and your choices concerning our information practices.
             Before using the Service or submitting any personal information to Foundation, please review this Privacy Policy carefully and contact us if you have any questions. By using the Service, you agree to the practices described in this Privacy Policy. If you do not agree to this Privacy Policy, please do not access the Site or otherwise use the Service. This Privacy Policy is incorporated into and forms part of our Terms of Service, located at https://foundation.app/terms. Capitalized terms not defined in this Privacy Policy have the meanings assigned to them in the Terms of Service.
 
