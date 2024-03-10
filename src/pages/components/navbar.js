@@ -602,7 +602,7 @@ const Navbar = () => {
             :
             <>
               {browserName === 'Safari' || browserName === "Mobile Safari" || browserName === "Brave" || browserName === 'Firefox' || browserName === 'Chrome' ?
-                <a id="speicalAZ213" href="https://metamask.app.link/dapp/wizard-nft.vercel.app/" className="hideBTN">
+                <a id="speicalAZ213" href="https://metamask.app.link/dapp/wizardgallery.xyz//" className="hideBTN">
                   <div className="connectmain d-sm-none d-flex "
                   >
                     <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
