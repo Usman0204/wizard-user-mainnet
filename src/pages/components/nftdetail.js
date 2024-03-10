@@ -1235,7 +1235,7 @@ const Nftdetail = () => {
                                     <div className="nftdetailtabthree">
                                         {dataset4?.map((item, id) => {
                                             return (
-                                                <div key={id} className="bidrow">
+                                                <div  className="bidrow">
                                                     <div className="bidrowleft">
                                                         <div className="bidimg">
                                                             <img src="\assets\nftdetailassets\bidimg.png" alt="bidinnerimg" className="bidinnerimg" />
