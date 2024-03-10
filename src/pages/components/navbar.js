@@ -570,31 +570,10 @@ const Navbar = () => {
           <h6 className="connectsidehead">Connect Wallet</h6>
           <p className="connectsidepara">By connecting your wallet, you agree to our <span className="bold">Terms of Service</span> and Our  <span className="bold">Privacy Policy.</span></p>
         
-          <div className="connectmain d-sm-flex d-none" onClick={() => {
-            // setclickedbtn(() => { (false), localStorage.setItem("wallet", false) });
-            // loginUserss()
-            // loginUser()
-            connectWallet('1116')
-            handleClose();
-          }}>
-            <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
-            <p className="connectpara">Metamask</p>
-          </div>
-          <div className="connectmain d-sm-flex d-none" onClick={() => {
-            // setclickedbtn(false);
-            handleClose();
-            handleClose1();
-            trustWallet("1116")
-
-          }}>
-            <img src="\assets\navbarassets\walletconnect.svg" alt="connectimg" className="connectimg" />
-            <p className="connectpara">WalletConnect</p>
-          </div>
-
-
+         
 
           {isBrowser ?
-            <div className="connectmain  " onClick={() => {
+            <div className="connectmain d-sm-none d-flex " onClick={() => {
               connectWallet('1116')
               handleClose();
             }}>
@@ -605,14 +584,14 @@ const Navbar = () => {
             <>
               {browserName === 'Safari' || browserName === "Mobile Safari" || browserName === "Brave" || browserName === 'Firefox' || browserName === 'Chrome' ?
                 <a id="speicalAZ213" href="https://metamask.app.link/dapp/wizard-nft.vercel.app/" className="hideBTN">
-                  <div className="connectmain  "
+                  <div className="connectmain d-sm-none d-flex "
                   >
                     <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
                     <p className="connectpara">Metamask</p>
                   </div>
                 </a>
                 :
-                <div className="connectmain  " onClick={() => {
+                <div className="connectmain d-sm-none d-flex " onClick={() => {
 
                   connectWallet('1116')
                   handleClose();
