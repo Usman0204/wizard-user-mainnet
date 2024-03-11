@@ -780,7 +780,7 @@ useEffect(()=>{
                       </ul>
                     </div> */}
                   </div>
-                  <div className="overviewright">
+                  {/* <div className="overviewright">
                     <h4 className="visionhead">Vision</h4>
                     <div className="visionmain">
                       <img src="\assets\launchpaddetailassets\tickimages.png" alt="visionimg" className="visionimg" />
@@ -799,7 +799,7 @@ useEffect(()=>{
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </>
             )}

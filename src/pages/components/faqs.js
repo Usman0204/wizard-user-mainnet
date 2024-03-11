@@ -20,7 +20,7 @@ const Faqs = () => {
                                     Wizard Gallery is developing to become the flagship NFT marketplace on the Core Network,
                                     aiming to provide its users with a seamless NFT minting and trading platform. Our main goal is
                                     to ensure a flawless experience for our users and bring dynamic innovations and progressive
-                                    features to the world of NFT trading. Here is more on the platform:https://www.wizardgallery.xyz/aboutus
+                                    features to the world of NFT trading. Here is more on the platform: <a style={{ color: "#862FC0" }} href="https://www.wizardgallery.xyz/aboutus" target='_blank'>https://www.wizardgallery.xyz/aboutus</a>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
@@ -29,7 +29,7 @@ const Faqs = () => {
                                     At Wizard Gallery, we deeply respect and uphold the intellectual property rights of artists and
                                     creators. When you mint or list an NFT on our platform, you retain ownership of your original
                                     work. Our platform acts as a marketplace to showcase and trade your digital assets, but the
-                                    copyright and associated rights remain with you, the creator.
+                                    copyright and associated rights remain with you, the creator. <br /> <br />
                                     We encourage a culture of respect and legal compliance among our users, ensuring that all
                                     digital artworks and NFTs traded on our platform are done so under the rightful permissions and
                                     legal frameworks. Buyers acquire ownership of the NFT itself, which includes the digital file, but
@@ -41,11 +41,12 @@ const Faqs = () => {
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>3. What Fees does the platform charge?</Accordion.Header>
                                 <Accordion.Body>
-                                    At Wizard Gallery,we have kept our fee structure simple and transparent to ensure a seamless
-                                    experience for both creators and collectors.Here is a quick overview.Transaction Fees.We charge a modest fee of 2% on all transactions conducted on our platform.
-                                    This fee is applied to sales,purchases,and trades of NFTs,ensuring that we can continue to
-                                    provide a secure and innovative marketplace for our users.
-                                    Launchpad FeesFor creators looking to launch their NFT collections via our Launchpad, a
+                                    At Wizard Gallery, we've kept our fee structure simple and transparent to ensure a seamless
+                                    experience for both creators and collectors. Here's a quick overview: <br /> <br />
+                                    Transaction Fees: We charge a modest fee of 2% on all transactions conducted on our platform.
+                                    This fee is applied to sales, purchases, and trades of NFTs, ensuring that we can continue to
+                                    provide a secure and innovative marketplace for our users. <br /><br />
+                                    Launchpad Fees: For creators looking to launch their NFT collections via our Launchpad, a
                                     slightly higher fee of 5% is applied. This fee covers the additional services, support, and
                                     exposure provided through the Launchpad, helping creators to successfully debut their
                                     collections to a wide audience.
@@ -75,7 +76,7 @@ const Faqs = () => {
                                 <Accordion.Header>6. How to Set Up the CORE network on Wizard NFT?</Accordion.Header>
                                 <Accordion.Body>
                                     Here is a complete guide on how to set up your wallet for the platform using CORE Network.
-                                    https://www.wizardgallery.xyz/walletguide
+                                    <a style={{ color: "#862FC0" }} href="https://www.wizardgallery.xyz/walletguide" target='_blank'>https://www.wizardgallery.xyz/walletguide</a>
                                 </Accordion.Body>
                             </Accordion.Item>
 
