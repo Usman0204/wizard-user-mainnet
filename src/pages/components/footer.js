@@ -22,7 +22,7 @@ const Footer = () => {
                 <h6 className="footerhead">Marketplace</h6>
                 <Link href="/discovercollection" className="footerpara">Explore Collections</Link>
                 <Link href="/launchpad" className="footerpara">Launchpad</Link>
-                <a target='_blank' href="https://creatorwizard.vercel.app/" className="footerpara">Create Collection</a>
+                  <a target='_blank' href="https://creator.wizardgallery.xyz/mycollection" className="footerpara">Create Collection</a>
               </div>
                 <div className="footerlinksinner">
                   <h6 className="footerhead">Resources</h6>
