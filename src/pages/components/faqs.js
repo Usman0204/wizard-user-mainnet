@@ -15,7 +15,7 @@ const Faqs = () => {
                     <div className="parent">
                         <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>1. What is Wizard NFT?</Accordion.Header>
+                                <Accordion.Header>1. What is Wizard Gallery?</Accordion.Header>
                                 <Accordion.Body>
                                     Wizard Gallery is developing to become the flagship NFT marketplace on the Core Network,
                                     aiming to provide its users with a seamless NFT minting and trading platform. Our main goal is
