@@ -14,6 +14,7 @@ import MintNftInfo from '@/hooks/dataFetcher/mintNftInfo';
 import NftClaim from '@/hooks/dataSender/nftClaim';
 import { toast } from 'react-toastify';
 import { data } from 'jquery';
+import useAuth from '@/hooks/useAuth';
 // import { Link } from 'react-router-dom';
 import Link from 'next/link';
 import Loader from '@/hooks/loader';
@@ -38,6 +39,7 @@ const Launchpaddetailpage = () => {
   const [isLiveStage, setIsLiveStage] = useState(false);
   const [stageId, setStageId]= useState()
   const [mintInfoStatus,setMintInfoStatus]=useState(null)
+  const { login, logout } = useAuth();
   // console.log('asdasdas', isLiveStage, currentStagePrice)
   const images = [
     {
@@ -103,7 +105,12 @@ const Launchpaddetailpage = () => {
       Getlaunchpaddetail()
     }
   }, [id])
-
+  let logoutApi = async () => {
+    const connectorId = window?.localStorage.getItem("connectorId")
+    logout(connectorId);
+    localStorage.setItem("flag", false)
+    localStorage.clear()
+  }
   const Getlaunchpaddetail = () => {
     let tok = localStorage.getItem("accessToken");
     var config = ''
@@ -119,15 +126,20 @@ const Launchpaddetailpage = () => {
     axios(config)
       .then(function (response) {
         setdataset(response.data.data[0])
+        console.log(response.data);
+
         // console.log(response.data.data[0],'response.data.data[0]');
         setTeamMembers(response?.data?.data?.[0]?.teamMembers)
-
+      
 
         // setLoader(false);
         // setUpcomingdata(response.data.data.upcomingLaunchpads[0])
         // // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
       })
       .catch(function (error) {
+        if (error?.request?.status === 401) {
+          logoutApi()
+        }
         // setLoader(false);
         // localStorage.removeItem("accessToken");
         // localStorage.removeItem("user");

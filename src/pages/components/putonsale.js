@@ -12,6 +12,7 @@ import { useWeb3React } from "@web3-react/core";
 import { toast } from 'react-toastify';
 import Router, { useRouter } from 'next/router';
 import AcceptOffer from '@/hooks/accpetoffer';
+import useAuth from '@/hooks/useAuth';
 const Putonsale = () => {
     const [activeTab, setActiveTab] = useState('link-1');
     const [offset, setOffset] = useState(1)
@@ -31,6 +32,7 @@ const Putonsale = () => {
     const api_url = Environment.api_url;
     let { AcceptBidHook } = AcceptBid()
     let { AcceptOfferHook } = AcceptOffer()
+    const { login, logout } = useAuth();
     var router = useRouter();
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -315,7 +317,12 @@ const Putonsale = () => {
     useEffect(() => {
         OfferNft();
     }, [idd, account]);
-
+    let logoutApi = async () => {
+        const connectorId = window?.localStorage.getItem("connectorId")
+        logout(connectorId);
+        localStorage.setItem("flag", false)
+        localStorage.clear()
+    }
     const OfferNft = async () => {
         // let tok = localStorage.getItem("accessToken");
         var config = ''
@@ -339,6 +346,9 @@ const Putonsale = () => {
                 // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
             })
             .catch(function (error) {
+                if (error?.request?.status === 401) {
+                    logoutApi()
+                }
                 // setLoader(false);
                 // localStorage.removeItem("accessToken");
                 // localStorage.removeItem("user");

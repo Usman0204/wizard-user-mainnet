@@ -23,7 +23,7 @@ import { getWcoreTokenContract } from '@/utils/contractHelpers';
 // import Loader from '@/hooks/loader';
 // import { parse } from 'next/dist/build/swc';
 import Link from 'next/link';
-
+import useAuth from '@/hooks/useAuth';
 const Nftdetail = () => {
     let { account } = useWeb3React();
     var router = useRouter();
@@ -47,6 +47,7 @@ const Nftdetail = () => {
     const [isliked, setisLiked] = useState();
     const [loader, setLoader] = useState(false)
     const api_url = Environment.api_url;
+    const { login, logout } = useAuth();
     const handleSelect = (eventKey) => {
         setActiveTab(eventKey);
     };
@@ -498,7 +499,12 @@ const Nftdetail = () => {
             AllowenceCheck();
         }
     }, [account, web3]);
-
+    let logoutApi = async () => {
+        const connectorId = window?.localStorage.getItem("connectorId")
+        logout(connectorId);
+        localStorage.setItem("flag", false)
+        localStorage.clear()
+    }
     const BidsHighest = async () => {
         // let tok = localStorage.getItem("accessToken");
         var config = ''
@@ -516,12 +522,17 @@ const Nftdetail = () => {
                 // console.log("sdsdsd++++++++++", response.data?.data[0]?.bidPrice)
                 setdataset4(response?.data?.data)
                 sethighestbid(response?.data?.data[0]?.bidPrice)
+                console.log(response?.data);
                 // console.log(response.data.data);
                 // setLoader(false);
                 // setUpcomingdata(response.data.data.upcomingLaunchpads[0])
                 // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
             })
             .catch(function (error) {
+                console.log(error.request.status);
+                if (error?.request?.status === 401) {
+                    logoutApi()
+                }
                 // setLoader(false);
                 // localStorage.removeItem("accessToken");
                 // localStorage.removeItem("user");

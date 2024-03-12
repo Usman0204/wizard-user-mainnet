@@ -305,12 +305,15 @@ const Navbar = () => {
         },
       };
       let response = await axios(config);
-      console.log(response?.data, "swdwww in navbarr");
-
+      console.log(response?.data?.statusCode, "swdwww in navbarr");
+     
       // Uncomment the lines below if you want to set the profile and save it to localStorage
       setProfile(response?.data?.data);
       // localStorage.setItem("profileData", JSON.stringify(response?.data?.data));
     } catch (error) {
+      if (error?.request?.status === 401) {
+        logoutApi()
+      }
       console.error("API Request Error: in navbarrrrr", error);
     }
   };

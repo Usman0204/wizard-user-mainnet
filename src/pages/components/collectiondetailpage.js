@@ -17,6 +17,7 @@ import { data } from 'jquery';
 // import { Link } from 'react-router-dom';
 import Link from 'next/link';
 import Loader from '@/hooks/loader';
+import useAuth from '@/hooks/useAuth';
 // import Loader from '@/hooks/loader';
 // import mainloader from "../../assets/logo.svg";
 const Collectiondetailpage = () => {
@@ -32,6 +33,7 @@ const Collectiondetailpage = () => {
   const { nftClaim }  =NftClaim()
   const [loader, setLoader] = useState(false)
   const [isCopied, setIsCopied] = useState(false);
+  const { login, logout } = useAuth();
   // console.log('asdasdas', isLiveStage, currentStagePrice)
   const images = [
     {
@@ -77,7 +79,12 @@ const Collectiondetailpage = () => {
       Getlaunchpaddetail()
     }
   }, [id])
-
+  let logoutApi = async () => {
+    const connectorId = window?.localStorage.getItem("connectorId")
+    logout(connectorId);
+    localStorage.setItem("flag", false)
+    localStorage.clear()
+  }
   const Getlaunchpaddetail = () => {
     let tok = localStorage.getItem("accessToken");
     var config = ''
@@ -102,6 +109,9 @@ const Collectiondetailpage = () => {
         // // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
       })
       .catch(function (error) {
+        if (error?.request?.status === 401) {
+          logoutApi()
+        }
         // setLoader(false);
         // localStorage.removeItem("accessToken");
         // localStorage.removeItem("user");
