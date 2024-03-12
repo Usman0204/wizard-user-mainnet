@@ -36,7 +36,7 @@ const Launchpaddrops = () => {
             361: {
                 items: 1.3,
                 margin: 10,
-                loop: true,
+                loop: false,
                 nav: false,
                 dots: true,
                 dotsEach: true
@@ -44,7 +44,7 @@ const Launchpaddrops = () => {
             600: {
                 items: 1.3,
                 margin: 10,
-                loop: true,
+                loop: false,
                 nav: false,
                 dots: true,
                 dotsEach: true
