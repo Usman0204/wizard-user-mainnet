@@ -198,7 +198,7 @@ const Launchpaddrops = () => {
                                                     <div className="inner-text">
                                                         <div className="text">
                                                             <h6>PRICE</h6>
-                                                            <p>{item?.price}</p>
+                                                            <p>{item?.price || 0}</p>
                                                         </div>
                                                         <div className="text">
                                                             <h6>Items</h6>
