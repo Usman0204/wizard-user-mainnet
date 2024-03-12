@@ -15,7 +15,7 @@ const Faqs = () => {
                     <div className="parent">
                         <Accordion defaultActiveKey="0">
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>1. What is Wizard NFT?</Accordion.Header>
+                                <Accordion.Header>1. What is Wizard Gallery?</Accordion.Header>
                                 <Accordion.Body>
                                     Wizard Gallery is developing to become the flagship NFT marketplace on the Core Network,
                                     aiming to provide its users with a seamless NFT minting and trading platform. Our main goal is
@@ -41,8 +41,8 @@ const Faqs = () => {
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>3. What Fees does the platform charge?</Accordion.Header>
                                 <Accordion.Body>
-                                    At Wizard Gallery, we've kept our fee structure simple and transparent to ensure a seamless
-                                    experience for both creators and collectors. Here's a quick overview: <br /> <br />
+                                    At Wizard Gallery, we&apos;ve kept our fee structure simple and transparent to ensure a seamless
+                                    experience for both creators and collectors. Here&apos;s a quick overview: <br /> <br />
                                     Transaction Fees: We charge a modest fee of 2% on all transactions conducted on our platform.
                                     This fee is applied to sales, purchases, and trades of NFTs, ensuring that we can continue to
                                     provide a secure and innovative marketplace for our users. <br /><br />
