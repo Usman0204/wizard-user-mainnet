@@ -231,10 +231,10 @@ const Launchpaddetailpage = () => {
             price: currentStagePrice,
             collectionAddress: dataset?.contractAddress,
             tokenIds,
-            transactionHash: res?.transactionHash,
-            amount: count, 
-            projectId: dataset?.projectId,
-            stageId: stageId
+            // transactionHash: res?.transactionHash,
+            // amount: count, 
+            // projectId: dataset?.projectId,
+            // stageId: stageId
           },
             {
               headers: {
