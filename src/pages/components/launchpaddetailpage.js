@@ -715,8 +715,8 @@ useEffect(()=>{
                {dataset?.status==="completed" || dataset?.status==="failed"?
                <button disabled={!mintInfoStatus?.purchased || mintInfoStatus?.claimed?true:false} className={!mintInfoStatus?.purchased || mintInfoStatus?.claimed?"bluebtnexplore disable":"bluebtnexplore"} onClick={claimnft}>Claim Back</button>
                :
-                    // <button disabled={dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" :  "bluebtnexplore"}>Mint</button>
-                                    <button disabled={true} onClick={mintNFtFunc} className={"bluebtnexplore disable"}>Mint</button>
+                    <button disabled={dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" :  "bluebtnexplore"}>Mint</button>
+                                    // <button disabled={true} onClick={mintNFtFunc} className={"bluebtnexplore disable"}>Mint</button>
 
                }
                </>
