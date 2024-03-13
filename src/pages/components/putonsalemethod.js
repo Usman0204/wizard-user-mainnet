@@ -171,6 +171,7 @@ const Putonsalemethod = () => {
                 }
             } else {
                 // Show toast message if time is not greater
+                setLoader(true);
                 toast.error("Selected time should be in the future.");
             }
         } catch (error) {
