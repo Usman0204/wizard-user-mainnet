@@ -21,7 +21,8 @@ const MintNft = () => {
                 gasFunPrice = result2.toString()
             })
             nd = web3.utils.toWei(nd.toString(), "ether");
-            // console.log(nd, pId, amount,nd, totalPrice);
+            console.log(pId, _id, amount, nd, 'utils');
+
             try {
                 const gas = await contract.methods
                     .purchaseTokens(pId, _id, amount )

@@ -29,7 +29,7 @@ const Launchpadcards = ({ Listeddata, data }) => {
                                     <div className="text">
                                         <p>PRICE</p>
                                         <h6>
-                                            {card.price}
+                                            {card.price || 0}
                                             {/* <span>{card.currency}</span> */}
                                         </h6>
                                     </div>

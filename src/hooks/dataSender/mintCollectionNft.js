@@ -8,7 +8,7 @@ const MintCollectionNft = () => {
     var { account } = useWeb3React();
     const mintCollectionNfts = useCallback(
         async (collection, amount) => {
-            console.log(collection, amount);
+            console.log('collection',collection, amount);
             const contract = getLaunchedPadContract(collection, web3);
             // let amountWei= web3.utils.toWei(nd.toString(), "ether");
             var gasFunPrice;

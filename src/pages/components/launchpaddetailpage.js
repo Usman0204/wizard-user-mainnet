@@ -221,13 +221,20 @@ const Launchpaddetailpage = () => {
     setLoader(true)
     try {
       let res = await mintNfts(currentStagePrice, dataset?.projectId, count, stageId)
+      console.log('console', res);
       if (res) {
+        let totalPrice = parseFloat(currentStagePrice) * count
+        totalPrice = parseFloat(totalPrice)?.toFixed(6);
         const res2 = axios
           .post(`${api_url}/nfts/mint`, {
             launchpadId: dataset?._id,
             price: currentStagePrice,
             collectionAddress: dataset?.contractAddress,
-            tokenIds
+            tokenIds,
+            transactionHash: res?.transactionHash,
+            amount: count, 
+            projectId: dataset?.projectId,
+            stageId: stageId
           },
             {
               headers: {
@@ -708,8 +715,9 @@ useEffect(()=>{
                {dataset?.status==="completed" || dataset?.status==="failed"?
                <button disabled={!mintInfoStatus?.purchased || mintInfoStatus?.claimed?true:false} className={!mintInfoStatus?.purchased || mintInfoStatus?.claimed?"bluebtnexplore disable":"bluebtnexplore"} onClick={claimnft}>Claim Back</button>
                :
-                    <button disabled={dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" :  "bluebtnexplore"}>Mint</button>
-                
+                    // <button disabled={dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" :  "bluebtnexplore"}>Mint</button>
+                                    <button disabled={true} onClick={mintNFtFunc} className={"bluebtnexplore disable"}>Mint</button>
+
                }
                </>
 
