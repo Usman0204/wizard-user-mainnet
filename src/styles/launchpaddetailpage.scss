@@ -891,6 +891,38 @@
     .launchpaddetail .launchpaddetailower .overviewmain .overvieewleft .contractmain .walletcopymain .walletaddress{
         max-width: 190px;
     }
+    .progressuppertext {
+        // display: flex;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 6px !important;
+
+        .pricepara {
+            color: var(--Light-Text-Color, #745F8C);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+        }
+
+        .percentagepara {
+            color: #FFF;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+            display: flex;
+
+            .lighttext {
+                color: var(--Light-Text-Color, #745F8C) ;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 100%;
+                margin-left: 4px;
+            }
+        }
+    }
 }
 
 .priceprogressmain-coll{
