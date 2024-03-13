@@ -1047,11 +1047,11 @@ useEffect(()=>{
 
             <Modal className='buymodal' show={show4} onHide={handleClose4} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Claim back your funds</Modal.Title>
+                    <Modal.Title>Successfully Claimed</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <img src="\assets\nftdetailassets\PURCHASED.svg" alt="purchasedimg" className="purchasedimg" />
-                    <p className="purshasedpara">you have successfully claimed {testData}</p>
+                    <p className="purshasedpara">You have successfully claimed your NFT</p>
                     <button onClick={handleClose4} className="bluebtn">Ok</button>
                 </Modal.Body>
 
