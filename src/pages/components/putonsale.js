@@ -452,10 +452,10 @@ const Putonsale = () => {
                                 <img src="\assets\nftdetailassets\verify.svg" alt="verifiedimage" className="verifiedimage" />
                             </div>
                             <h5 className="nftname">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</h5>
-                            <div className="royalitymain">
+                            {/* <div className="royalitymain">
                                 <h6 className="royalitypara">Royalties</h6>
                                 <span className="royalitypercentage">5%</span>
-                            </div>
+                            </div> */}
                             <div className="creatorandownermain">
                                 <div className="creatorownermain">
                                     <div className="creatorownermainimage">

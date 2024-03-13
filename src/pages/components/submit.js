@@ -149,7 +149,7 @@ const Submit = () => {
                                         <h6>0xab6fd6074782c805933...</h6>
                                     </div>
                                     <div className="single-text">
-                                        <p>Platfrom Fees</p>
+                                        <p>Platform Fees</p>
                                         <h6>90%</h6>
                                     </div>
                                     <div className="single-text">
