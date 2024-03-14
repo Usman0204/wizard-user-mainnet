@@ -128,6 +128,10 @@ const Putonsalemethod = () => {
             });
     };
     async function completeListing() {
+        if (parseFloat(fee) <= 0) {
+            toast.error("Fee must be greater than zero.");
+            return;
+        }
         if (parseFloat(fee) <= parseFloat(dataset?.price)) {
             toast.error("Fee must be greater than the price.");
             return;
