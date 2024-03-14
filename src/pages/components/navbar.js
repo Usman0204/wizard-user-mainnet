@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { startTransition, useEffect, useState } from 'react';
 import { Dropdown, Offcanvas } from 'react-bootstrap';
 // import useAuth from '@/hooks/useAuth';
 import useAuth from '@/hooks/useAuth';
@@ -30,7 +30,9 @@ const Navbar = () => {
   const [datasearch, setdatasearch] = useState();
   // console.log("data search here is ", datasearch)
   const handleInputChange = (e) => {
-    setSearchText(e.target.value);
+    setTimeout(() => {
+      setSearchText(e.target.value);
+    }, 1000);
   };
 
   const [show, setShow] = useState(false);
@@ -328,6 +330,11 @@ const Navbar = () => {
     localStorage.setItem("flag", false)
     localStorage.clear()
   }
+  const truncateWalletAddress = (address, endLength = 4) => {
+    const start = address.slice(0, endLength);
+    const end = address.slice(-endLength);
+    return `${start}...${end}`;
+  };
   // console.log("adsdsdsds++++++++", startwith)
   return (
     <>
@@ -344,7 +351,7 @@ const Navbar = () => {
                     type="search"
                     placeholder="Search items, collections, and accounts"
                     className="innercustominput"
-                    value={searchText}
+                    // value={searchText}
                     onChange={handleInputChange}
                   />
                   <img
@@ -356,15 +363,16 @@ const Navbar = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <div className="searchresultsmain">
-                  {startwith === false ?
-                    (
+                  {console.log(startwith)}
+                  {/* {startwith === false ?
+                    ( */}
                       <>
-                        {datasearch?.length > 0 ?
+                    {datasearch?.launchpadResult?.length > 0 ?
                           <div className='collectionsearch '>
                             <div className="collectionhead">
                               <h6 className="collectiontext">Collection</h6>
                             </div>
-                            {datasearch?.map((card, index) => (
+                            {datasearch?.launchpadResult?.map((card, index) => (
                               <Link key={index} href={`/collections?id=${card?._id}`}>
                                 <div className="collectionresult">
                                   <div className="collectionresultleft">
@@ -383,29 +391,31 @@ const Navbar = () => {
                           </div>
                           :
                           (
-                            <p style={{color: "#fff"}}>No Data Found</p>
+                        datasearch?.userResult?.length > 0 ||   <p style={{color: "#fff"}}>No Data Found</p>
                           )
                         }
                       </>
 
-                    )
+                    {/* )
                     :
-                    (
-                      <div className="accountmain">
+                    ( */}
+                  {datasearch?.userResult?.length > 0 && <div className="accountmain">
                         <h6 className="accounthead">Accounts</h6>
-                        {datasearch?.map((card, index) => (
-                          <Link key={index} href="/authorprofile">
+                        {console.log(datasearch)}
+                        {datasearch?.userResult?.map((card, index) => (
+                          <Link key={index} href={`/authorprofile?id=${card?._id}`}>
+                            {console.log(card?._id)}
                             <div className="accountinner">
                               <div className="accoutnimg">
-                                <img src={card?.profileImageUrl} alt="accountinnerimg" className="accountinnerimg" />
+                                <img src={card?.picture ||  '/assets/profile.png'} alt="accountinnerimg" className="accountinnerimg" />
                               </div>
-                              <p className="accounttext">{card?.name}</p>
+                              <p className="accounttext">{card?.name || truncateWalletAddress(card?.walletAddress)}</p>
                             </div>
                           </Link>
                         ))}
-                      </div>
-                    )
-                  }
+                      </div>}
+                    {/* )
+                  } */}
 
 
                 </div>
