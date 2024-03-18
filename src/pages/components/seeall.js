@@ -6,7 +6,7 @@ import Liveauction from './liveauction'
 import Auctionbid from './auctionbid'
 import Topseller from './topseller'
 
-const seeall = () => {
+const Seeall = () => {
   const [tab, setTab]=useState('')
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -34,4 +34,4 @@ const seeall = () => {
   )
 }
 
-export default seeall
+export default Seeall
