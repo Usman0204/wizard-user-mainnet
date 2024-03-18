@@ -164,38 +164,66 @@ const Collections = () => {
                                     <path d="M12 15.7501C11.59 15.7501 11.25 15.4101 11.25 15.0001V3.62012C11.25 3.21012 11.59 2.87012 12 2.87012C12.41 2.87012 12.75 3.21012 12.75 3.62012V15.0001C12.75 15.4101 12.41 15.7501 12 15.7501Z" fill="white" />
                                     <path d="M15.3501 6.60043C15.1601 6.60043 14.9701 6.53043 14.8201 6.38043L12.0001 3.56043L9.18009 6.38043C8.89009 6.67043 8.41009 6.67043 8.12009 6.38043C7.83009 6.09043 7.83009 5.61043 8.12009 5.32043L11.4701 1.97043C11.7601 1.68043 12.2401 1.68043 12.5301 1.97043L15.8801 5.32043C16.1701 5.61043 16.1701 6.09043 15.8801 6.38043C15.7401 6.53043 15.5401 6.60043 15.3501 6.60043Z" fill="white" />
                                 </svg></a>
-                                {/* <a href="#" className='more-btn'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <a href="#" className='more-btn'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M4.05188 14.439C5.38983 14.439 6.47854 13.3508 6.47854 12.0126C6.47854 10.6744 5.38983 9.58594 4.05188 9.58594C2.71394 9.58594 1.625 10.6744 1.625 12.0126C1.625 13.3508 2.71394 14.439 4.05188 14.439Z" fill="white" />
                                     <path d="M11.9049 14.439C13.2427 14.439 14.3314 13.3508 14.3314 12.0126C14.3314 10.6744 13.2436 9.58594 11.9049 9.58594C10.5666 9.58594 9.47852 10.6744 9.47852 12.0126C9.47852 13.3508 10.567 14.439 11.9049 14.439Z" fill="white" />
                                     <path d="M19.8863 14.439C21.2246 14.439 22.3128 13.3508 22.3128 12.0126C22.3128 10.6744 21.2246 9.58594 19.8863 9.58594C18.5481 9.58594 17.459 10.6744 17.459 12.0126C17.459 13.3508 18.5477 14.439 19.8863 14.439Z" fill="white" />
-                                </svg></a> */}
+                                </svg></a>
                             </div>
                         </div>
-                        <div className="right-content">
+                        <div className="all-values">
                             <div className="upper-table">
-                                {/* <div className="text">
+                                <div className="text">
+                                    <p>FLOOR</p>
+                                    <h6>6.824 CORE</h6>
+                                </div>
+                                <div className="text">
+                                    <p>TOTAL VOL</p>
+                                    <h6>616.6964 CORE</h6>
+                                </div>
+                                <div className="text">
+                                    <p>OWNERS</p>
+                                    <h6>88.2K</h6>
+                                </div>
+                                <div className="text">
+                                    <p>LISTED</p>
+                                    <h6>2.6K</h6>
+                                </div>
+                                <div className="text">
+                                    <p>TOTAL SUPPLY</p>
+                                    <h6>112.4K</h6>
+                                </div>
+                                <div className="text">
+                                    <p>RANGE</p>
+                                    <h6>63140674 to 64543066</h6>
+                                </div>
+                            </div>
+                            </div>
+                        {/* <div className="right-content">
+                            <div className="upper-table">
+                                <div className="text">
                                     <p>Floor</p>
                                     <h6>6.824 Core</h6>
-                                </div> */}
-                                {/* <div className="text">
+                                </div>
+                                <div className="text">
                                     <p>Volume</p>
                                     <h6>775.4K Core</h6>
-                                </div> */}
+                                </div>
                                 <div className="text">
                                     <p>Items</p>
                                     <h6>{dataset?.launchpad_files[0].files?.length}</h6>
                                 </div>
-                                {/* <div className="text">
+                                <div className="text">
                                     <p>Owners</p>
                                     <h6>4.4K</h6>
-                                </div> */}
+                                </div>
                                 <div className="text">
                                     <p>Address</p>
                                     <h6>{dataset?.contractAddress?.slice(0, 6)}...{dataset?.contractAddress?.slice(-4)}</h6>
                                 </div>
                             </div>
-                            {/* <a onClick={handleShow1} className='more-collection-btn'>Make Collection Offer</a> */}
-                        </div>
+                            <a onClick={handleShow1} className='more-collection-btn'>Make Collection Offer</a>
+                        </div> */}
                     </div>
                     <Tabs
                         // defaultActiveKey="items"

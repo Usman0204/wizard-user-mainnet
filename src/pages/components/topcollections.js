@@ -70,7 +70,7 @@ const TopCollection = () => {
         <div className="upper-content">
           <h5>TOP Collections</h5>
           <div className="right-btns">
-            {/* <div className="dropdown">
+            <div className="dropdown">
               <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Last 24 hrs <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
               </button>
@@ -82,7 +82,7 @@ const TopCollection = () => {
                 <li><a className="dropdown-item" href="#">Last 7 days</a></li>
                 <li><a className="dropdown-item" href="#">Last 30 days</a></li>
               </ul>
-            </div> */}
+            </div>
             <Link href="/discovercollection" className="btn-seeall">See All</Link>
           </div>
         </div>

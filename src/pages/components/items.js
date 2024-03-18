@@ -15,7 +15,7 @@ const Items = ({ idnft }) => {
     // const [show, setShow] = useState(false);
     // const [idnft, setidnft] = useState();
     const [dataset, setdataset] = useState();
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(true);
     const [grid, setGrid] = useState(undefined);
 
     useEffect(() => {
@@ -76,7 +76,7 @@ const Items = ({ idnft }) => {
         <>
             <section className="items-section">
                 <div className="upper-content">
-                    {/* <div className="filter-btn displaynoneinmobile" onClick={() => { setToggle(!toggle), localStorage.setItem("toggle", !toggle) }}>
+                    <div className="filter-btn displaynoneinmobile" onClick={() => { setToggle(!toggle), localStorage.setItem("toggle", !toggle) }}>
                         <a>
                             {toggle ?
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -94,15 +94,15 @@ const Items = ({ idnft }) => {
                                 </svg>
                             }
                             Filters</a>
-                    </div> */}
+                    </div>
                     <div className="option-field displaynoneinmobile">
-                        {/* <input type="text" placeholder='Search by nft name' />
+                        <input type="text" placeholder='Search by nft name' />
                         <svg className='search-icon' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M9.58366 18.1253C4.87533 18.1253 1.04199 14.292 1.04199 9.58366C1.04199 4.87533 4.87533 1.04199 9.58366 1.04199C14.292 1.04199 18.1253 4.87533 18.1253 9.58366C18.1253 14.292 14.292 18.1253 9.58366 18.1253ZM9.58366 2.29199C5.55866 2.29199 2.29199 5.56699 2.29199 9.58366C2.29199 13.6003 5.55866 16.8753 9.58366 16.8753C13.6087 16.8753 16.8753 13.6003 16.8753 9.58366C16.8753 5.56699 13.6087 2.29199 9.58366 2.29199Z" fill="#555357" />
                             <path d="M18.3335 18.9585C18.1752 18.9585 18.0169 18.9002 17.8919 18.7752L16.2252 17.1085C15.9835 16.8669 15.9835 16.4669 16.2252 16.2252C16.4669 15.9835 16.8669 15.9835 17.1085 16.2252L18.7752 17.8919C19.0169 18.1335 19.0169 18.5335 18.7752 18.7752C18.6502 18.9002 18.4919 18.9585 18.3335 18.9585Z" fill="#555357" />
-                        </svg> */}
+                        </svg>
                     </div>
-                    {/* <div className='d-none displayblockinmobilec udvctdvtcvdtvtcd' style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "20px", width: "100%" }}>
+                    <div className='d-none displayblockinmobilec udvctdvtcvdtvtcd' style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "20px", width: "100%" }}>
                         <div className="filter-btn d-none displayblockinmobile" >
                             <a onClick={handleShow}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -122,8 +122,8 @@ const Items = ({ idnft }) => {
                                 <path d="M18.3333 18.9585C18.175 18.9585 18.0166 18.9002 17.8916 18.7752L16.225 17.1085C15.9833 16.8669 15.9833 16.4669 16.225 16.2252C16.4666 15.9835 16.8666 15.9835 17.1083 16.2252L18.775 17.8919C19.0166 18.1335 19.0166 18.5335 18.775 18.7752C18.65 18.9002 18.4916 18.9585 18.3333 18.9585Z" fill="#555357" />
                             </svg>
                         </div>
-                    </div> */}
-                    {/* <div class={searchbar ? "dropdown trending-dropdown d-none" : "dropdown trending-dropdown"}>
+                    </div>
+                    <div class={searchbar ? "dropdown trending-dropdown d-none" : "dropdown trending-dropdown"}>
                         <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Trending <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
                                 <g clipPath="url(#clip0_206_14525)">
@@ -141,7 +141,7 @@ const Items = ({ idnft }) => {
                             <li><a class="dropdown-item" href="#">Coming Soon...</a></li>
                             <li><a class="dropdown-item" href="#">Coming Soon...</a></li>
                         </ul>
-                    </div> */}
+                    </div>
                     {grid !== undefined &&
                         <div className="category-choose">
                             <a className={parseInt(grid) == 0 && "active"} onClick={() => { setGrid(0), localStorage.setItem("grid", 0) }}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
@@ -165,9 +165,9 @@ const Items = ({ idnft }) => {
                     }
                 </div>
                 <div className={toggle ? 'bottom-content iffilterhiddencardstyling' : 'bottom-content forgap set-csutom-if-open-cardstyling'}>
-                    {/* <div className={toggle ? 'filter-side filter-hidden' : 'filter-side'}>
+                    <div className={toggle ? 'filter-side filter-hidden' : 'filter-side'}>
                         <Filter />
-                    </div> */}
+                    </div>
                     <div className={toggle ? 'cards-area' : 'cards-area widthset set-custom-cards-style'}>
                         <div className={grid === 0 ? "" : "biggrid-styling"}>
                             <section className="live-auction">

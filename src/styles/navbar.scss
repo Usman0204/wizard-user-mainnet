@@ -655,9 +655,9 @@
                 }
             }
 
-            // .marginleft {
-            //     padding-left: 30px;
-            // }
+            .marginleft {
+                padding-left: 30px;
+            }
         }
 
         .mblbtns {
@@ -1329,4 +1329,19 @@
     .mainnavbar .customnavbarmbl .mobileicons .profiledropdownmbl .dropdown-menu{
         width: 337px;
     }
+}
+
+
+.inner-style-heading{
+    display: flex;
+    padding: 14px 18px;
+    padding-bottom: 5px;
+    align-items: center;
+    color: var(--Light-Text-Color, #745F8C);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    border-left: 5px solid transparent;
+    white-space: nowrap;
 }

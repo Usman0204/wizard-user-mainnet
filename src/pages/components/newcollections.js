@@ -24,7 +24,7 @@ const Newcollections = () => {
         dots: false,
         dotsEach: false,
         loop: false,
-        autoplay: false,
+        autoplay: true,
         navText: [
             "<img src='/assets/landing/static/carousel-arrow-back.svg' alt='img' />",
             "<img src='/assets/landing/static/carousel-arrow-next.svg' alt='img' />",
@@ -143,42 +143,84 @@ const Newcollections = () => {
     // ];
 
     return (
-        <section className='launchpad-drops new-collections'>
-            <div className="custom-container">
-                <div className="upper-content">
-                    <h5>New Collections</h5>
-                    {/* <div className="right-btns">
-                    <Link href="/seeall" className="btn-seeall">See All</Link>
-                    </div> */}
-                </div>
-                {mainCardData &&
-                    (
-                        <div className="bottom-cards">
-                            <div className="owl_option">
-                                <OwlCarousel
-                                    className="owl-theme"
-                                    {...owl_option}
-                                >
-                                    {mainCardData?.map((item, index) => (
-                                        <Link key={index} href={`/collections?id=${item?._id}`}>
-                                            <div className="main-card" >
-                                                <div className="main-img">
-                                                    <img src={item?.imageUrl} alt="img" className='img-fluid' />
-                                                </div>
-                                                <div className="bottom-text">
-                                                    <h5>{item?.name}</h5>
+        // <section className='launchpad-drops new-collections'>
+        //     <div className="custom-container">
+        //         <div className="upper-content">
+        //             <h5>New Collections</h5>
+        //             {/* <div className="right-btns">
+        //             <Link href="/seeall" className="btn-seeall">See All</Link>
+        //             </div> */}
+        //         </div>
+        //         {mainCardData &&
+        //             (
+        //                 <div className="bottom-cards">
+        //                     <div className="owl_option">
+        //                         <OwlCarousel
+        //                             className="owl-theme"
+        //                             {...owl_option}
+        //                         >
+        //                             {mainCardData?.map((item, index) => (
+        //                                 <Link key={index} href={`/collections?id=${item?._id}`}>
+        //                                     <div className="main-card" >
+        //                                         <div className="main-img">
+        //                                             <img src={item?.imageUrl} alt="img" className='img-fluid' />
+        //                                         </div>
+        //                                         <div className="bottom-text">
+        //                                             <h5>{item?.name}</h5>
+        //                                         </div>
+        //                                     </div>
+        //                                 </Link>
+        //                             ))}
+        //                         </OwlCarousel>
+        //                     </div>
+        //                 </div>
+        //             )
+        //         }
+
+        //     </div>
+        // </section>
+        <section className='launchpad-drops new-collections new-collections-style-updated'>
+        <div className="custom-container">
+            <div className="upper-content">
+                <h5>New Collections</h5>
+                {/* <div className="right-btns">
+                <Link href="/seeall" className="btn-seeall">See All</Link>
+                </div> */}
+            </div>
+            {mainCardData &&
+                (
+                    <div className="bottom-cards">
+                        <div className="owl_option">
+                            <OwlCarousel
+                                className="owl-theme"
+                                {...owl_option}
+                            >
+                                {mainCardData?.map((item, index) => (
+                                    <Link key={index} href={`/collections?id=${item?._id}`}>
+                                        <div className="main-card-new" >
+                                            <span className='bottom-bg-linear'></span>
+                                            <div className="main-img">
+                                                <img src={item?.imageUrl} alt="img" className='img-fluid' />
+                                            </div>
+                                            <div className="bottom-text">
+                                                <h5>{item?.name}</h5>
+                                                <p>Hot Collection</p>
+                                                <div className="hidden-data">
+                                                    <p className='para'>A 15,000-piece combined collection of Stylish Studs and Marvelous Mares </p>
+                                                    <a href="#" className='btn-explore'>Explore collection</a>
                                                 </div>
                                             </div>
-                                        </Link>
-                                    ))}
-                                </OwlCarousel>
-                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </OwlCarousel>
                         </div>
-                    )
-                }
+                    </div>
+                )
+            }
 
-            </div>
-        </section>
+        </div>
+    </section>
     );
 };
 
