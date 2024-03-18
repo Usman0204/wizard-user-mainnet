@@ -1109,7 +1109,7 @@ const Nftdetail = () => {
                                             </div>
                                             <div className="detailtabdata">
                                                 <img src="\assets\launchpaddetailassets\clogo.svg" alt="detailtabimg" className="detailtabimg" />
-                                                <Link target='_blank' href={`https://scan.test.btcs.network/address/${dataset?.collectionAddress}`}> <p className="detailtabdatapara">View on Core Scan</p></Link>
+                                                <Link target='_blank' href={`https://scan.coredao.org/address/${dataset?.collectionAddress}`}> <p className="detailtabdatapara">View on Core Scan</p></Link>
                                             </div>
                                             {/* <div className="detailtabdata">
                                                 <img src="\assets\nftdetailassets\eye.svg" alt="detailtabimg" className="detailtabimg" />

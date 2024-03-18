@@ -4,6 +4,7 @@ import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 
 const TopCollection = () => {
+  const [time, setTime] = useState({ name: 'Last 30 days', value: 'month'})
   // const collectionsData = [
   //   { count: 1, img_url: "/assets/dummy-imgs/top-collections/img1.png", name: 'Dinosaurium', floor: 310.21, core: 6523.8, percentage: 1.24 },
   //   { count: 2, img_url: "/assets/dummy-imgs/top-collections/img2.png", name: 'TechRaptors', floor: 456.78, core: 8231.2, percentage: 0.97 },
@@ -30,7 +31,7 @@ const TopCollection = () => {
  
   const getLaunchPadDrops = async () => {
       try {
-          const response = await axios.get(`${api_url}/launchpads/top-collections?limit=10&offset=1&orderField=updatedAt&orderDirection=-1`, {
+        const response = await axios.get(`${api_url}/launchpads/top-collections?limit=10&offset=1&orderField=updatedAt&dateFilter=${time?.value}&orderDirection=-1`, {
               headers: {
                   Authorization: "Bearer " + accessToken,
                   'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ const TopCollection = () => {
       // if (accessToken) {
           getLaunchPadDrops();
       // }
-  }, []);
+  }, [time]);
 
   useEffect(() => {
     const storedData = localStorage.getItem('mainCardData');
@@ -70,19 +71,19 @@ const TopCollection = () => {
         <div className="upper-content">
           <h5>TOP Collections</h5>
           <div className="right-btns">
-            {/* <div className="dropdown">
+            <div className="dropdown">
               <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Last 24 hrs <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
+                {time?.name} <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
               </button>
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Last 10 minutes</a></li>
-                <li><a className="dropdown-item" href="#">Last 1 hour</a></li>
-                <li><a className="dropdown-item" href="#">Last 6 hours</a></li>
-                <li><a className="dropdown-item" href="#">Last 24 hours</a></li>
-                <li><a className="dropdown-item" href="#">Last 7 days</a></li>
-                <li><a className="dropdown-item" href="#">Last 30 days</a></li>
+                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Last 10 minutes', value: '10minutes'})}} >Last 10 minutes</a></li>
+                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Last 1 hour', value: '1hour'})}} >Last 1 hour</a></li>
+                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Last 6 hours', value: '6hours'})}} >Last 6 hours</a></li>
+                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Last 24 hours', value: 'day'})}} >Last 24 hours</a></li>
+                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Last 7 days', value: 'week'})}} >Last 7 days</a></li>
+                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Last 30 days', value: 'month'})}} >Last 30 days</a></li>
               </ul>
-            </div> */}
+            </div>
             <Link href="/discovercollection" className="btn-seeall">See All</Link>
           </div>
         </div>
@@ -100,7 +101,7 @@ const TopCollection = () => {
                       </div>
                       <div className="text">
                         <h6>{collection.name}</h6>
-                        <p><span>Floor:</span> {collection.price} <span style={{textTransform: "uppercase"}}>Core</span></p>
+                        <p><span>Floor:</span> {collection.price || 0} <span style={{textTransform: "uppercase"}}>Core</span></p>
                       </div>
                     </div>
                   </div>

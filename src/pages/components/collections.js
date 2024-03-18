@@ -183,7 +183,7 @@ const Collections = () => {
                                 </div> */}
                                 <div className="text">
                                     <p>Items</p>
-                                    <h6>{dataset?.launchpad_files[0].files?.length}</h6>
+                                    <h6>{dataset?.launchpad_files[0]?.files?.length}</h6>
                                 </div>
                                 {/* <div className="text">
                                     <p>Owners</p>

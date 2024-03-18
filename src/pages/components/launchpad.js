@@ -22,6 +22,7 @@ const Launchpad = () => {
     // const contract = getMarketPlaceContract(contractAddress, web3);
     // console.log("contract address",contractAddress)
     // console.log("contract address contract",contract)
+    const [tab, setTab] = useState('')
     var { account } = useWeb3React();
     const api_url = Environment.api_url;
     const router = useRouter();
@@ -164,7 +165,13 @@ const Launchpad = () => {
         return endtime;
     }
 
-
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const id = searchParams.get('id');
+        console.log(id);
+        setActiveTab(id)
+        setTab(id)
+    }, [])
     return (
         <>
 
