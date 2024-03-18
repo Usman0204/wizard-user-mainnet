@@ -5,6 +5,7 @@ import Environment from '@/utils/Enviroment';
 
 const TopCollection = () => {
   const [time, setTime] = useState({ name: 'Last 30 days', value: 'month'})
+  const [loader, setLoader]= useState(false)
   // const collectionsData = [
   //   { count: 1, img_url: "/assets/dummy-imgs/top-collections/img1.png", name: 'Dinosaurium', floor: 310.21, core: 6523.8, percentage: 1.24 },
   //   { count: 2, img_url: "/assets/dummy-imgs/top-collections/img2.png", name: 'TechRaptors', floor: 456.78, core: 8231.2, percentage: 0.97 },
@@ -31,14 +32,18 @@ const TopCollection = () => {
  
   const getLaunchPadDrops = async () => {
       try {
+        setLoader(true)
         const response = await axios.get(`${api_url}/launchpads/top-collections?limit=10&offset=1&orderField=updatedAt&dateFilter=${time?.value}&orderDirection=-1`, {
               headers: {
                   Authorization: "Bearer " + accessToken,
                   'Content-Type': 'application/json',
               },
           });
+       
           setMainCardData(response.data.data.launchpads);
+        setLoader(false)
       } catch (error) {
+        setLoader(false)
           console.error('Error fetching launch pad data:', error);
       }
   };
@@ -87,7 +92,11 @@ const TopCollection = () => {
             <Link href="/discovercollection" className="btn-seeall">See All</Link>
           </div>
         </div>
+        {
+          mainCardData?.length < 1 && (loader ? <h4 className='text-center py-5 text-secondary'>Loading...</h4> :    <h4 className='text-center py-5 text-secondary'>No data for {time?.name}</h4>)
+        }
         <div className="parent-collection">
+          
           {mainCardData?.map((collection, index) => (
             <Link key={index} href={`/collections?id=${collection?._id}`}>
               <div className="single-collection">
