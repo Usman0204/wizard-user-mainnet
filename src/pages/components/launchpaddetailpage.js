@@ -30,15 +30,15 @@ const Launchpaddetailpage = () => {
   const { id } = router.query;
   const { mintNfts } = MintNft()
   const { mintNftsInfo } = MintNftInfo()
-  const { nftClaim }  =NftClaim()
+  const { nftClaim } = NftClaim()
   const [loader, setLoader] = useState(false)
   const [isCopied, setIsCopied] = useState(false);
   const [currentPrice, setCurrentPrice] = useState(null);
   const [isStageInProgress, setIsStageInProgress] = useState(false);
   const [currentStagePrice, setCurrentStagePrice] = useState(null);
   const [isLiveStage, setIsLiveStage] = useState(false);
-  const [stageId, setStageId]= useState()
-  const [mintInfoStatus,setMintInfoStatus]=useState(null)
+  const [stageId, setStageId] = useState()
+  const [mintInfoStatus, setMintInfoStatus] = useState(null)
   const { login, logout } = useAuth();
   // console.log('asdasdas', isLiveStage, currentStagePrice)
   const images = [
@@ -69,7 +69,7 @@ const Launchpaddetailpage = () => {
   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
   const [count, setCount] = useState(1); // Initial count is 1
-  const [testData,setTestData]=useState(null)
+  const [testData, setTestData] = useState(null)
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
@@ -130,7 +130,7 @@ const Launchpaddetailpage = () => {
 
         // console.log(response.data.data[0],'response.data.data[0]');
         setTeamMembers(response?.data?.data?.[0]?.teamMembers)
-      
+
 
         // setLoader(false);
         // setUpcomingdata(response.data.data.upcomingLaunchpads[0])
@@ -202,19 +202,19 @@ const Launchpaddetailpage = () => {
     // console.log("dataset?.projectId" , dataset?.projectId)
     // let mintedNfts = await mintNftsInfo(dataset?.projectId)
     // console.log(mintedNfts);
-    if (parseFloat(parseInt(mintedNfts?.NFTsBuy) + parseInt(count)) > parseFloat(dataset?.perWalletLimit)){
+    if (parseFloat(parseInt(mintedNfts?.NFTsBuy) + parseInt(count)) > parseFloat(dataset?.perWalletLimit)) {
       toast.error(`You can't mint more than ${dataset?.perWalletLimit} nfts`)
-      return 
+      return
     }
-    if(!account){
+    if (!account) {
       toast.error('Connect your wallet')
-      return 
+      return
     }
-    
+
     let tok = localStorage.getItem("accessToken");
-   
+
     const tokenIds = generateSequentialArray(dataset?.minted, count);
- 
+
 
     console.log(tokenIds);
     // try {
@@ -274,7 +274,7 @@ const Launchpaddetailpage = () => {
     }
   }
   const tokenIds2 = generateSequentialArray(0, dataset?.minted);
-  console.log(tokenIds2,'tokenIds2');
+  console.log(tokenIds2, 'tokenIds2');
   function calculatePercentage(minted, totalSupply) {
     if (totalSupply === 0) {
       return '0%'; // To avoid division by zero error
@@ -347,7 +347,7 @@ const Launchpaddetailpage = () => {
   };
 
 
-  let mintStartTime = dataset?.mintStartTime &&  dataset?.mintStartTime
+  let mintStartTime = dataset?.mintStartTime && dataset?.mintStartTime
   let mintStages = dataset?.mintStages && dataset?.mintStages
   const getStatus = (startTime, endTime) => {
     const now = new Date();
@@ -366,136 +366,136 @@ const Launchpaddetailpage = () => {
 
   console.log(tokenIds);
   useEffect(() => {
-    if(dataset?.mintStages){
+    if (dataset?.mintStages) {
       const now = new Date();
-    const liveStage = mintStages.find((stage, index) => {
-      
-      const stageStartTime = index === 0 ? new Date( mintStartTime) : new Date(mintStages[index - 1].mintStageTime);
-      const stageEndTime = index === mintStages.length - 1 ? new Date(mintStages[index].mintStageTime) : new Date(mintStages[index].mintStageTime);
-      // const stageStartTime = new Date(stage.mintStageTime);
-      // const stageEndTime = mintStages[mintStages.indexOf(stage) + 1]
+      const liveStage = mintStages.find((stage, index) => {
+
+        const stageStartTime = index === 0 ? new Date(mintStartTime) : new Date(mintStages[index - 1].mintStageTime);
+        const stageEndTime = index === mintStages.length - 1 ? new Date(mintStages[index].mintStageTime) : new Date(mintStages[index].mintStageTime);
+        // const stageStartTime = new Date(stage.mintStageTime);
+        // const stageEndTime = mintStages[mintStages.indexOf(stage) + 1]
         // ? new Date(mintStages[mintStages.indexOf(stage) + 1].mintStageTime)
         // : Infinity;
-      return now >= stageStartTime && now < stageEndTime;
-    });
-    let _id = mintStages.indexOf(liveStage) 
-    // console.log(_id);
-    if (liveStage) {
-      setCurrentStagePrice(liveStage.price);
-      setIsLiveStage(true);
-      setStageId(_id)
-    } else {
-      setIsLiveStage(false);
+        return now >= stageStartTime && now < stageEndTime;
+      });
+      let _id = mintStages.indexOf(liveStage)
+      // console.log(_id);
+      if (liveStage) {
+        setCurrentStagePrice(liveStage.price);
+        setIsLiveStage(true);
+        setStageId(_id)
+      } else {
+        setIsLiveStage(false);
+      }
     }
-    }
-    
+
   }, [dataset?.mintStages]);
 
   const [show3, setShow3] = useState(false);
 
   const handleShow3 = () => {
-      setShow3(true);
-      // setTimeout(() => {
-      //     setShow3(false);
-      //     setShow4(true);
-      // }, 2000);
+    setShow3(true);
+    // setTimeout(() => {
+    //     setShow3(false);
+    //     setShow4(true);
+    // }, 2000);
   };
 
   const handleClose3 = () => {
     // setShow4(false);
     setShow3(false)
-};
+  };
 
-const [show4, setShow4] = useState(false);
+  const [show4, setShow4] = useState(false);
 
-const handleClose4 = () => {
+  const handleClose4 = () => {
 
-  chainges()
-  setShow4(false)};
-const handleShow4 = () => setShow4(true);
-        console.log(dataset,'response.data.data[0]');
-const claimnft =async()=>{
-  handleShow3()
-  try{
-    // projectId
-let res= await nftClaim(dataset?.projectId)
-let transactionHash = res?.transactionHash
-    console.log(transactionHash);
-if (res){
-  if(dataset?.status==="completed"){
-  //    let mainArry =localStorage?.getItem('res')
-  //  let mainArryd= JSON?.parse(mainArry)
-  let loopRun= res.events.Claimed.returnValues.numberOfNFTs
-  let obj= res.events
- let incriment=0;
- let dummyArry =[]
-  for (let key in obj) {
-   if (incriment< parseInt(loopRun)) {
-     const decimalResult = parseInt(obj[key].raw.topics[3], 16);
-     dummyArry.push(decimalResult)
-     incriment++;
-   } 
-  }
-  let tok = localStorage.getItem("accessToken");
-  const res2 = axios
-          .patch(`${api_url}/nfts/claim`, {
-            launchpadId:dataset?._id,
-            walletAddress: account,
-            tokenIds: dummyArry,
-            //   transactionHash,
-            // projectId: dataset?.projectId
-          },
-            {
-              headers: {
-                Authorization: `Bearer ${tok}`
-              }
+    chainges()
+    setShow4(false)
+  };
+  const handleShow4 = () => setShow4(true);
+  console.log(dataset, 'response.data.data[0]');
+  const claimnft = async () => {
+    handleShow3()
+    try {
+      // projectId
+      let res = await nftClaim(dataset?.projectId)
+      let transactionHash = res?.transactionHash
+      console.log(transactionHash);
+      if (res) {
+        if (dataset?.status === "completed") {
+          //    let mainArry =localStorage?.getItem('res')
+          //  let mainArryd= JSON?.parse(mainArry)
+          let loopRun = res.events.Claimed.returnValues.numberOfNFTs
+          let obj = res.events
+          let incriment = 0;
+          let dummyArry = []
+          for (let key in obj) {
+            if (incriment < parseInt(loopRun)) {
+              const decimalResult = parseInt(obj[key].raw.topics[3], 16);
+              dummyArry.push(decimalResult)
+              incriment++;
+            }
+          }
+          let tok = localStorage.getItem("accessToken");
+          const res2 = axios
+            .patch(`${api_url}/nfts/claim`, {
+              launchpadId: dataset?._id,
+              walletAddress: account,
+              tokenIds: dummyArry,
+              //   transactionHash,
+              // projectId: dataset?.projectId
+            },
+              {
+                headers: {
+                  Authorization: `Bearer ${tok}`
+                }
+              })
+            .then((response) => {
+              // toast.success("Nfts Claimed");
+              setTestData('NFT')
+              handleClose3()
+              handleShow4()
+              // Getlaunchpaddetail()
+              // setLoader(false)
+              // loginUser()/
             })
-          .then((response) => {
-            // toast.success("Nfts Claimed");
-            setTestData('NFT')
-            handleClose3()
-            handleShow4()
-            // Getlaunchpaddetail()
-            // setLoader(false)
-            // loginUser()/
-          })
-          .catch((err) => {
-            setLoader(false)
-            handleClose3()
-            toast.error("something went wrong")
-            // toast.error('Minting Failed')
-          });
-  }else{
-    setTestData('Funds')
-    handleClose3()
-    handleShow4()
-  }
-  handleShow4()
-}
-  }catch(err){
-console.log(err,'err in err ');
-handleClose3()
-toast.error('something went wrong')
+            .catch((err) => {
+              setLoader(false)
+              handleClose3()
+              toast.error("something went wrong")
+              // toast.error('Minting Failed')
+            });
+        } else {
+          setTestData('Funds')
+          handleClose3()
+          handleShow4()
+        }
+        handleShow4()
+      }
+    } catch (err) {
+      console.log(err, 'err in err ');
+      handleClose3()
+      toast.error('something went wrong')
 
+    }
   }
-}
-const chainges =async()=>{
- 
-  try{
-    let mintedNfts = await mintNftsInfo(dataset?.projectId)
-    setMintInfoStatus(mintedNfts)
+  const chainges = async () => {
 
-  }catch(err)
-  {
-    console.log(err);
+    try {
+      let mintedNfts = await mintNftsInfo(dataset?.projectId)
+      setMintInfoStatus(mintedNfts)
+
+    } catch (err) {
+      console.log(err);
+    }
   }
-}
-useEffect(()=>{
-  chainges()
-})
+  useEffect(() => {
+    chainges()
+  })
   return (
     <>
-      {loader && <Loader/>}
+      {loader && <Loader />}
       <Navbar />
       <section className="launchpaddetail">
         <span className="launchpaddetailshade"></span>
@@ -527,49 +527,50 @@ useEffect(()=>{
             {/* <ImageGallery items={images} thumbnailPosition="bottom" /> */}
             <div className="mintstages">
               <h6 className="minstageshead">Mint Stages</h6>
-              
-             
+
+
               {/* {dataset?.mintStages?.map((card, index) => ( */}
-              {mintStages?.map((card, index) =>{
+              {mintStages?.map((card, index) => {
                 const stageStartTime = index === 0 ? mintStartTime : mintStages[index - 1].mintStageTime;
                 const stageEndTime = index === mintStages.length - 1 ? mintStages[index].mintStageTime : mintStages[index].mintStageTime;
 
                 return (
 
-                <div key={index} className="guarantymain">
-                  <div className="guarantymainupper">
-                    <div className="gurantyleft">
-                        {getStatus(stageStartTime, stageEndTime) === 'In Progress' ||    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" className="lockimg">
+                  <div key={index} className="guarantymain">
+                    <div className="guarantymainupper">
+                      <div className="gurantyleft">
+                        {getStatus(stageStartTime, stageEndTime) === 'In Progress' || <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" className="lockimg">
                           <path d="M16.5 9.85384C16.1242 9.85384 15.8125 9.54217 15.8125 9.16634V7.33301C15.8125 4.44551 14.9967 2.52051 11 2.52051C7.00333 2.52051 6.1875 4.44551 6.1875 7.33301V9.16634C6.1875 9.54217 5.87583 9.85384 5.5 9.85384C5.12417 9.85384 4.8125 9.54217 4.8125 9.16634V7.33301C4.8125 4.67467 5.45417 1.14551 11 1.14551C16.5458 1.14551 17.1875 4.67467 17.1875 7.33301V9.16634C17.1875 9.54217 16.8758 9.85384 16.5 9.85384Z" fill="#862FC0" />
                           <path d="M15.583 20.8545H6.41634C2.37384 20.8545 1.14551 19.6262 1.14551 15.5837V13.7503C1.14551 9.70783 2.37384 8.47949 6.41634 8.47949H15.583C19.6255 8.47949 20.8538 9.70783 20.8538 13.7503V15.5837C20.8538 19.6262 19.6255 20.8545 15.583 20.8545ZM6.41634 9.85449C3.13467 9.85449 2.52051 10.4778 2.52051 13.7503V15.5837C2.52051 18.8562 3.13467 19.4795 6.41634 19.4795H15.583C18.8647 19.4795 19.4788 18.8562 19.4788 15.5837V13.7503C19.4788 10.4778 18.8647 9.85449 15.583 9.85449H6.41634Z" fill="#862FC0" />
                           <path d="M7.33366 15.5833C7.21449 15.5833 7.09532 15.5558 6.98532 15.51C6.86615 15.4641 6.7745 15.4 6.68283 15.3175C6.51783 15.1433 6.41699 14.9141 6.41699 14.6666C6.41699 14.5475 6.44448 14.4283 6.49031 14.3183C6.53615 14.1991 6.60033 14.1075 6.68283 14.0158C6.7745 13.9333 6.86615 13.8691 6.98532 13.8233C7.31532 13.6766 7.72782 13.7591 7.98448 14.0158C8.06698 14.1075 8.13117 14.2083 8.177 14.3183C8.22284 14.4283 8.25033 14.5475 8.25033 14.6666C8.25033 14.905 8.14948 15.1433 7.98448 15.3175C7.81032 15.4825 7.57199 15.5833 7.33366 15.5833Z" fill="#862FC0" />
                           <path d="M10.9997 15.5832C10.7613 15.5832 10.523 15.4823 10.3488 15.3173C10.1838 15.1432 10.083 14.914 10.083 14.6665C10.083 14.5473 10.1013 14.4282 10.1563 14.3182C10.2022 14.2082 10.2663 14.1073 10.3488 14.0157C10.5597 13.8048 10.8805 13.704 11.1738 13.7682C11.238 13.7773 11.293 13.7957 11.348 13.8232C11.403 13.8415 11.458 13.869 11.513 13.9057C11.5588 13.9332 11.6047 13.979 11.6505 14.0157C11.733 14.1073 11.7972 14.2082 11.843 14.3182C11.8889 14.4282 11.9163 14.5473 11.9163 14.6665C11.9163 14.914 11.8155 15.1432 11.6505 15.3173C11.6047 15.354 11.5588 15.3907 11.513 15.4273C11.458 15.464 11.403 15.4915 11.348 15.5099C11.293 15.5374 11.238 15.5557 11.1738 15.5648C11.1188 15.574 11.0547 15.5832 10.9997 15.5832Z" fill="#862FC0" />
                           <path d="M14.6667 15.5832C14.4192 15.5832 14.19 15.4823 14.0158 15.3173C13.9333 15.2257 13.8692 15.1248 13.8233 15.0148C13.7775 14.9048 13.75 14.7857 13.75 14.6665C13.75 14.4282 13.8508 14.1898 14.0158 14.0157C14.0617 13.979 14.1075 13.9424 14.1533 13.9057C14.2083 13.869 14.2633 13.8415 14.3183 13.8232C14.3733 13.7957 14.4283 13.7773 14.4833 13.7682C14.7858 13.704 15.0975 13.8048 15.3175 14.0157C15.4825 14.1898 15.5833 14.419 15.5833 14.6665C15.5833 14.7857 15.5558 14.9048 15.51 15.0148C15.4642 15.134 15.4 15.2257 15.3175 15.3173C15.1433 15.4823 14.905 15.5832 14.6667 15.5832Z" fill="#862FC0" />
                         </svg>}
-                      <span className="gurantyspan">Guaranteed</span>
-                    </div>
-                    <div className="guarantyright">
+                        <span className="gurantyspan">Guaranteed</span>
+                      </div>
+                      <div className="guarantyright">
                         <h6 className={getStatus(stageStartTime, stageEndTime) === 'In Progress' ? "startspara text-success" : "startspara"}> {getStatus(stageStartTime, stageEndTime)}</h6>
-                      <h6 className="startspara"></h6>
-                      <span className='timermain'>
+                        <h6 className="startspara"></h6>
+                        <span className='timermain'>
                           {getStatus(stageStartTime, stageEndTime) === 'In Progress' ? <YourComponent endTime={card?.mintStageTime} /> : <YourComponent endTime={stageStartTime} />}
-                      </span>
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <p className="grantymainbottompara">
-                    {/* <span>
+                    <p className="grantymainbottompara">
+                      {/* <span>
                       MAX 1 TOKEN
                     </span> */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none" className='circleimg'>
-                      <circle cx="3" cy="3" r="3" fill="#D9D9D9" />
-                    </svg>
-                    <span>
-                      Price {card?.price}
-                    </span>
-                    <img src="\assets\launchpaddetailassets\clogo.svg" alt="clogo" className="clogo" />
-                  </p>
-                </div>
-              )})}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none" className='circleimg'>
+                        <circle cx="3" cy="3" r="3" fill="#D9D9D9" />
+                      </svg>
+                      <span>
+                        Price {card?.price}
+                      </span>
+                      <img src="\assets\launchpaddetailassets\clogo.svg" alt="clogo" className="clogo" />
+                    </p>
+                  </div>
+                )
+              })}
               <div className="d-flex justify-content-between">
                 <h6 className="minstageshead">Max Mint Per Wallet Limit</h6>
                 <h6 className="minstageshead">{dataset?.perWalletLimit}</h6>
@@ -673,7 +674,7 @@ useEffect(()=>{
               <div className="upcomingbottom">
                 <div className="priceprogressmain">
                   <span className="upcomingtext borders">
-                    {isLiveStage ?  'Live' : 'Not Live'}
+                    {isLiveStage ? 'Live' : 'Not Live'}
                   </span>
                   <div className="progressupper">
                     <div className="progressuppertext">
@@ -694,38 +695,38 @@ useEffect(()=>{
               </div>
               {/* <button className="bluebtnexplore">Explore Collection</button> */}
               <div className="twice-btn">
-                {(calculatePercentage(dataset?.minted, dataset?.totalSupply))==='100'?
-                ""
-                :
-  <div className="counter-div">
-  <a className='plus-sign' onClick={handleDecrement}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-      <path d="M18.5 13.25H6.5C6.09 13.25 5.75 12.91 5.75 12.5C5.75 12.09 6.09 11.75 6.5 11.75H18.5C18.91 11.75 19.25 12.09 19.25 12.5C19.25 12.91 18.91 13.25 18.5 13.25Z" fill="#ffffff" />
-    </svg>
-  </a>
-  <span>{count}</span>
-  <a className='minus-sign' onClick={handleIncrement}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-      <path d="M18.5 13.25H6.5C6.09 13.25 5.75 12.91 5.75 12.5C5.75 12.09 6.09 11.75 6.5 11.75H18.5C18.91 11.75 19.25 12.09 19.25 12.5C19.25 12.91 18.91 13.25 18.5 13.25Z" fill="white" />
-      <path d="M12.5 19.25C12.09 19.25 11.75 18.91 11.75 18.5V6.5C11.75 6.09 12.09 5.75 12.5 5.75C12.91 5.75 13.25 6.09 13.25 6.5V18.5C13.25 18.91 12.91 19.25 12.5 19.25Z" fill="white" />
-    </svg>
-  </a>
-</div>
+                {(calculatePercentage(dataset?.minted, dataset?.totalSupply)) === '100' ?
+                  ""
+                  :
+                  <div className="counter-div">
+                    <a className='plus-sign' onClick={handleDecrement}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                        <path d="M18.5 13.25H6.5C6.09 13.25 5.75 12.91 5.75 12.5C5.75 12.09 6.09 11.75 6.5 11.75H18.5C18.91 11.75 19.25 12.09 19.25 12.5C19.25 12.91 18.91 13.25 18.5 13.25Z" fill="#ffffff" />
+                      </svg>
+                    </a>
+                    <span>{count}</span>
+                    <a className='minus-sign' onClick={handleIncrement}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                        <path d="M18.5 13.25H6.5C6.09 13.25 5.75 12.91 5.75 12.5C5.75 12.09 6.09 11.75 6.5 11.75H18.5C18.91 11.75 19.25 12.09 19.25 12.5C19.25 12.91 18.91 13.25 18.5 13.25Z" fill="white" />
+                        <path d="M12.5 19.25C12.09 19.25 11.75 18.91 11.75 18.5V6.5C11.75 6.09 12.09 5.75 12.5 5.75C12.91 5.75 13.25 6.09 13.25 6.5V18.5C13.25 18.91 12.91 19.25 12.5 19.25Z" fill="white" />
+                      </svg>
+                    </a>
+                  </div>
                 }
-              
-               
-               <>
+
+
+                <>
                   {console.log(dataset, 'dataset')}
-               {dataset?.status==="completed" || dataset?.status==="failed"?
-               <button disabled={!mintInfoStatus?.purchased || mintInfoStatus?.claimed?true:false} className={!mintInfoStatus?.purchased || mintInfoStatus?.claimed?"bluebtnexplore disable":"bluebtnexplore"} onClick={claimnft}>Claim Back</button>
-               :
-                    <button disabled={dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" :  "bluebtnexplore"}>Mint</button>
-                                    // <button disabled={true} onClick={mintNFtFunc} className={"bluebtnexplore disable"}>Mint</button>
+                  {dataset?.status === "completed" || dataset?.status === "failed" ?
+                    <button disabled={!mintInfoStatus?.purchased || mintInfoStatus?.claimed ? true : false} className={!mintInfoStatus?.purchased || mintInfoStatus?.claimed ? "bluebtnexplore disable" : "bluebtnexplore"} onClick={claimnft}>Claim Back</button>
+                    :
+                    <button disabled={dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" : "bluebtnexplore"}>Mint</button>
+                    // <button disabled={true} onClick={mintNFtFunc} className={"bluebtnexplore disable"}>Mint</button>
 
-               }
-               </>
+                  }
+                </>
 
-                
+
               </div>
               {/* <button className="bluebtnexplore" onClick={handleShow3}>Claim back your funds</button> */}
             </div>
@@ -1039,27 +1040,27 @@ useEffect(()=>{
 
 
       <Modal className='buymodal' show={show3} onHide={handleClose3} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Claim back your {testData}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <img src="\assets\discovercollection\loadermain.png" alt="loader" className='loaderimg' />
-                    <h6 className="loaderhead">Waiting for blockchain confirmation...</h6>
-                </Modal.Body>
+        <Modal.Header closeButton>
+          <Modal.Title>Claim back your {testData}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img src="\assets\discovercollection\loadermain.png" alt="loader" className='loaderimg' />
+          <h6 className="loaderhead">Waiting for blockchain confirmation...</h6>
+        </Modal.Body>
 
-            </Modal>
+      </Modal>
 
-            <Modal className='buymodal' show={show4} onHide={handleClose4} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Successfully Claimed</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <img src="\assets\nftdetailassets\PURCHASED.svg" alt="purchasedimg" className="purchasedimg" />
-                    <p className="purshasedpara">You have successfully claimed your NFT</p>
-                    <button onClick={handleClose4} className="bluebtn">Ok</button>
-                </Modal.Body>
+      <Modal className='buymodal' show={show4} onHide={handleClose4} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Successfully Claimed</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img src="\assets\nftdetailassets\PURCHASED.svg" alt="purchasedimg" className="purchasedimg" />
+          <p className="purshasedpara">You have successfully claimed your NFT</p>
+          <button onClick={handleClose4} className="bluebtn">Ok</button>
+        </Modal.Body>
 
-            </Modal>
+      </Modal>
     </>
   )
 }
