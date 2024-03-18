@@ -314,7 +314,10 @@ const Navbar = () => {
       // localStorage.setItem("profileData", JSON.stringify(response?.data?.data));
     } catch (error) {
       if (error?.request?.status === 401) {
-        logoutApi()
+        const connectorId = window?.localStorage.getItem("connectorId")
+        logout(connectorId);
+        localStorage.setItem("flag", false)
+        localStorage.clear()
       }
       console.error("API Request Error: in navbarrrrr", error);
     }
@@ -425,7 +428,7 @@ const Navbar = () => {
               <Link href="/discovercollection" className="innernavlink">Discover</Link>
               <Dropdown align='end'>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Launchpad <img src="\assets\navbarassets\arrow-down.svg" alt="arrowimg" className="arrowimg" />
+                Mint <img src="\assets\navbarassets\arrow-down.svg" alt="arrowimg" className="arrowimg" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {/* <Link href="/launchpad" className="dropitem">Launchpad</Link> */}

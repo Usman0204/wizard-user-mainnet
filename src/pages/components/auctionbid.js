@@ -15,7 +15,7 @@ import CountdownTimer from './auctiontimer';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
-const Auctionbid = () => {
+const Auctionbid = ({tab}) => {
     const [cardData, setUpcomingdata] = useState(null)
     const api_url = Environment?.api_url
     const owl_option = {
@@ -212,14 +212,14 @@ const Auctionbid = () => {
                 <div className="custom-container">
                     <div className="upper-content">
                         <h5>Live Auction</h5>
-                        {/* <div className="right-btns">
-                            <Link href="/seeall" className="btn-seeall">
+                        {tab === 'liveauction' || <div className="right-btns">
+                            <Link href="/seeall?id=liveauction" className="btn-seeall">
                                 Explore All
                             </Link>
-                        </div> */}
+                        </div>}
                     </div>
                     <div className="bottom-cards displaynoneinmobile">
-                        {cardData?.map((card, id) => (
+                        {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card, id) => (
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
                             <div className="main-card">
                                 <div className="main-img">
@@ -280,9 +280,8 @@ const Auctionbid = () => {
                                     <OwlCarousel
                                         className="owl-theme"
                                         {...owl_option}
-                                    >
-                                        {
-                                            cardData?.map((card) => (
+                                    > 
+                                        { cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card) => (
                                                 <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
                                                     <div className="main-card">
                                                         <div className="main-img">

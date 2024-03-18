@@ -13,7 +13,7 @@ import Environment from '@/utils/Enviroment';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
-const Liveauction = () => {
+const Liveauction = ({tab}) => {
     const [cardData, setUpcomingdata] = useState(null)
     const api_url = Environment?.api_url
     const owl_option = {
@@ -209,14 +209,14 @@ const Liveauction = () => {
                 <div className="custom-container">
                     <div className="upper-content">
                         <h5>Buy Now</h5>
-                        {/* <div className="right-btns">
-                            <Link href="/seeall" className="btn-seeall">
+                      { tab === 'buynow' || <div className="right-btns">
+                            <Link href="/seeall?id=buynow" className="btn-seeall">
                                 Explore All
                             </Link>
-                        </div> */}
+                        </div>}
                     </div>
                     <div className="bottom-cards displaynoneinmobile">
-                        {cardData?.map((card,id) => (
+                        {cardData?.slice(0, tab === 'buynow' ? 20000:  8)?.map((card,id) => (
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
                             <div className="main-card">
                                 <div className="main-img">
@@ -274,9 +274,8 @@ const Liveauction = () => {
                                     <OwlCarousel
                                         className="owl-theme"
                                         {...owl_option}
-                                    >
-                                        {
-                                            cardData?.map((card) => (
+                                    > 
+                                        {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card) => (
                                                 <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
                                                 <div  className="main-card">
                                                     <div className="main-img">

@@ -231,10 +231,10 @@ const Launchpaddetailpage = () => {
             price: currentStagePrice,
             collectionAddress: dataset?.contractAddress,
             tokenIds,
-            // transactionHash: res?.transactionHash,
-            // amount: count, 
-            // projectId: dataset?.projectId,
-            // stageId: stageId
+            transactionHash: res?.transactionHash,
+            amount: count, 
+            projectId: dataset?.projectId,
+            stageId: stageId
           },
             {
               headers: {
@@ -419,6 +419,8 @@ const claimnft =async()=>{
   try{
     // projectId
 let res= await nftClaim(dataset?.projectId)
+let transactionHash = res?.transactionHash
+    console.log(transactionHash);
 if (res){
   if(dataset?.status==="completed"){
   //    let mainArry =localStorage?.getItem('res')
@@ -439,7 +441,9 @@ if (res){
           .patch(`${api_url}/nfts/claim`, {
             launchpadId:dataset?._id,
             walletAddress: account,
-            tokenIds: dummyArry
+            tokenIds: dummyArry,
+              transactionHash,
+            projectId: dataset?.projectId
           },
             {
               headers: {
