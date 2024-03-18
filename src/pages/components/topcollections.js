@@ -93,7 +93,7 @@ const TopCollection = () => {
           </div>
         </div>
         {
-          mainCardData?.length < 1 && (loader ? <h4 className='text-center py-5 text-secondary'>Loading...</h4> :    <h4 className='text-center py-5 text-secondary'>No data for {time?.name}</h4>)
+          mainCardData?.length < 1 && (loader ? <h4 className='text-center py-5 text-secondary'>Loading...</h4> :    <h4 className='text-center py-5 text-secondary'>No Collection for {time?.name}</h4>)
         }
         <div className="parent-collection">
           
