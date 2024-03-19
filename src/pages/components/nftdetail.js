@@ -594,7 +594,7 @@ const Nftdetail = () => {
             method: 'post',
             url: `${api_url}/nfts/bid`,
             data: {
-                nft: dataset?.nft,
+                nft: 'https://ipfs.io/ipfs' + dataset?.nft,
                 launchpadId: dataset?.launchpadId,
                 creatorId: dataset?.creatorId,
                 nftId: dataset?._id,
@@ -892,7 +892,7 @@ const Nftdetail = () => {
                 <div className="custom-container">
                     <div className="nftdetailupper">
                         <div className="nftimagemain">
-                            <img src={dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" />
+                            <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" />
                         </div>
                         <div className="nftdetails">
                             <div className="nftownerdetail">
@@ -1379,7 +1379,7 @@ const Nftdetail = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
                     </div>
                     <p className="buynowpara">You are about to buy <span className="whitetext">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="buyitemmain">
@@ -1450,7 +1450,7 @@ const Nftdetail = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
                     </div>
                     {/* {console.log('highestbid', highestbid)} */}
                     <p className="buynowpara">You are about to place a bid for <span className="whitetext">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
@@ -1526,7 +1526,7 @@ const Nftdetail = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
                     </div>
                     <p className="buynowpara">You are about to send offer for <span className="whitetext">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="bidinputmain">

@@ -117,7 +117,7 @@ const Discovercollection = () => {
                 <div className="discovercollectioncontainer">
                     <h5 className="discovercollectionhead">Collections</h5>
                     <div className="dicovercollectionupper">
-                        {/* <button className={toggle ? "collectionfilterbtn" : "collectionfilterbtntext"} onClick={() => { setToggle(!toggle), localStorage.setItem("toggle", !toggle) }}>
+                        <button className={toggle ? "collectionfilterbtn" : "collectionfilterbtntext"} onClick={() => { setToggle(!toggle), localStorage.setItem("toggle", !toggle) }}>
                             {toggle ?
                                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" className="filterimginner">
                                     <path d="M23.4351 8.04373H17.1742C16.7464 8.04373 16.3916 7.68895 16.3916 7.26112C16.3916 6.8333 16.7464 6.47852 17.1742 6.47852H23.4351C23.8629 6.47852 24.2177 6.8333 24.2177 7.26112C24.2177 7.68895 23.8629 8.04373 23.4351 8.04373Z" fill="white" />
@@ -144,7 +144,7 @@ const Discovercollection = () => {
                                     <p className={toggle ? 'hidepara' : 'showpara'}>Filters</p>
                                 </>
                             }
-                        </button> */}
+                        </button>
                         <div className="searchcollectionmain">
                             <input type="search" onChange={(e) => setTimeout(() => {
                                 setsearchvalue(e.target.value)
@@ -155,7 +155,7 @@ const Discovercollection = () => {
                                 <path d="M18.3335 18.9583C18.1752 18.9583 18.0169 18.9 17.8919 18.775L16.2252 17.1083C15.9835 16.8666 15.9835 16.4666 16.2252 16.225C16.4669 15.9833 16.8669 15.9833 17.1085 16.225L18.7752 17.8916C19.0169 18.1333 19.0169 18.5333 18.7752 18.775C18.6502 18.9 18.4919 18.9583 18.3335 18.9583Z" fill="#745F8C" />
                             </svg>
                         </div>
-                        {/* <div className="timefilter">
+                        <div className="timefilter">
                             <span
                                 className={activeSpan === '1H' ? 'timespan active' : 'timespan'}
                                 onClick={() => handleSpanClick('1H')}
@@ -180,13 +180,13 @@ const Discovercollection = () => {
                             >
                                 30D
                             </span>
-                        </div> */}
+                        </div>
                     </div>
                     {
                         clickedSearch ?
                             <div className="dicovercollectionuppermbl d-none">
                                 <div className="dicovercollectionbtns">
-                                    {/* <button className="filterbtnmbl" onClick={handleShow}>
+                                    <button className="filterbtnmbl" onClick={handleShow}>
                                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" className="filterimginner">
                                             <path d="M23.4351 8.04373H17.1742C16.7464 8.04373 16.3916 7.68895 16.3916 7.26112C16.3916 6.8333 16.7464 6.47852 17.1742 6.47852H23.4351C23.8629 6.47852 24.2177 6.8333 24.2177 7.26112C24.2177 7.68895 23.8629 8.04373 23.4351 8.04373Z" fill="white" />
                                             <path d="M6.73973 8.04373H2.56581C2.13799 8.04373 1.7832 7.68895 1.7832 7.26112C1.7832 6.8333 2.13799 6.47852 2.56581 6.47852H6.73973C7.16755 6.47852 7.52233 6.8333 7.52233 7.26112C7.52233 7.68895 7.16755 8.04373 6.73973 8.04373Z" fill="white" />
@@ -195,7 +195,7 @@ const Discovercollection = () => {
                                             <path d="M8.82668 19.5222H2.56581C2.13799 19.5222 1.7832 19.1675 1.7832 18.7396C1.7832 18.3118 2.13799 17.957 2.56581 17.957H8.82668C9.25451 17.957 9.60929 18.3118 9.60929 18.7396C9.60929 19.1675 9.25451 19.5222 8.82668 19.5222Z" fill="white" />
                                             <path d="M15.0871 23.1743C12.6454 23.1743 10.6523 21.1812 10.6523 18.7395C10.6523 16.2977 12.6454 14.3047 15.0871 14.3047C17.5289 14.3047 19.5219 16.2977 19.5219 18.7395C19.5219 21.1812 17.5289 23.1743 15.0871 23.1743ZM15.0871 15.8699C13.501 15.8699 12.2176 17.1534 12.2176 18.7395C12.2176 20.3256 13.501 21.609 15.0871 21.609C16.6732 21.609 17.9567 20.3256 17.9567 18.7395C17.9567 17.1534 16.6732 15.8699 15.0871 15.8699Z" fill="white" />
                                         </svg>
-                                    </button> */}
+                                    </button>
 
                                     <button className="filterbtnmbl" onClick={() => setClickedsearch(!clickedSearch)}>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="filterimginner">
@@ -208,7 +208,7 @@ const Discovercollection = () => {
                                         </svg>
                                     </button>
                                 </div>
-                                {/* <button className="lastbtn">
+                                <button className="lastbtn">
                                     <p>last 1D</p>
                                     <div className="arrowimages">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6" fill="none">
@@ -218,7 +218,7 @@ const Discovercollection = () => {
                                             <path d="M11.1313 0H6.12685H1.62046C0.849313 0 0.463739 0.87 1.00997 1.38L5.17095 5.265C5.83767 5.8875 6.9221 5.8875 7.58882 5.265L9.17128 3.7875L11.7498 1.38C12.288 0.87 11.9024 0 11.1313 0Z" fill="#745F8C" />
                                         </svg>
                                     </div>
-                                </button> */}
+                                </button>
                             </div>
                             :
                             <>
@@ -244,7 +244,7 @@ const Discovercollection = () => {
                             </>
                     }
                     <div className={toggle ? 'dicovercollectionlower' : "dicovercollectionlower forgap"}>
-                        {/* <div className={toggle ? 'filter filter-hidden' : 'filter'}>
+                        <div className={toggle ? 'filter filter-hidden' : 'filter'}>
                             <button className="clearbtn">Clear</button>
                             <Accordion activeKey={activeKeys} onSelect={handleAccordionToggle}>
                                 <Accordion.Item eventKey="0">
@@ -312,7 +312,7 @@ const Discovercollection = () => {
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>
-                        </div> */}
+                        </div>
                         <div className={toggle ? 'maindicovercollectiontable' : 'maindicovercollectiontable widthset'}>
                             <div className="dicovercollectiontable">
                                 <table>
@@ -626,7 +626,7 @@ const Discovercollection = () => {
             <Footer />
 
 
-            {/* <Offcanvas show={show} onHide={handleClose} placement='bottom' className="filtersidebar">
+            <Offcanvas show={show} onHide={handleClose} placement='bottom' className="filtersidebar">
                 <Offcanvas.Body>
                     <div className="filtersidehead">
                         <h6 className="filtersideheading">Filters</h6>
@@ -709,7 +709,7 @@ const Discovercollection = () => {
                         </Accordion.Item>
                     </Accordion>
                 </Offcanvas.Body>
-            </Offcanvas> */}
+            </Offcanvas>
         </>
     )
 }

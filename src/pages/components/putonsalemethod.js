@@ -320,7 +320,7 @@ const Putonsalemethod = () => {
                                         <div className="main-card">
                                             <div className="main-img">
                                                 <img
-                                                    src={dataset?.nft}
+                                                    src={'https://ipfs.io/ipfs' + dataset?.nft}
                                                     alt="img"
                                                     className="img-fluid main-img-card"
                                                 />

@@ -224,7 +224,7 @@ const Auctionbid = ({tab}) => {
                             <div className="main-card">
                                 <div className="main-img">
                                     <img
-                                        src={card?.nft}
+                                        src={'https://ipfs.io/ipfs'+ card?.nft}
                                         alt="img"
                                         className="img-fluid main-img-card"
                                     />

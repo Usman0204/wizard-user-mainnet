@@ -101,6 +101,7 @@ const Collections = () => {
         // clickApi('copyTwitter')
     }
 
+
     return (
         <>
             <Navbar />
@@ -132,10 +133,10 @@ const Collections = () => {
                             </svg></h5>
                             <div className="twice-text">
                                 <h6 className='created-text'>
-                                    <span>Created by</span>
-                                    {dataset?.creatorAddress?.slice(
+                                    <span >Created by  </span>
+                                    {  (dataset?.creatorAddress?.slice(
                                         dataset?.creatorAddress?.length - 6,
-                                        dataset?.creatorAddress?.length
+                                        dataset?.creatorAddress?.length)
                                     )}
                                 </h6>
                                 {/* <h6 className="royalities-text">
@@ -153,7 +154,6 @@ const Collections = () => {
                                 <img src="\assets\webicon.svg" alt="webicon" className="innersocialicon" />
                                 </a>
                             </div>
-                            {console.log(dataset)}
                             <p className="main-para">{dataset?.description}</p>
                             {/* <div className="detail-text-para">
                                 <p>{dataset?.description}</p>
@@ -163,39 +163,70 @@ const Collections = () => {
                                     <path d="M15.2605 22.2503H8.74047C3.83047 22.2503 1.73047 20.1503 1.73047 15.2403V15.1103C1.73047 10.6703 3.48047 8.53027 7.40047 8.16027C7.80047 8.13027 8.18047 8.43027 8.22047 8.84027C8.26047 9.25027 7.96047 9.62027 7.54047 9.66027C4.40047 9.95027 3.23047 11.4303 3.23047 15.1203V15.2503C3.23047 19.3203 4.67047 20.7603 8.74047 20.7603H15.2605C19.3305 20.7603 20.7705 19.3203 20.7705 15.2503V15.1203C20.7705 11.4103 19.5805 9.93027 16.3805 9.66027C15.9705 9.62027 15.6605 9.26027 15.7005 8.85027C15.7405 8.44027 16.0905 8.13027 16.5105 8.17027C20.4905 8.51027 22.2705 10.6603 22.2705 15.1303V15.2603C22.2705 20.1503 20.1705 22.2503 15.2605 22.2503Z" fill="white" />
                                     <path d="M12 15.7501C11.59 15.7501 11.25 15.4101 11.25 15.0001V3.62012C11.25 3.21012 11.59 2.87012 12 2.87012C12.41 2.87012 12.75 3.21012 12.75 3.62012V15.0001C12.75 15.4101 12.41 15.7501 12 15.7501Z" fill="white" />
                                     <path d="M15.3501 6.60043C15.1601 6.60043 14.9701 6.53043 14.8201 6.38043L12.0001 3.56043L9.18009 6.38043C8.89009 6.67043 8.41009 6.67043 8.12009 6.38043C7.83009 6.09043 7.83009 5.61043 8.12009 5.32043L11.4701 1.97043C11.7601 1.68043 12.2401 1.68043 12.5301 1.97043L15.8801 5.32043C16.1701 5.61043 16.1701 6.09043 15.8801 6.38043C15.7401 6.53043 15.5401 6.60043 15.3501 6.60043Z" fill="white" />
-                                </svg></a>
+                                </svg>
+                                </a>
                                 {/* <a href="#" className='more-btn'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M4.05188 14.439C5.38983 14.439 6.47854 13.3508 6.47854 12.0126C6.47854 10.6744 5.38983 9.58594 4.05188 9.58594C2.71394 9.58594 1.625 10.6744 1.625 12.0126C1.625 13.3508 2.71394 14.439 4.05188 14.439Z" fill="white" />
                                     <path d="M11.9049 14.439C13.2427 14.439 14.3314 13.3508 14.3314 12.0126C14.3314 10.6744 13.2436 9.58594 11.9049 9.58594C10.5666 9.58594 9.47852 10.6744 9.47852 12.0126C9.47852 13.3508 10.567 14.439 11.9049 14.439Z" fill="white" />
                                     <path d="M19.8863 14.439C21.2246 14.439 22.3128 13.3508 22.3128 12.0126C22.3128 10.6744 21.2246 9.58594 19.8863 9.58594C18.5481 9.58594 17.459 10.6744 17.459 12.0126C17.459 13.3508 18.5477 14.439 19.8863 14.439Z" fill="white" />
-                                </svg></a> */}
+                                </svg>
+                                </a> */}
                             </div>
                         </div>
-                        <div className="right-content">
+                        {/* commented out */}
+                        {/* <div className="all-values">
                             <div className="upper-table">
-                                {/* <div className="text">
+                                <div className="text">
+                                    <p>FLOOR</p>
+                                    <h6>6.824 CORE</h6>
+                                </div>
+                                <div className="text">
+                                    <p>TOTAL VOL</p>
+                                    <h6>616.6964 CORE</h6>
+                                </div>
+                                <div className="text">
+                                    <p>OWNERS</p>
+                                    <h6>88.2K</h6>
+                                </div>
+                                <div className="text">
+                                    <p>LISTED</p>
+                                    <h6>2.6K</h6>
+                                </div>
+                                <div className="text">
+                                    <p>TOTAL SUPPLY</p>
+                                    <h6>{dataset?.totalSupply > 1000 ? dataset?.totalSupply / 1000 + 'k' : dataset?.totalSupply}</h6>
+                                </div>
+                                <div className="text">
+                                    <p>RANGE</p>
+                                    <h6>0 to {dataset?.totalSupply}</h6>
+                                </div>
+                            </div>
+                            </div> */}
+                        {/* <div className="right-content">
+                            <div className="upper-table">
+                                <div className="text">
                                     <p>Floor</p>
                                     <h6>6.824 Core</h6>
-                                </div> */}
-                                {/* <div className="text">
+                                </div>
+                                <div className="text">
                                     <p>Volume</p>
                                     <h6>775.4K Core</h6>
-                                </div> */}
+                                </div>
                                 <div className="text">
                                     <p>Items</p>
                                     <h6>{dataset?.launchpad_files[0]?.files?.length}</h6>
                                 </div>
-                                {/* <div className="text">
+                                <div className="text">
                                     <p>Owners</p>
                                     <h6>4.4K</h6>
-                                </div> */}
+                                </div>
                                 <div className="text">
                                     <p>Address</p>
                                     <h6>{dataset?.contractAddress?.slice(0, 6)}...{dataset?.contractAddress?.slice(-4)}</h6>
                                 </div>
                             </div>
-                            {/* <a onClick={handleShow1} className='more-collection-btn'>Make Collection Offer</a> */}
-                        </div>
+                            <a onClick={handleShow1} className='more-collection-btn'>Make Collection Offer</a>
+                        </div> */}
                     </div>
                     <Tabs
                         // defaultActiveKey="items"

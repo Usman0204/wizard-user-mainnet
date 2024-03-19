@@ -441,7 +441,7 @@ const Putonsale = () => {
                 <div className="custom-container">
                     <div className="nftdetailupper">
                         <div className="nftimagemain">
-                            <img src={dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" />
+                            <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" />
                         </div>
                         <div className="nftdetails">
                             <div className="nftownerdetail">
@@ -876,7 +876,7 @@ const Putonsale = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
                     </div>
                     <p className="buynowpara">You are about to Accept a bid for <span className="whitetext">{dataset?.launchpad[0]?.name}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="buyitemmain">
@@ -940,7 +940,7 @@ const Putonsale = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
                     </div>
                     <p className="buynowpara">You are about to Accept a Offer for <span className="whitetext">{dataset?.launchpad[0]?.name}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="buyitemmain">

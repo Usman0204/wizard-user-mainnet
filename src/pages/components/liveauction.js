@@ -221,7 +221,7 @@ const Liveauction = ({tab}) => {
                             <div className="main-card">
                                 <div className="main-img">
                                     <img
-                                        src={card?.nft}
+                                        src={'https://ipfs.io/ipfs'+ card?.nft}
                                         alt="img"
                                         className="img-fluid main-img-card"
                                     />
@@ -280,7 +280,7 @@ const Liveauction = ({tab}) => {
                                                 <div  className="main-card">
                                                     <div className="main-img">
                                                         <img
-                                                            src={card?.nft}
+                                                            src={'https://ipfs.io/ipfs'+ card?.nft}
                                                             alt="img"
                                                             className="img-fluid main-img-card"
                                                         />

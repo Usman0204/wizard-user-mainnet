@@ -105,7 +105,7 @@ const AuthorActivity = () => {
                                     (
                                         <div className="single-item" >
                                             <div className="profile">
-                                                <img src={item.nft} alt="img" className='img-fluid main-img-profile' />
+                                                <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
                                                 {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
                                             </div>
                                             <div className="right-content">
@@ -137,7 +137,7 @@ const AuthorActivity = () => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={item.nft} alt="img" className='img-fluid main-img-profile' />
+                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
                                                     {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
                                                 </div>
                                                 <div className="right-content">
@@ -160,7 +160,7 @@ const AuthorActivity = () => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={item.nft} alt="img" className='img-fluid main-img-profile' />
+                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
                                                     {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
                                                 </div>
                                                 <div className="right-content">

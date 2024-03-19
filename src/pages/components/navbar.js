@@ -137,10 +137,10 @@ const Navbar = () => {
         // Get the user's Ethereum address
         const accounts = await web3.eth.getAccounts();
         const userAddress = accounts[0];
-        
+
         // Query the balance of the user's address
         const balance = await web3.eth.getBalance(userAddress);
-        
+
         // Convert the balance from Wei to Ether
         // const coreBalance = web3.utils.fromWei(balance, 'ether');
         seBalance((balance?.toString() / 1e18).toFixed(3));
@@ -308,7 +308,7 @@ const Navbar = () => {
       };
       let response = await axios(config);
       console.log(response?.data?.statusCode, "swdwww in navbarr");
-     
+
       // Uncomment the lines below if you want to set the profile and save it to localStorage
       setProfile(response?.data?.data);
       // localStorage.setItem("profileData", JSON.stringify(response?.data?.data));
@@ -369,55 +369,55 @@ const Navbar = () => {
                   {console.log(startwith)}
                   {/* {startwith === false ?
                     ( */}
-                      <>
+                  <>
                     {datasearch?.launchpadResult?.length > 0 ?
-                          <div className='collectionsearch '>
-                            <div className="collectionhead">
-                              <h6 className="collectiontext">Collection</h6>
-                            </div>
-                            {datasearch?.launchpadResult?.map((card, index) => (
-                              <Link key={index} href={`/collections?id=${card?._id}`}>
-                                <div className="collectionresult">
-                                  <div className="collectionresultleft">
-                                    <div className="collectionimg">
-                                      <img src={card?.imageUrl} alt="innercollectionimg" className="innercollectionimg" />
-                                    </div>
-                                    <div className="collectiontexts">
-                                      <h6 className="innercollectionhead">{card?.name}</h6>
-                                      <p className="innercollectionpara"><img src="\assets\navbarassets\itemimg.svg" alt="inneritemimg" className="inneritemimg" /> {card?.itemsCreated} items</p>
-                                    </div>
-                                  </div>
-                                  <p className="collectionrightpara">{card?.price} Core</p>
+                      <div className='collectionsearch '>
+                        <div className="collectionhead">
+                          <h6 className="collectiontext">Collection</h6>
+                        </div>
+                        {datasearch?.launchpadResult?.map((card, index) => (
+                          <Link key={index} href={`/collections?id=${card?._id}`}>
+                            <div className="collectionresult">
+                              <div className="collectionresultleft">
+                                <div className="collectionimg">
+                                  <img src={card?.imageUrl} alt="innercollectionimg" className="innercollectionimg" />
                                 </div>
-                              </Link>
-                            ))}
-                          </div>
-                          :
-                          (
-                        datasearch?.userResult?.length > 0 ||   <p style={{color: "#fff"}}>No Data Found</p>
-                          )
-                        }
-                      </>
-
-                    {/* )
-                    :
-                    ( */}
-                  {datasearch?.userResult?.length > 0 && <div className="accountmain">
-                        <h6 className="accounthead">Accounts</h6>
-                        {console.log(datasearch)}
-                        {datasearch?.userResult?.map((card, index) => (
-                          <Link key={index} href={`/authorprofile?id=${card?._id}`}>
-                            {console.log(card?._id)}
-                            <div className="accountinner">
-                              <div className="accoutnimg">
-                                <img src={card?.picture ||  '/assets/profile.png'} alt="accountinnerimg" className="accountinnerimg" />
+                                <div className="collectiontexts">
+                                  <h6 className="innercollectionhead">{card?.name}</h6>
+                                  <p className="innercollectionpara"><img src="\assets\navbarassets\itemimg.svg" alt="inneritemimg" className="inneritemimg" /> {card?.itemsCreated} items</p>
+                                </div>
                               </div>
-                              <p className="accounttext">{card?.name || truncateWalletAddress(card?.walletAddress)}</p>
+                              <p className="collectionrightpara">{card?.price} Core</p>
                             </div>
                           </Link>
                         ))}
-                      </div>}
-                    {/* )
+                      </div>
+                      :
+                      (
+                        datasearch?.userResult?.length > 0 || <p style={{ color: "#fff" }}>No Data Found</p>
+                      )
+                    }
+                  </>
+
+                  {/* )
+                    :
+                    ( */}
+                  {datasearch?.userResult?.length > 0 && <div className="accountmain">
+                    <h6 className="accounthead">Accounts</h6>
+                    {console.log(datasearch)}
+                    {datasearch?.userResult?.map((card, index) => (
+                      <Link key={index} href={`/authorprofile?id=${card?._id}`}>
+                        {console.log(card?._id)}
+                        <div className="accountinner">
+                          <div className="accoutnimg">
+                            <img src={card?.picture || '/assets/profile.png'} alt="accountinnerimg" className="accountinnerimg" />
+                          </div>
+                          <p className="accounttext">{card?.name || truncateWalletAddress(card?.walletAddress)}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>}
+                  {/* )
                   } */}
 
 
@@ -431,9 +431,6 @@ const Navbar = () => {
                 Mint <img src="\assets\navbarassets\arrow-down.svg" alt="arrowimg" className="arrowimg" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  {/* <Link href="/launchpad" className="dropitem">Launchpad</Link> */}
-                  {/* <Link href="/launchpad?tab=edition" className="dropitem">Open Editions</Link> */}
-                  {/* <Link href="https://wizardnft-creator.vercel.app" className="dropitem">Creator Dashboard</Link> */}
                   <Link href="/launchpad" className="dropitem">Launchpad</Link>
                    <Link href="/launchpad?id=edition" className="dropitem">Open Editions</Link>
                   <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link>
@@ -585,7 +582,7 @@ const Navbar = () => {
           <img src="\assets\navbarassets\closeimg.svg" alt="closeimg" className="closeimg" onClick={handleClose} />
           <h6 className="connectsidehead">Connect Wallet</h6>
           <p className="connectsidepara">By connecting your wallet, you agree to our <span className="bold">Terms of Service</span> and Our  <span className="bold">Privacy Policy.</span></p>
-        
+
           <div className="connectmain d-sm-flex d-none" onClick={() => {
             // setclickedbtn(() => { (false), localStorage.setItem("wallet", false) });
             // loginUserss()
@@ -663,11 +660,11 @@ const Navbar = () => {
             {/* <Link href="/launchpad?tab=edition" className="dropitemmbl marginleft">Open Editions</Link> */}
             <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link>
             <Link href="https://creator.wizardgallery.xyz/" className="dropitemmbl marginleft">Apply for launchpad</Link>
-            {/* <p className="dropitemmbl marginleft">Presale</p> */}
+            <p className="dropitemmbl marginleft">Presale</p>
 
           </div>
           <div className="mblbtns">
-            {account ? <button onClick={() => logoutApi()} className="disconnectbtn">Disconnect Wallet</button> :<button onClick={handleShow} className="connectbtn">Connect Wallet</button> }
+            {account ? <button onClick={() => logoutApi()} className="disconnectbtn">Disconnect Wallet</button> : <button onClick={handleShow} className="connectbtn">Connect Wallet</button>}
             {/* {
               clickedbtn ?
                 <button className="connectbtn" onClick={() => {
