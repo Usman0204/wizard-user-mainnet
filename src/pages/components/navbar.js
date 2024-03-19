@@ -435,8 +435,8 @@ const Navbar = () => {
                   {/* <Link href="/launchpad?tab=edition" className="dropitem">Open Editions</Link> */}
                   {/* <Link href="https://wizardnft-creator.vercel.app" className="dropitem">Creator Dashboard</Link> */}
                   <Link href="/launchpad" className="dropitem">Launchpad</Link>
-                   <Link href="/launchpad?id=edition" className="dropitem">Open Editions</Link>
-                  <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link>
+                   {/* <Link href="/launchpad?id=edition" className="dropitem">Open Editions</Link>
+                  <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link> */}
                   <Link href="https://creator.wizardgallery.xyz/" target='_blank' className="dropitem">Apply For launchpad</Link>
                   {/* <p className="dropitem marginleft">Presale</p> */}
                 </Dropdown.Menu>
@@ -659,9 +659,9 @@ const Navbar = () => {
 
             <Link href="/discovercollection" className="dropitemmbl marginleft">Discover</Link>
             <Link href="/launchpad" className="dropitemmbl marginleft">Launchpad</Link>
-            <Link href="/launchpad?id=edition" className="dropitemmbl marginleft">Open Edition</Link>
+            {/* <Link href="/launchpad?id=edition" className="dropitemmbl marginleft">Open Edition</Link> */}
             {/* <Link href="/launchpad?tab=edition" className="dropitemmbl marginleft">Open Editions</Link> */}
-            <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link>
+            {/* <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link> */}
             <Link href="https://creator.wizardgallery.xyz/" className="dropitemmbl marginleft">Apply for launchpad</Link>
             {/* <p className="dropitemmbl marginleft">Presale</p> */}
 
