@@ -117,8 +117,8 @@ const TopCollection = () => {
         <div className="parent-collection">
           {mainCardData?.map((collection, index) => {
             const percentageChange = calculatePercentageChange(
-              collection.cheapestNFTToday.price || 0,
-              collection.cheapestNFTYesterday.price || 0
+              collection?.cheapestNFTToday?.price || 0,
+              collection?.cheapestNFTYesterday?.price || 0
             );
 
             // Determine the arrow and its color
@@ -142,17 +142,17 @@ const TopCollection = () => {
                         <div className="text">
                           <h6>{collection.name}</h6>
                           {curruncy === 'USD' ?
-                            <p><span>Floor:</span> {parseFloat(collection.cheapestNFTToday.price || 0) * parseFloat(coreUsdValue)} <span style={{ textTransform: "uppercase" }}>USD</span></p>
+                            <p><span>Floor:</span> {parseFloat(collection?.cheapestNFTToday?.price || 0) * parseFloat(coreUsdValue)} <span style={{ textTransform: "uppercase" }}>USD</span></p>
 
                           :
-                          <p><span>Floor:</span> {collection.cheapestNFTToday.price || 0} <span style={{ textTransform: "uppercase" }}>Core</span></p>
+                          <p><span>Floor:</span> {collection?.cheapestNFTToday?.price || 0} <span style={{ textTransform: "uppercase" }}>Core</span></p>
                          }
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="right-side">
-                    <h6>{collection.core} <span>Core</span></h6>
+                    <h6>{collection?.core} <span>Core</span></h6>
                     <p className={percentageChange >= 0 ? " text-light" : ""}><img src={arrowImageSrc} alt="percentage change" className={percentageChange > 0 ? "img-fluid" : 'd-none'} />{Math.abs(percentageChange.toFixed(2))}%</p>
                   </div>
                 </div>

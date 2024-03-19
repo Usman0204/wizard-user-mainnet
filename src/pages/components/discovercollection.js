@@ -117,7 +117,7 @@ const Discovercollection = () => {
                 <div className="discovercollectioncontainer">
                     <h5 className="discovercollectionhead">Collections</h5>
                     <div className="dicovercollectionupper">
-                        <button className={toggle ? "collectionfilterbtn" : "collectionfilterbtntext"} onClick={() => { setToggle(!toggle), localStorage.setItem("toggle", !toggle) }}>
+                        {/* <button className={toggle ? "collectionfilterbtn" : "collectionfilterbtntext"} onClick={() => { setToggle(!toggle), localStorage.setItem("toggle", !toggle) }}>
                             {toggle ?
                                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" className="filterimginner">
                                     <path d="M23.4351 8.04373H17.1742C16.7464 8.04373 16.3916 7.68895 16.3916 7.26112C16.3916 6.8333 16.7464 6.47852 17.1742 6.47852H23.4351C23.8629 6.47852 24.2177 6.8333 24.2177 7.26112C24.2177 7.68895 23.8629 8.04373 23.4351 8.04373Z" fill="white" />
@@ -144,7 +144,7 @@ const Discovercollection = () => {
                                     <p className={toggle ? 'hidepara' : 'showpara'}>Filters</p>
                                 </>
                             }
-                        </button>
+                        </button> */}
                         <div className="searchcollectionmain">
                             <input type="search" onChange={(e) => setTimeout(() => {
                                 setsearchvalue(e.target.value)
@@ -155,7 +155,7 @@ const Discovercollection = () => {
                                 <path d="M18.3335 18.9583C18.1752 18.9583 18.0169 18.9 17.8919 18.775L16.2252 17.1083C15.9835 16.8666 15.9835 16.4666 16.2252 16.225C16.4669 15.9833 16.8669 15.9833 17.1085 16.225L18.7752 17.8916C19.0169 18.1333 19.0169 18.5333 18.7752 18.775C18.6502 18.9 18.4919 18.9583 18.3335 18.9583Z" fill="#745F8C" />
                             </svg>
                         </div>
-                        <div className="timefilter">
+                        {/* <div className="timefilter">
                             <span
                                 className={activeSpan === '1H' ? 'timespan active' : 'timespan'}
                                 onClick={() => handleSpanClick('1H')}
@@ -180,7 +180,7 @@ const Discovercollection = () => {
                             >
                                 30D
                             </span>
-                        </div>
+                        </div> */}
                     </div>
                     {
                         clickedSearch ?
