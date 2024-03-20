@@ -46,7 +46,7 @@ const Items = ({ idnft }) => {
 
         config = {
             method: "get",
-            url: search ? `${api_url}/launchpads/${idnft}/items?offset=1&limit=50&orderField=price&orderDirection=${price?.value}&search=${search}` : `${api_url}/launchpads/${idnft}/items?offset=1&limit=500&orderField=price&orderDirection=${price?.value}`,
+            url: search ? `${api_url}/launchpads/${idnft}/items?offset=1&limit=50&orderField=price&orderDirection=${price?.value}&search=${search}` : `${api_url}/launchpads/${idnft}/items?offset=1&limit=100&orderField=price&orderDirection=${price?.value}`,
             headers: {
                 authorization: `Bearer ` + tok
             },
