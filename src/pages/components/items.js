@@ -10,7 +10,7 @@ import { useWeb3React } from '@web3-react/core';
 
 const Items = ({ idnft }) => {
     // console.log("items++++++++", idnft)
-    const [price, setPrice] = useState({ name: 'All', value: '-1' })
+    const [price, setPrice] = useState({ name: 'High to Low', value: '-1' })
     const [search,setSearch]=useState()
     let { account } = useWeb3React();
     const api_url = Environment.api_url;
@@ -141,9 +141,9 @@ const Items = ({ idnft }) => {
                             </svg>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'All', value: '-1' }) }} >All</a></li>
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to Heigh', value: '1' }) }} >Low to High</a></li>
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Heigh to Low', value: '-1' }) }} >High to Low</a></li>
+                            {/* <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'All', value: '-1' }) }} >All</a></li> */}
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to High', value: '1' }) }} >Low to High</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'High to Low', value: '-1' }) }} >High to Low</a></li>
 
                         </ul>
                     </div>
