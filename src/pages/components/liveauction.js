@@ -168,7 +168,7 @@ const Liveauction = ({tab}) => {
 
         config = {
             method: "get",
-            url: `${api_url}/nfts/buy?offset=1&limit=30&orderField=updatedAt&orderDirection=-1`,
+            url: `${api_url}/nfts/buy?offset=1&limit=1000&orderField=updatedAt&orderDirection=-1`,
             // headers: {
             //     authorization: `Bearer ` + tok
             // },

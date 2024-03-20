@@ -172,7 +172,7 @@ const Itemcards = ({ dataset, setOffset, offset, loader, tab }) => {
                             <Link href={`/nftdetail?id=${card?._id}`} key={card.id} className="main-card">
                                 <div className="main-img">
                                     <img
-                                        src={card.nft}
+                                        src={'https://ipfs.io/ipfs' + card.nft}
                                         alt="img"
                                         className="img-fluid main-img-card"
                                     />
