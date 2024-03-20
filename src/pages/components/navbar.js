@@ -327,7 +327,7 @@ const Navbar = () => {
     getProfile();
   }, []);
   let logoutApi = async () => {
-    toast.success('Logout Successfull');
+    // toast.success('Logout Successfull');
     const connectorId = window?.localStorage.getItem("connectorId")
     logout(connectorId);
     localStorage.setItem("flag", false)
