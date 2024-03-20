@@ -10,7 +10,7 @@ import { useWeb3React } from '@web3-react/core';
 
 const Items = ({ idnft }) => {
     // console.log("items++++++++", idnft)
-    const [price, setPrice] = useState({ name: 'Low to Heigh', value: '1' })
+    const [price, setPrice] = useState({ name: 'All', value: '-1' })
     const [search,setSearch]=useState()
     let { account } = useWeb3React();
     const api_url = Environment.api_url;
@@ -46,7 +46,7 @@ const Items = ({ idnft }) => {
 
         config = {
             method: "get",
-            url: search ? `${api_url}/launchpads/${idnft}/items?offset=1&limit=50&orderField=price&orderDirection=${price?.value}&search=${search}` : `${api_url}/launchpads/${idnft}/items?offset=1&limit=50&orderField=price&orderDirection=${price?.value}`,
+            url: search ? `${api_url}/launchpads/${idnft}/items?offset=1&limit=50&orderField=price&orderDirection=${price?.value}&search=${search}` : `${api_url}/launchpads/${idnft}/items?offset=1&limit=500&orderField=price&orderDirection=${price?.value}`,
             headers: {
                 authorization: `Bearer ` + tok
             },
@@ -141,8 +141,9 @@ const Items = ({ idnft }) => {
                             </svg>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to Heigh', value: '1' }) }} >Low to Heigh</a></li>
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Heigh to Low', value: '-1' }) }} >Heigh to Low</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'All', value: '-1' }) }} >All</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to Heigh', value: '1' }) }} >Low to High</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Heigh to Low', value: '-1' }) }} >High to Low</a></li>
 
                         </ul>
                     </div>
@@ -217,7 +218,7 @@ const Items = ({ idnft }) => {
                                                                             alt="img"
                                                                             className="img-fluid"
                                                                         />
-                                                                        {card.price} <span>Core</span>
+                                                                        {card.price || 0} <span>Core</span>
                                                                     </h5>
                                                                 </div>
                                                             </div>
