@@ -170,7 +170,7 @@ const Auctionbid = ({tab}) => {
 
         config = {
             method: "get",
-            url: `${api_url}/nfts/auctions?offset=1&limit=1000&orderField=updatedAt&orderDirection=-1`,
+            url: `${api_url}/nfts/auctions?offset=1&limit=50&orderField=updatedAt&orderDirection=-1`,
             // headers: {
             //     authorization: `Bearer ` + tok
             // },
