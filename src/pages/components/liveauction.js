@@ -13,7 +13,7 @@ import Environment from '@/utils/Enviroment';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
-const Liveauction = ({tab}) => {
+const Liveauction = ({ tab }) => {
     const [cardData, setUpcomingdata] = useState(null)
     const api_url = Environment?.api_url
     const owl_option = {
@@ -209,61 +209,72 @@ const Liveauction = ({tab}) => {
                 <div className="custom-container">
                     <div className="upper-content">
                         <h5>Buy Now</h5>
-                      { tab === 'buynow' || <div className="right-btns">
+                        {tab === 'buynow' || <div className="right-btns">
                             <Link href="/seeall?id=buynow" className="btn-seeall">
                                 Explore All
                             </Link>
                         </div>}
+                        {tab != 'buynow' || <div className="right-btns">
+                            <div className="dropdown">
+                                <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Low to High <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
+                                </button>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" >High to Low</a></li>
+                                    <li><a className="dropdown-item" >Recently added</a></li>
+                                </ul>
+                            </div>
+                        </div>}
                     </div>
                     <div className="bottom-cards displaynoneinmobile">
-                        {cardData?.slice(0, tab === 'buynow' ? 20000:  8)?.map((card,id) => (
+                        {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card, id) => (
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
-                            <div className="main-card">
-                                <div className="main-img">
-                                    <img
-                                        src={'https://ipfs.io/ipfs'+ card?.nft}
-                                        alt="img"
-                                        className="img-fluid main-img-card"
-                                    />
-                                    <img
-                                        src="/assets/landing/static/live-auction-abs.svg"
-                                        alt="img"
-                                        className="img-fluid abs-img"
-                                    />
-                                </div>
-                                <div className="bottom-text">
-                                    <div className="twice-text">
-                                        <div className="left-text">
-                                            <h6>
-                                                <span>By</span>
-                                                {card?.launchpadId?.name}{' '}
-                                                <img
-                                                    src="/assets/landing/static/verify-icon.svg"
-                                                    alt="img"
-                                                    className="img-fluid"
-                                                />
-                                            </h6>
-                                            <h5>#{card?.tokenID}</h5>
+                                <div className="main-card">
+                                    <div className="main-img">
+                                        <img
+                                            src={'https://ipfs.io/ipfs' + card?.nft}
+                                            alt="img"
+                                            className="img-fluid main-img-card"
+                                        />
+                                        <img
+                                            src="/assets/landing/static/live-auction-abs.svg"
+                                            alt="img"
+                                            className="img-fluid abs-img"
+                                        />
+                                    </div>
+                                    <div className="bottom-text">
+                                        <div className="twice-text">
+                                            <div className="left-text">
+                                                <h6>
+                                                    <span>By</span>
+                                                    {card?.launchpadId?.name}{' '}
+                                                    <img
+                                                        src="/assets/landing/static/verify-icon.svg"
+                                                        alt="img"
+                                                        className="img-fluid"
+                                                    />
+                                                </h6>
+                                                <h5>#{card?.tokenID}</h5>
+                                            </div>
+                                            <div className="right-text">
+                                                <h6>Price</h6>
+                                                <h5>
+                                                    <img
+                                                        src="/assets/landing/static/price-icon.svg"
+                                                        alt="img"
+                                                        className="img-fluid"
+                                                    />
+                                                    {card?.price} <span>Core</span>
+                                                </h5>
+                                            </div>
                                         </div>
-                                        <div className="right-text">
-                                            <h6>Price</h6>
-                                            <h5>
-                                                <img
-                                                    src="/assets/landing/static/price-icon.svg"
-                                                    alt="img"
-                                                    className="img-fluid"
-                                                />
-                                                {card?.price} <span>Core</span>
-                                            </h5>
+                                        <div className="timer ">
+                                            {/* 05D : 12H : 07M : 45S */}
+                                            <h6>Buy Now</h6>
                                         </div>
                                     </div>
-                                    <div className="timer ">
-                                        {/* 05D : 12H : 07M : 45S */}
-                                        <h6>Buy Now</h6>
-                                    </div>
-                                </div>
-                                <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>Buy Now</Link>
-                            </div></Link>
+                                    <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>Buy Now</Link>
+                                </div></Link>
                         ))}
                     </div>
                     {cardData &&
@@ -274,13 +285,13 @@ const Liveauction = ({tab}) => {
                                     <OwlCarousel
                                         className="owl-theme"
                                         {...owl_option}
-                                    > 
+                                    >
                                         {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card) => (
-                                                <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
-                                                <div  className="main-card">
+                                            <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
+                                                <div className="main-card">
                                                     <div className="main-img">
                                                         <img
-                                                            src={'https://ipfs.io/ipfs'+ card?.nft}
+                                                            src={'https://ipfs.io/ipfs' + card?.nft}
                                                             alt="img"
                                                             className="img-fluid main-img-card"
                                                         />
@@ -322,7 +333,7 @@ const Liveauction = ({tab}) => {
                                          </div> */}
                                                     </div>
                                                 </div></Link>
-                                            ))
+                                        ))
                                         }
                                     </OwlCarousel>
 
@@ -330,6 +341,11 @@ const Liveauction = ({tab}) => {
                             </div>
                         )
 
+                    }
+                    {tab != 'buynow' ||
+                        <div className="bottom-btn-seemore">
+                            <a href="#">See more</a>
+                        </div>
                     }
 
                 </div>
