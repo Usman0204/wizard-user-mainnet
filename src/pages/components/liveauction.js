@@ -214,7 +214,7 @@ const Liveauction = ({ tab }) => {
                                 Explore All
                             </Link>
                         </div>}
-                        {tab != 'buynow' || <div className="right-btns">
+                        {/* {tab != 'buynow' || <div className="right-btns">
                             <div className="dropdown">
                                 <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Low to High <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
@@ -224,7 +224,7 @@ const Liveauction = ({ tab }) => {
                                     <li><a className="dropdown-item" >Recently added</a></li>
                                 </ul>
                             </div>
-                        </div>}
+                        </div>} */}
                     </div>
                     <div className="bottom-cards displaynoneinmobile">
                         {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card, id) => (
@@ -342,11 +342,11 @@ const Liveauction = ({ tab }) => {
                         )
 
                     }
-                    {tab != 'buynow' ||
+                    {/* {tab != 'buynow' ||
                         <div className="bottom-btn-seemore">
                             <a href="#">See more</a>
                         </div>
-                    }
+                    } */}
 
                 </div>
             </section>
