@@ -13,8 +13,10 @@ import Environment from '@/utils/Enviroment';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
-const Liveauction = ({tab}) => {
-    const [cardData, setUpcomingdata] = useState(null)
+const Liveauction = ({ tab }) => {
+    const [cardData, setUpcomingdata] = useState([])
+    const [filters, setFilters] = useState({ name: 'Price', value: 'all' })
+    const [dataset, setdataset] = useState();
     const api_url = Environment?.api_url
     const owl_option = {
         nav: true,
@@ -162,36 +164,80 @@ const Liveauction = ({tab}) => {
     // ];
 
 
+    // const GetUpcomingDetail = () => {
+    //     let tok = localStorage.getItem("accessToken");
+    //     var config = ''
+
+    //     config = {
+    //         method: "get",
+    //         url: `${api_url}/nfts/buy?offset=1&limit=50&orderField=updatedAt&orderDirection=-1`,
+    //         // headers: {
+    //         //     authorization: `Bearer ` + tok
+    //         // },
+    //     }
+
+    //     axios(config)
+    //         .then(function (response) {
+    //             // setLoader(false);
+    //             setUpcomingdata(response?.data?.data?.buyNfts)
+    //             // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
+    //         })
+    //         .catch(function (error) {
+    //             // setLoader(false);
+    //             // localStorage.removeItem("accessToken");
+    //             // localStorage.removeItem("user");
+    //             // window.location.assign("/")
+    //             // window.location.reload();
+    //         });
+    // }
+    const [page, setPage] = useState(1); // Tracks the current page for pagination
+    const limit = 50; // Fixed number of items per page
+
     const GetUpcomingDetail = () => {
         let tok = localStorage.getItem("accessToken");
-        var config = ''
 
-        config = {
+        // Calculate the offset based on the current page
+        let offset = page;
+
+        // Base URL for the upcoming NFTs endpoint
+        let baseUrl = `${api_url}/nfts/buy`;
+
+        // Apply filters
+        let orderField = (filters?.name === 'All' || filters?.name === 'Recently Listed') ? 'updatedAt' : 'price';
+        let orderDirection = filters?.name === 'Low to High' ? '1' : '-1';
+        let status = (filters?.name === 'High to Low' || filters?.name === 'Low to High') ? 'onSale' : '';
+
+        // Construct the final URL with filters and pagination
+        let url = `${baseUrl}?offset=${offset}&limit=50&orderField=${orderField}&orderDirection=${orderDirection}`;
+        // if (status) {
+        //     url += `&status=${status}`;
+        // }
+
+        var config = {
             method: "get",
-            url: `${api_url}/nfts/buy?offset=1&limit=50&orderField=updatedAt&orderDirection=-1`,
-            // headers: {
-            //     authorization: `Bearer ` + tok
-            // },
-        }
+            url: url,
+            headers: {
+                // Authorization header, uncomment if required
+                // authorization: `Bearer ${tok}`,
+            },
+        };
 
         axios(config)
             .then(function (response) {
-                // setLoader(false);
-                setUpcomingdata(response?.data?.data?.buyNfts)
-                // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
+                // Append new data to the existing dataset array
+                setdataset(response?.data?.data)
+                setUpcomingdata(prev => [...prev, ...(response?.data?.data?.buyNfts)]);
+                // Optionally, increment the page state to load the next page on subsequent calls
+                // setPage(prevPage => prevPage + 1);
             })
             .catch(function (error) {
-                // setLoader(false);
-                // localStorage.removeItem("accessToken");
-                // localStorage.removeItem("user");
-                // window.location.assign("/")
-                // window.location.reload();
+                // Handle errors here
             });
-    }
+    };
 
     useEffect(() => {
         GetUpcomingDetail()
-    }, [])
+    }, [filters,page])
 
     // useEffect(() => {
     //     const storedData = localStorage.getItem('mainCardData');
@@ -202,68 +248,86 @@ const Liveauction = ({tab}) => {
     //     }
     // }, []);
 
+    const resetDataAndFetch = () => {
+        setUpcomingdata([]); // Clear existing data
+        setPage(1); // Reset pagination to page 1
 
+        // getCollectionItemsDetails(); // Fetch data with new filters/sort
+    };
     return (
         <>
             <section className="live-auction">
                 <div className="custom-container">
                     <div className="upper-content">
                         <h5>Buy Now</h5>
-                      { tab === 'buynow' || <div className="right-btns">
+                        {tab === 'buynow' || <div className="right-btns">
                             <Link href="/seeall?id=buynow" className="btn-seeall">
                                 Explore All
                             </Link>
                         </div>}
+                        {tab != 'buynow' || <div className="right-btns">
+                            <div className="dropdown">
+                                <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {filters?.name} <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
+                                </button>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'All', value: '1' }); resetDataAndFetch();}} >All</a></li>
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'Low to High', value: '1' }); resetDataAndFetch();}} >Low to High</a></li>
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'High to Low', value: '-1' }); resetDataAndFetch();}} >High to Low</a></li>
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'Recently Listed', value: '-1' }); resetDataAndFetch();}} >Recently Listed</a></li>
+                         </ul>
+                            </div>
+                        </div>}
                     </div>
                     <div className="bottom-cards displaynoneinmobile">
-                        {cardData?.slice(0, tab === 'buynow' ? 20000:  8)?.map((card,id) => (
+                        {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card, id) => (
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
-                            <div className="main-card">
-                                <div className="main-img">
-                                    <img
-                                        src={'https://ipfs.io/ipfs'+ card?.nft}
-                                        alt="img"
-                                        className="img-fluid main-img-card"
-                                    />
-                                    <img
-                                        src="/assets/landing/static/live-auction-abs.svg"
-                                        alt="img"
-                                        className="img-fluid abs-img"
-                                    />
-                                </div>
-                                <div className="bottom-text">
-                                    <div className="twice-text">
-                                        <div className="left-text">
-                                            <h6>
-                                                <span>By</span>
-                                                {card?.launchpadId?.name}{' '}
-                                                <img
-                                                    src="/assets/landing/static/verify-icon.svg"
-                                                    alt="img"
-                                                    className="img-fluid"
-                                                />
-                                            </h6>
-                                            <h5>#{card?.tokenID}</h5>
+                                <div className="main-card">
+                                    <div className="main-img">
+                                        <img
+                                            src={'https://ipfs.io/ipfs' + card?.nft}
+                                            alt="img"
+                                            className="img-fluid main-img-card"
+                                        />
+                                        <img
+                                            src="/assets/landing/static/live-auction-abs.svg"
+                                            alt="img"
+                                            className="img-fluid abs-img"
+                                        />
+                                    </div>
+                                    <div className="bottom-text">
+                                        <div className="twice-text">
+                                            <div className="left-text">
+                                                <h6>
+                                                    <span>By</span>
+                                                    {card?.launchpadId?.name}{' '}
+                                                    <img
+                                                        src="/assets/landing/static/verify-icon.svg"
+                                                        alt="img"
+                                                        className="img-fluid"
+                                                    />
+                                                </h6>
+                                                <h5>#{card?.tokenID}</h5>
+                                            </div>
+                                            <div className="right-text">
+                                                <h6>Price</h6>
+                                                <h5>
+                                                    <img
+                                                        src="/assets/landing/static/price-icon.svg"
+                                                        alt="img"
+                                                        className="img-fluid"
+                                                    />
+                                                    {card?.price} <span>Core</span>
+                                                </h5>
+                                            </div>
                                         </div>
-                                        <div className="right-text">
-                                            <h6>Price</h6>
-                                            <h5>
-                                                <img
-                                                    src="/assets/landing/static/price-icon.svg"
-                                                    alt="img"
-                                                    className="img-fluid"
-                                                />
-                                                {card?.price} <span>Core</span>
-                                            </h5>
+                                        <div className="timer ">
+                                            {/* 05D : 12H : 07M : 45S */}
+                                            <h6>Buy Now</h6>
                                         </div>
                                     </div>
-                                    <div className="timer ">
-                                        {/* 05D : 12H : 07M : 45S */}
-                                        <h6>Buy Now</h6>
-                                    </div>
-                                </div>
-                                <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>Buy Now</Link>
-                            </div></Link>
+                                    <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>Buy Now</Link>
+                                </div></Link>
                         ))}
                     </div>
                     {cardData &&
@@ -274,13 +338,13 @@ const Liveauction = ({tab}) => {
                                     <OwlCarousel
                                         className="owl-theme"
                                         {...owl_option}
-                                    > 
+                                    >
                                         {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card) => (
-                                                <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
-                                                <div  className="main-card">
+                                            <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
+                                                <div className="main-card">
                                                     <div className="main-img">
                                                         <img
-                                                            src={'https://ipfs.io/ipfs'+ card?.nft}
+                                                            src={'https://ipfs.io/ipfs' + card?.nft}
                                                             alt="img"
                                                             className="img-fluid main-img-card"
                                                         />
@@ -322,7 +386,7 @@ const Liveauction = ({tab}) => {
                                          </div> */}
                                                     </div>
                                                 </div></Link>
-                                            ))
+                                        ))
                                         }
                                     </OwlCarousel>
 
@@ -330,6 +394,11 @@ const Liveauction = ({tab}) => {
                             </div>
                         )
 
+                    }
+                    {tab != 'buynow' ||
+                        ( dataset?.pages > page &&   <div className="bottom-btn-seemore">
+                        <a onClick={() => setPage(page + 1)}>See more</a>
+                        </div>)
                     }
 
                 </div>

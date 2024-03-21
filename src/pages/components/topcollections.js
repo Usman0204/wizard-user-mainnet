@@ -160,7 +160,9 @@ const TopCollection = () => {
             );
           })}
         </div>
+      
       </div>
+     
     </section>
   );
 };

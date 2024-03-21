@@ -174,34 +174,34 @@ const Collections = () => {
                             </div>
                         </div>
                         {/* commented out */}
-                        {/* <div className="all-values">
+                        <div className="all-values">
                             <div className="upper-table">
                                 <div className="text">
                                     <p>FLOOR</p>
-                                    <h6>6.824 CORE</h6>
+                                    <h6>{dataset?.floorToday?.price > 1000 ? parseFloat(dataset?.floorToday?.price / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.floorToday?.price)?.toFixed(2)} CORE</h6>
                                 </div>
                                 <div className="text">
                                     <p>TOTAL VOL</p>
-                                    <h6>616.6964 CORE</h6>
+                                    <h6>{dataset?.volume > 1000 ? parseFloat(dataset?.volume / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.volume)?.toFixed(2)} CORE</h6>
                                 </div>
                                 <div className="text">
                                     <p>OWNERS</p>
-                                    <h6>88.2K</h6>
+                                    <h6>{dataset?.ownersCount > 1000 ? dataset?.ownersCount / 1000 + ' k' : dataset?.ownersCount}</h6>
                                 </div>
                                 <div className="text">
                                     <p>LISTED</p>
-                                    <h6>2.6K</h6>
+                                    <h6>{dataset?.totalNftsOnSale > 1000 ? dataset?.totalNftsOnSale / 1000 + ' k' : dataset?.totalNftsOnSale}</h6>
                                 </div>
                                 <div className="text">
                                     <p>TOTAL SUPPLY</p>
-                                    <h6>{dataset?.totalSupply > 1000 ? dataset?.totalSupply / 1000 + 'k' : dataset?.totalSupply}</h6>
+                                    <h6>{dataset?.totalSupply > 1000 ? dataset?.totalSupply / 1000 + ' k' : dataset?.totalSupply}</h6>
                                 </div>
-                                <div className="text">
+                                {/* <div className="text">
                                     <p>RANGE</p>
-                                    <h6>0 to {dataset?.totalSupply}</h6>
-                                </div>
+                                    <h6>0 to {dataset?.totalSupply > 1000 ? dataset?.totalSupply / 1000 + ' k' : dataset?.totalSupply}</h6>
+                                </div> */}
                             </div>
-                            </div> */}
+                            </div>
                         {/* <div className="right-content">
                             <div className="upper-table">
                                 <div className="text">

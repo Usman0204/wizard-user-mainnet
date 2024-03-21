@@ -16,8 +16,11 @@ import CountdownTimer from './auctiontimer';
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 const Auctionbid = ({tab}) => {
-    const [cardData, setUpcomingdata] = useState(null)
+    const [cardData, setUpcomingdata] = useState([])
+    const [filters, setFilters] = useState({ name: 'Price', value: '1' })
+    const [dataset, setdataset] = useState();
     const api_url = Environment?.api_url
+    const [page, setPage] = useState(1); 
     const owl_option = {
         nav: true,
         dots: false,
@@ -163,37 +166,51 @@ const Auctionbid = ({tab}) => {
 
     // ];
 
-
     const GetUpcomingDetail = () => {
         let tok = localStorage.getItem("accessToken");
-        var config = ''
 
-        config = {
+        // Calculate the offset based on the current page
+        let offset = page;
+
+        // Base URL for the upcoming NFTs endpoint
+        let baseUrl = `${api_url}/nfts/auctions`;
+
+        // Apply filters
+        let orderField = (filters?.name === 'All' || filters?.name === 'Recently Listed') ? 'createdAt' : 'price';
+        let orderDirection = filters?.name === 'Low to High' ? '1' : '-1';
+        // let status = (filters?.name === 'High to Low' || filters?.name === 'Low to High') ? 'onSale' : '';
+
+        // Construct the final URL with filters and pagination
+        let url = `${baseUrl}?offset=${offset}&limit=50&orderField=${orderField}&orderDirection=${orderDirection}`;
+        // if (status) {
+        //     url += `&status=${status}`;
+        // }
+
+        var config = {
             method: "get",
-            url: `${api_url}/nfts/auctions?offset=1&limit=50&orderField=updatedAt&orderDirection=-1`,
-            // headers: {
-            //     authorization: `Bearer ` + tok
-            // },
-        }
+            url: url,
+            headers: {
+                // Authorization header, uncomment if required
+                // authorization: `Bearer ${tok}`,
+            },
+        };
 
         axios(config)
             .then(function (response) {
-                // setLoader(false);
-                setUpcomingdata(response?.data?.data?.auctionNfts)
-                // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
+                // Append new data to the existing dataset array
+                setdataset(response?.data?.data)
+                setUpcomingdata(prev => [...prev, ...(response?.data?.data?.auctionNfts)]);
+                // Optionally, increment the page state to load the next page on subsequent calls
+                // setPage(prevPage => prevPage + 1);
             })
             .catch(function (error) {
-                // setLoader(false);
-                // localStorage.removeItem("accessToken");
-                // localStorage.removeItem("user");
-                // window.location.assign("/")
-                // window.location.reload();
+                // Handle errors here
             });
-    }
+    };
 
     useEffect(() => {
         GetUpcomingDetail()
-    }, [])
+    }, [filters, page])
 
     // useEffect(() => {
     //     const storedData = localStorage.getItem('mainCardData');
@@ -204,7 +221,12 @@ const Auctionbid = ({tab}) => {
     //     }
     // }, []);
 
+    const resetDataAndFetch = () => {
+        setUpcomingdata([]); // Clear existing data
+        setPage(1); // Reset pagination to page 1
 
+        // getCollectionItemsDetails(); // Fetch data with new filters/sort
+    };
 
     return (
         <>
@@ -216,6 +238,19 @@ const Auctionbid = ({tab}) => {
                             <Link href="/seeall?id=liveauction" className="btn-seeall">
                                 Explore All
                             </Link>
+                        </div>}
+                        {tab != 'liveauction' || <div className="right-btns">
+                            <div className="dropdown">
+                                <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   {filters?.name} <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
+                                </button>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'All', value: '1' }); resetDataAndFetch(); }} >All</a></li>
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'Low to High', value: '1' }); resetDataAndFetch(); }} >Low to High</a></li>
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'High to Low', value: '-1' }); resetDataAndFetch(); }} >High to Low</a></li>
+                                    <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'Recently Listed', value: '-1' }); resetDataAndFetch(); }} >Recently Listed</a></li>
+                                </ul>
+                            </div>
                         </div>}
                     </div>
                     <div className="bottom-cards displaynoneinmobile">
@@ -339,6 +374,11 @@ const Auctionbid = ({tab}) => {
                     }
 
                 </div>
+                {tab != 'liveauction' ||
+                    (dataset?.pages > page && <div className="bottom-btn-seemore">
+                        <a onClick={() => setPage(page + 1)}>See more</a>
+                    </div>)
+                }
             </section>
             {/* <section className="live-auction">
                 <div className="custom-container">

@@ -10,13 +10,15 @@ import { useWeb3React } from '@web3-react/core';
 
 const Items = ({ idnft }) => {
     // console.log("items++++++++", idnft)
-    const [price, setPrice] = useState({ name: 'High to Low', value: '-1' })
+    const [price, setPrice] = useState({ name: 'All', value: '1' })
     const [search,setSearch]=useState()
     let { account } = useWeb3React();
     const api_url = Environment.api_url;
     // const [show, setShow] = useState(false);
     // const [idnft, setidnft] = useState();
     const [dataset, setdataset] = useState();
+    const [page, setPage]=useState(1)
+    const [datasetArr, setdatasetArr] = useState([]);
     const [toggle, setToggle] = useState(true);
     const [grid, setGrid] = useState(undefined);
 
@@ -39,40 +41,60 @@ const Items = ({ idnft }) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const resetDataAndFetch = () => {
+        setdatasetArr([]); // Clear existing data
+        setPage(1); // Reset pagination to page 1
+       
+        // getCollectionItemsDetails(); // Fetch data with new filters/sort
+    };
     const getCollectionItemsDetails = async () => {
         let tok = localStorage.getItem("accessToken");
-        var config = ''
 
-        config = {
+        // Start with the base URL
+        let baseUrl = `${api_url}/launchpads/${idnft}/items`;
+
+        // Apply limit, orderField, orderDirection, and status only if there's no search term
+        let limit = search ? '&limit=500' : '&limit=50'; // Apply limit only if there's no search
+        let orderField = (!search && (price?.name === 'All' || price?.name === 'Recently Listed')) ? '&orderField=updatedAt' : (!search ? '&orderField=price' : '');
+        let orderDirection = !search ? `&orderDirection=${price?.value}` : '';
+        let status = (!search && (price?.name === 'High to Low' || price?.name === 'Low to High')) ? '&status=onSale' : '';
+        let searchParam = search ? `?search=${encodeURIComponent(search)}` : '?'; // Use ? for search to start query parameters if present
+
+        // Combine parts to form the final URL, include pagination only if there's no search
+        let pagination = !search ? `&offset=${page}` : '&offset=1';
+        let url = `${baseUrl}${searchParam}${limit}${orderField}${orderDirection}${status}${pagination}`;
+
+        var config = {
             method: "get",
-            url: search ? `${api_url}/launchpads/${idnft}/items?offset=1&limit=50&orderField=price&orderDirection=${price?.value}&search=${search}` : `${api_url}/launchpads/${idnft}/items?offset=1&limit=100&orderField=price&orderDirection=${price?.value}`,
+            url: url,
             headers: {
                 authorization: `Bearer ` + tok
             },
-        }
+        };
 
         axios(config)
             .then(function (response) {
-                setdataset(response?.data?.data)
-                // console.log(response.data.data);
-                // setLoader(false);
-                // setUpcomingdata(response.data.data.upcomingLaunchpads[0])
-                // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
+                // Since search should replace data, directly set the dataset without appending
+                setdataset(response?.data?.data);
+                if (search) {
+                    // If there is a search, replace datasetArr with the new data
+                    setdatasetArr(response?.data?.data?.collectionsItems || []);
+                } else {
+                    // If no search, append the new data
+                    setdatasetArr(prev => [...prev, ...(response?.data?.data?.collectionsItems || [])]);
+                }
             })
             .catch(function (error) {
-                // setLoader(false);
-                // localStorage.removeItem("accessToken");
-                // localStorage.removeItem("user");
-                // window.location.assign("/")
-                // window.location.reload();
+                // Error handling
             });
-    }
+    };
+
+console.log(datasetArr);
     useEffect(() => {
         getCollectionItemsDetails()
-    }, [idnft, price, search])
+    }, [idnft, price, search,page])
 
-    // console.log("dataset", dataset)
+    console.log("dataset", dataset?.pages)
 
     return (
         <>
@@ -98,9 +120,10 @@ const Items = ({ idnft }) => {
                             Filters</a>
                     </div> */}
                     <div className="option-field displaynoneinmobile">
-                        <input onChange={(e)=>setTimeout(() => {
+                        <input onChange={(e)=>{
+                            resetDataAndFetch();
                             setSearch(e.target.value)
-                        }, 1000)} type="number" placeholder='Search by nft number' />
+                        }} type="number" value={search} placeholder='Search by nft number' />
                         <svg className='search-icon' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M9.58366 18.1253C4.87533 18.1253 1.04199 14.292 1.04199 9.58366C1.04199 4.87533 4.87533 1.04199 9.58366 1.04199C14.292 1.04199 18.1253 4.87533 18.1253 9.58366C18.1253 14.292 14.292 18.1253 9.58366 18.1253ZM9.58366 2.29199C5.55866 2.29199 2.29199 5.56699 2.29199 9.58366C2.29199 13.6003 5.55866 16.8753 9.58366 16.8753C13.6087 16.8753 16.8753 13.6003 16.8753 9.58366C16.8753 5.56699 13.6087 2.29199 9.58366 2.29199Z" fill="#555357" />
                             <path d="M18.3335 18.9585C18.1752 18.9585 18.0169 18.9002 17.8919 18.7752L16.2252 17.1085C15.9835 16.8669 15.9835 16.4669 16.2252 16.2252C16.4669 15.9835 16.8669 15.9835 17.1085 16.2252L18.7752 17.8919C19.0169 18.1335 19.0169 18.5335 18.7752 18.7752C18.6502 18.9002 18.4919 18.9585 18.3335 18.9585Z" fill="#555357" />
@@ -141,10 +164,10 @@ const Items = ({ idnft }) => {
                             </svg>
                         </a>
                         <ul class="dropdown-menu">
-                            {/* <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'All', value: '-1' }) }} >All</a></li> */}
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to High', value: '1' }) }} >Low to High</a></li>
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'High to Low', value: '-1' }) }} >High to Low</a></li>
-
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'All', value: '1' }); resetDataAndFetch();  setSearch('') }} >All</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to High', value: '1' }); resetDataAndFetch();  setSearch('') }} >Low to High</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'High to Low', value: '-1' }); resetDataAndFetch();  setSearch('') }} >High to Low</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Recently Listed', value: '-1' }); resetDataAndFetch();  setSearch('') }} >Recently Listed</a></li>
                         </ul>
                     </div>
                     {grid !== undefined &&
@@ -179,7 +202,7 @@ const Items = ({ idnft }) => {
                                 <div className="custom-container">
                                     {/* displaynoneinmobile */}
                                     <div className="bottom-cards ">
-                                        {dataset?.collectionsItems?.map((card) => {
+                                        {datasetArr?.map((card) => {
                                             // console.log(card?.walletAddress == account); // Log the current card object
                                             return (
                                                 <>
@@ -229,7 +252,7 @@ const Items = ({ idnft }) => {
                                         })}
                                     </div>
 
-                                    {/* <button className="exploreallbtn">See More</button> */}
+                                   {dataset?.pages > page && <button onClick={()=>setPage(page + 1)} className="exploreallbtn">See More</button>}
                                 </div>
                             </section>
                         </div>
