@@ -15,7 +15,7 @@ const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 const Liveauction = ({ tab }) => {
     const [cardData, setUpcomingdata] = useState([])
-    const [filters, setFilters] = useState({ name: 'Price', value: 'all' })
+    const [filters, setFilters] = useState({ name: 'All', value: '1' })
     const [dataset, setdataset] = useState();
     const api_url = Environment?.api_url
     const owl_option = {
@@ -268,7 +268,7 @@ const Liveauction = ({ tab }) => {
                         {tab != 'buynow' || <div className="right-btns">
                             <div className="dropdown">
                                 <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {filters?.name} <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
+                                    {filters?.name === 'All' ? 'Price' : filters?.name} <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
                                 </button>
                                 <ul className="dropdown-menu">
                                     <li><a className="dropdown-item" onClick={() => { setFilters({ name: 'All', value: '1' }); resetDataAndFetch();}} >All</a></li>
