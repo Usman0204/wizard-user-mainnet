@@ -1,7 +1,7 @@
 import React from "react";
 // import useWindowDimensions from "../hooks/getDimensions"
 // import mainloader from "../assets/logo.svg";
-import Image from 'next/image';
+// import Image from 'next/image';
 const Loader = ({ text }) => {
   // const { width } = useWindowDimensions();
 
@@ -23,13 +23,13 @@ const Loader = ({ text }) => {
         >
           <div className="vh-100 d-flex align-items-center justify-content-center">
             <div className="d-flex flex-wrap align-items-center justify-content-center">
-              <Image
+              <image
                 width={150}
                 height={150} // Add the height property for Next.js Image component
                 src="https://v.fastcdn.co/u/430e104e/57579327-0-Loaders-3.svg"
                 alt="loader"
                 style={{
-                  filter: 'invert(100%) sepia(8%) saturate(7447%) hue-rotate(233deg) brightness(283%) contrast(117%)',
+                  // filter: 'invert(100%) sepia(8%) saturate(7447%) hue-rotate(233deg) brightness(283%) contrast(117%)',
                 }}
               />
               {/* <div className="image-container">

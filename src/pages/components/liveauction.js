@@ -147,7 +147,7 @@ const Liveauction = ({ tab }) => {
     };
     return (
         <>
-            {loader && (tab === 'buynow' && <Loader/>)}
+            {/* {loader && (tab === 'buynow' && <Loader/>)} */}
             <section className="live-auction">
                 <div className="custom-container">
                     <div className="upper-content">

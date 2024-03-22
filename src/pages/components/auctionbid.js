@@ -143,7 +143,7 @@ const Auctionbid = ({tab}) => {
     };
     return (
         <>
-            {loader && (tab === 'liveauction' && <Loader />)}
+            {/* {loader && (tab === 'liveauction' && <Loader />)} */}
             <section className="live-auction">
                 <div className="custom-container">
                     <div className="upper-content">
