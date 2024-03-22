@@ -11,7 +11,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import ReactPaginate from 'react-paginate';
-import Loader from '@/store/hooks/loader';
+// import Loader from '@/store/hooks/loader';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
