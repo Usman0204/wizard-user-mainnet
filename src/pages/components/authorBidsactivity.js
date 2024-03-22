@@ -101,7 +101,7 @@ const AuthorBidsActivity = () => {
                 <div className="parent-activity">
                     <div className="left-side">
                         {dataset3?.map(item => (
-                            <div key={item.id}>
+                            <div key={item.nftId}>
                                         <div className="single-item" >
                                             <div className="left-sidee">
                                             <div className="profile">

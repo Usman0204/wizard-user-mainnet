@@ -102,7 +102,7 @@ const AuthorOffersActivity = () => {
                     <div className="left-side">
                         {dataset3?.map(item => (
                            
-                            <div key={item.id}>
+                            <div key={item.nftId}>
                                 <div className="single-item" >
                                     <div className="profile">
                                         <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
