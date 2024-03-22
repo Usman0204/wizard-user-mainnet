@@ -12,6 +12,7 @@ import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import AuctionTimmer from './auctiontimer';
 import CountdownTimer from './auctiontimer';
+import ReactPaginate from 'react-paginate';
 // import Loader from '@/hooks/loader';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });

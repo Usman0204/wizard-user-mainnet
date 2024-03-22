@@ -100,9 +100,9 @@ const AuthorOffersActivity = () => {
             <section className="activity-section author-activity-section bid-activity">
                 <div className="parent-activity">
                     <div className="left-side">
-                        {dataset3?.map(item => (
+                        {dataset3?.map(item,id => (
                            
-                            <div key={item.nftId}>
+                            <div key={id}>
                                 <div className="single-item" >
                                     <div className="profile">
                                         <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />

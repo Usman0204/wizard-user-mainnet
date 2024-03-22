@@ -100,8 +100,8 @@ const AuthorBidsActivity = () => {
             <section className="activity-section author-activity-section bid-activity">
                 <div className="parent-activity">
                     <div className="left-side">
-                        {dataset3?.map(item => (
-                            <div key={item.nftId}>
+                        {dataset3?.map(item,id => (
+                            <div key={id}>
                                         <div className="single-item" >
                                             <div className="left-sidee">
                                             <div className="profile">
