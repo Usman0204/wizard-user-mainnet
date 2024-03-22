@@ -16,6 +16,7 @@ const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 const Liveauction = ({ tab }) => {
     const [cardData, setUpcomingdata] = useState([])
     const [filters, setFilters] = useState({ name: 'All', value: '1' })
+    const [loader, setloader] = useState(false)
     const [dataset, setdataset] = useState();
     const api_url = Environment?.api_url
     const owl_option = {
@@ -75,125 +76,12 @@ const Liveauction = ({ tab }) => {
             },
         },
     };
-    // const cardData = [
-    //     {
-    //         id: 1,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l1.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 2,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l2.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 3,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l3.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 4,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l4.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 5,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l5.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 6,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l6.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 7,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l7.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 8,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l8.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 9,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l9.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 10,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l10.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 11,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l11.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-    //     {
-    //         id: 12,
-    //         imageSrc: '/assets/dummy-imgs/allcards/l12.png',
-    //         artist: 'The Whales',
-    //         cardNumber: '#2682',
-    //         price: 276.45,
-    //     },
-
-    // ];
-
-
-    // const GetUpcomingDetail = () => {
-    //     let tok = localStorage.getItem("accessToken");
-    //     var config = ''
-
-    //     config = {
-    //         method: "get",
-    //         url: `${api_url}/nfts/buy?offset=1&limit=50&orderField=updatedAt&orderDirection=-1`,
-    //         // headers: {
-    //         //     authorization: `Bearer ` + tok
-    //         // },
-    //     }
-
-    //     axios(config)
-    //         .then(function (response) {
-    //             // setLoader(false);
-    //             setUpcomingdata(response?.data?.data?.buyNfts)
-    //             // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
-    //         })
-    //         .catch(function (error) {
-    //             // setLoader(false);
-    //             // localStorage.removeItem("accessToken");
-    //             // localStorage.removeItem("user");
-    //             // window.location.assign("/")
-    //             // window.location.reload();
-    //         });
-    // }
+    
     const [page, setPage] = useState(1); // Tracks the current page for pagination
     const limit = 50; // Fixed number of items per page
 
     const GetUpcomingDetail = () => {
+        setloader(true)
         let tok = localStorage.getItem("accessToken");
 
         // Calculate the offset based on the current page
@@ -212,7 +100,7 @@ const Liveauction = ({ tab }) => {
         // if (status) {
         //     url += `&status=${status}`;
         // }
-
+        
         var config = {
             method: "get",
             url: url,
@@ -229,8 +117,10 @@ const Liveauction = ({ tab }) => {
                 setUpcomingdata(prev => [...prev, ...(response?.data?.data?.buyNfts)]);
                 // Optionally, increment the page state to load the next page on subsequent calls
                 // setPage(prevPage => prevPage + 1);
+                setloader(false)
             })
             .catch(function (error) {
+                setloader(false)
                 // Handle errors here
             });
     };
@@ -239,14 +129,7 @@ const Liveauction = ({ tab }) => {
         GetUpcomingDetail()
     }, [filters,page])
 
-    // useEffect(() => {
-    //     const storedData = localStorage.getItem('mainCardData');
-    //     if (storedData) {
-    //         setMainCardData(JSON.parse(storedData));
-    //     } else {
-    //         GetUpcomingDetail();
-    //     }
-    // }, []);
+
 
     const resetDataAndFetch = () => {
         setUpcomingdata([]); // Clear existing data
@@ -330,7 +213,7 @@ const Liveauction = ({ tab }) => {
                                 </div></Link>
                         ))}
                     </div>
-                    {cardData &&
+                    {cardData?.length > 0 &&
                         (
                             <div className="bottom-cards d-none displayblockinmobile">
                                 <div className="owl_option">
@@ -397,7 +280,7 @@ const Liveauction = ({ tab }) => {
                     }
                     {tab != 'buynow' ||
                         ( dataset?.pages > page &&   <div className="bottom-btn-seemore">
-                        <a onClick={() => setPage(page + 1)}>See more</a>
+                        <a className='' onClick={() => setPage(page + 1)}>{loader ? 'Loading...' : 'See more'} </a>
                         </div>)
                     }
 

@@ -151,10 +151,10 @@ const TopCollection = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="right-side">
+                  {/* <div className="right-side">
                     <h6>{collection?.core} <span>Core</span></h6>
                     <p className={percentageChange >= 0 ? " text-light" : ""}><img src={arrowImageSrc} alt="percentage change" className={percentageChange > 0 ? "img-fluid" : 'd-none'} />{Math.abs(percentageChange.toFixed(2))}%</p>
-                  </div>
+                  </div> */}
                 </div>
               </Link>
             );
