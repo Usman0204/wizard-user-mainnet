@@ -10,6 +10,8 @@ import Footer from './footer';
 import Environment from '@/utils/Enviroment';
 import axios from 'axios';
 import Loader from '@/hooks/loader';
+import AuthorBidsActivity from './authorBidsactivity';
+import AuthorOffersActivity from './authorOffersactivity';
 
 const Myprofile = () => {
     const textRef = useRef(null);
@@ -126,12 +128,12 @@ const Myprofile = () => {
                         <Tab eventKey="activity" title="Activity">
                             <AuthorActivity />
                         </Tab>
-                        {/* <Tab eventKey="followers" title="Followers">
-                            <Followers />
+                        <Tab eventKey="bids" title="Bids">
+                            <AuthorBidsActivity />
                         </Tab>
-                        <Tab eventKey="following" title="Following">
-                            <Followers />
-                        </Tab> */}
+                        <Tab eventKey="offers" title="Offers">
+                            <AuthorOffersActivity />
+                        </Tab>
                     </Tabs>
                 </div>
             </section>

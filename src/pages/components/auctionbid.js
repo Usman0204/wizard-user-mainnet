@@ -12,6 +12,7 @@ import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import AuctionTimmer from './auctiontimer';
 import CountdownTimer from './auctiontimer';
+import Loader from '@/hooks/loader';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
@@ -136,9 +137,13 @@ const Auctionbid = ({tab}) => {
 
         // getCollectionItemsDetails(); // Fetch data with new filters/sort
     };
-
+    const handlePageChange = (e) => {
+        const selectedPage = e.selected;
+        setPage(selectedPage + 1);
+    };
     return (
         <>
+            {loader && (tab === 'liveauction' && <Loader />)}
             <section className="live-auction">
                 <div className="custom-container">
                     <div className="upper-content">
@@ -162,7 +167,7 @@ const Auctionbid = ({tab}) => {
                             </div>
                         </div>}
                     </div>
-                    <div className="bottom-cards displaynoneinmobile">
+                    <div className={tab === 'liveauction' ? "bottom-cards" : "bottom-cards displaynoneinmobile"}>
                         {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card, id) => (
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
                             <div className="main-card">
@@ -218,19 +223,19 @@ const Auctionbid = ({tab}) => {
                     </div>
                     {cardData?.length > 0 &&
                         (
-                            <div className="bottom-cards d-none displayblockinmobile">
+                        <div className={tab === 'liveauction' ? "bottom-cards d-none " : "bottom-cards d-none displayblockinmobile"}>
                                 <div className="owl_option">
 
                                     <OwlCarousel
                                         className="owl-theme"
                                         {...owl_option}
                                     > 
-                                        { cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card) => (
+                                    {cardData?.slice(0, tab === 'liveauction' ? 20000 : 8)?.map((card) => (
                                                 <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
                                                     <div className="main-card">
                                                         <div className="main-img">
                                                             <img
-                                                                src={card.nft}
+                                                        src={'https://ipfs.io/ipfs' +card.nft}
                                                                 alt="img"
                                                                 className="img-fluid main-img-card"
                                                             />
@@ -284,8 +289,31 @@ const Auctionbid = ({tab}) => {
 
                 </div>
                 {tab != 'liveauction' ||
-                    (dataset?.pages > page && <div className="bottom-btn-seemore">
-                    <a className='' onClick={() => setPage(page + 1)}>{loader ? 'Loading...' : 'See more'} </a>
+                    (dataset?.pages > page && 
+                    <div className="bottom-btn-seemore">
+                    {/* <a className='' onClick={() => setPage(page + 1)}>{loader ? 'Loading...' : 'See more'} </a> */}
+                        <div className="paginationmain mt-5">
+                            <ReactPaginate
+                                previousLabel="Previous"
+                                nextLabel="Next"
+                                pageClassName="page-item"
+                                pageLinkClassName="page-link"
+                                previousClassName="page-item"
+                                previousLinkClassName="page-link"
+                                nextClassName="page-item"
+                                nextLinkClassName="page-link"
+                                breakLabel="..."
+                                breakClassName="page-item"
+                                breakLinkClassName="page-link"
+                                pageCount={Math.ceil(dataset?.pages)}
+                                marginPagesDisplayed={1}
+                                pageRangeDisplayed={2}
+                                onPageChange={handlePageChange}
+                                containerClassName="pagination"
+                                activeClassName="active"
+                                forcePage={page - 1}
+                            />
+                        </div>
                     </div>)
                 }
             </section>

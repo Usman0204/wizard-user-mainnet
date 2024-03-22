@@ -391,13 +391,13 @@ const Discovercollection = () => {
                                                             </div>
                                                         </Link>
                                                     </td>
-                                                    <td>{item?.price || 0} Core</td>
+                                                    <td>{item?.floorToday?.price || 0} Core</td>
                                                     <td>{parseFloat(item?.volume)?.toFixed(4)} Core</td>
-                                                    <td>{parseFloat(item?.marketcap * 0.99)?.toFixed(4)} USDC</td>
+                                                    <td>{parseFloat(item?.marketCap * 0.99)?.toFixed(2)} USDC</td>
                                                     <td><p className={classNameFloor}>{parseFloat(displayPercentageChangeOfFloor)?.toFixed(2)} %</p></td>
                                                     <td className='text-light'>{item?.volumeToday} Core</td>
                                                     <td><p className={className}>{parseFloat(displayPercentageChange)?.toFixed(2)} %</p></td>
-                                                    <td>{item?.sale1D}</td>
+                                                    <td>{item?.totalNftsOnSale}</td>
                                                     <td><p className="textspan">{item?.totalNfts} <span className='darktext'></span></p></td>
                                                     <td><p className="textspan">{item?.ownersCount} <span className='darktext'></span></p></td>
                                                 </tr>

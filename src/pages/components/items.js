@@ -7,6 +7,7 @@ import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import Link from 'next/link';
 import { useWeb3React } from '@web3-react/core';
+import ReactPaginate from 'react-paginate';
 
 const Items = ({ idnft }) => {
     // console.log("items++++++++", idnft)
@@ -81,7 +82,9 @@ const Items = ({ idnft }) => {
                     setdatasetArr(response?.data?.data?.collectionsItems || []);
                 } else {
                     // If no search, append the new data
-                    setdatasetArr(prev => [...prev, ...(response?.data?.data?.collectionsItems || [])]);
+                    // setdatasetArr(prev => [...prev, ...(response?.data?.data?.collectionsItems || [])]);
+                    setdatasetArr(response?.data?.data?.collectionsItems || []);
+
                 }
             })
             .catch(function (error) {
@@ -95,7 +98,10 @@ console.log(datasetArr);
     }, [idnft, price, search,page])
 
     console.log("dataset", dataset?.pages)
-
+    const handlePageChange = (e) => {
+        const selectedPage = e.selected;
+        setPage(selectedPage + 1);
+    };
     return (
         <>
             <section className="items-section">
@@ -119,7 +125,7 @@ console.log(datasetArr);
                             }
                             Filters</a>
                     </div> */}
-                    <div className="option-field displaynoneinmobile">
+                    <div className={"option-field displaynoneinmobile"}>
                         <input onChange={(e)=>{
                             resetDataAndFetch();
                             setSearch(e.target.value)
@@ -252,7 +258,31 @@ console.log(datasetArr);
                                         })}
                                     </div>
 
-                                   {dataset?.pages > page && <button onClick={()=>setPage(page + 1)} className="exploreallbtn">See More</button>}
+                                   {/* {dataset?.pages > page &&  */}
+                                {/* //    <button onClick={()=>setPage(page + 1)} className="exploreallbtn">See More</button> */}
+                                        <div className="paginationmain mt-5">
+                                            <ReactPaginate
+                                                previousLabel="Previous"
+                                                nextLabel="Next"
+                                                pageClassName="page-item"
+                                                pageLinkClassName="page-link"
+                                                previousClassName="page-item"
+                                                previousLinkClassName="page-link"
+                                                nextClassName="page-item"
+                                                nextLinkClassName="page-link"
+                                                breakLabel="..."
+                                                breakClassName="page-item"
+                                                breakLinkClassName="page-link"
+                                                pageCount={Math.ceil(dataset?.pages)}
+                                                marginPagesDisplayed={2}
+                                                pageRangeDisplayed={2}
+                                                onPageChange={handlePageChange}
+                                                containerClassName="pagination"
+                                                activeClassName="active"
+                                                forcePage={page - 1}
+                                            />
+                                        </div>
+                                   {/* } */}
                                 </div>
                             </section>
                         </div>

@@ -278,6 +278,79 @@
             }
         }
     }
+     .paginationmain {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                align-items: center;
+                padding: 12px 24px;
+
+                .paginationbtn {
+                    color: #FFF;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 20px;
+                    letter-spacing: -0.014px;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+
+                    &:hover {
+                        color: #862FC0;
+                        transition: 0.3s;
+
+                        .pagearrowimg path {
+                            stroke: #862FC0 !important;
+                            transition: 0.3s;
+                        }
+                    }
+                }
+
+                .pagination {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    .active>.page-link,
+                    .page-link.active {
+                        background-color: #862FC0 !important;
+                    }
+
+                    .page-item {
+
+                        .page-link {
+                            display: flex;
+                            width: 40px;
+                            height: 40px;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 5px !important;
+                            color: #FFF;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 20px;
+                            letter-spacing: -0.014px;
+                            border-radius: 10px;
+                            background: transparent;
+                            border: none;
+                            outline: none;
+                            box-shadow: none;
+                            padding: 0px !important;
+                            margin: 0px !important;
+                        }
+                    }
+                    .page-item:first-child .page-link{
+                        width: 100% !important;
+                    }
+                    .page-item:last-child .page-link{
+                        width: 100% !important;
+                    }
+                }
+            }
 }
 
 

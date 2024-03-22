@@ -117,9 +117,10 @@ const Collections = () => {
                                 {dataset?.discordUrl && <a href={dataset?.discordUrl} target='_blank'>
                                 <img src="\assets\discordicon.svg" alt="discordicon" className="innersocialicon" />
                                 </a>}
-                                <a href="" target='_blank'>
+                                {dataset?.websiteUrl && <a href={dataset?.websiteUrls} target='_blank'>
                                 <img src="\assets\webicon.svg" alt="webicon" className="innersocialicon" />
                                 </a>
+}
                             </div>
                         </div>
                     </div>
@@ -178,11 +179,11 @@ const Collections = () => {
                             <div className="upper-table">
                                 <div className="text">
                                     <p>FLOOR</p>
-                                    <h6>{dataset?.floorToday?.price > 1000 ? parseFloat(dataset?.floorToday?.price / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.floorToday?.price)?.toFixed(2)} CORE</h6>
+                                    <h6 className='d-flex align-items-center'>{dataset?.floorToday?.price > 1000 ? parseFloat(dataset?.floorToday?.price / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.floorToday?.price)?.toFixed(2)}  <img src="\assets\launchpaddetailassets\clogo.svg" alt="balanceinnerimg" className="balanceinnerimg p-2" /></h6>
                                 </div>
                                 <div className="text">
                                     <p>TOTAL VOL</p>
-                                    <h6>{dataset?.volume > 1000 ? parseFloat(dataset?.volume / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.volume)?.toFixed(2)} CORE</h6>
+                                    <h6 className='d-flex align-items-center'>{dataset?.volume > 1000 ? parseFloat(dataset?.volume / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.volume)?.toFixed(2)} <img src="\assets\launchpaddetailassets\clogo.svg" alt="balanceinnerimg" className="balanceinnerimg p-2" /></h6>
                                 </div>
                                 <div className="text">
                                     <p>OWNERS</p>

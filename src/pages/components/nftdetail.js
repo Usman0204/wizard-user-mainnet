@@ -35,6 +35,7 @@ const Nftdetail = () => {
     const [idnft, setidnft] = useState();
     const [dataset, setdataset] = useState();
     const [likestatus, setLikesStatus] = useState();
+    
     const [dataset2, setdataset2] = useState();
     const [dataset3, setdataset3] = useState();
     const [dataset4, setdataset4] = useState();
@@ -930,7 +931,7 @@ const Nftdetail = () => {
                             </div>
                             <div className="likesharemain">
                                 <div className="likeshareleft">
-                                    <div onClick={account ? handleClick : null} className="likemain">
+                                    <div data-toggle="tooltip" data-placement="top" title={account ? null :  'Connect Wallet to like'}  onClick={account ? handleClick : null} className="likemain">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={heart ? 'lineimg' : 'fillimg'} cursor="pointer">
                                             <path d="M12 21.6496C11.69 21.6496 11.39 21.6096 11.14 21.5196C7.32 20.2096 1.25 15.5596 1.25 8.68961C1.25 5.18961 4.08 2.34961 7.56 2.34961C9.25 2.34961 10.83 3.00961 12 4.18961C13.17 3.00961 14.75 2.34961 16.44 2.34961C19.92 2.34961 22.75 5.19961 22.75 8.68961C22.75 15.5696 16.68 20.2096 12.86 21.5196C12.61 21.6096 12.31 21.6496 12 21.6496ZM7.56 3.84961C4.91 3.84961 2.75 6.01961 2.75 8.68961C2.75 15.5196 9.32 19.3196 11.63 20.1096C11.81 20.1696 12.2 20.1696 12.38 20.1096C14.68 19.3196 21.26 15.5296 21.26 8.68961C21.26 6.01961 19.1 3.84961 16.45 3.84961C14.93 3.84961 13.52 4.55961 12.61 5.78961C12.33 6.16961 11.69 6.16961 11.41 5.78961C10.48 4.54961 9.08 3.84961 7.56 3.84961Z" fill="#745F8C" />
 
@@ -1366,6 +1367,7 @@ const Nftdetail = () => {
                         <h6 className="main-heading">
                             More from this collection
                         </h6>
+                        {console.log(dataset2)}
                         <MoreCollection dataset2={dataset2} />
                     </section>
                 </div>
