@@ -1,131 +1,144 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Environment from '@/utils/Enviroment';
-import moment from 'moment';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Environment from "@/utils/Enviroment";
+import moment from "moment";
+import Link from "next/link";
 
 const AuthorOffersActivity = () => {
-    const api_url = Environment.api_url;
-    const [dataset3, setdataset3] = useState();
-    const activityData = [
-        {
-            id: 1,
-            username: 'Amazing digital art',
-            address: 'Sell to 0xf4dc9d...',
-            timestamp: '2 minutes ago',
-            imgUrl: '/assets/dummy-imgs/collection/aa1.png'
-        },
-        {
-            id: 2,
-            username: 'Amazing digital art',
-            address: 'Bid on j_booze from 0xf4dc9d...',
-            timestamp: '2 minutes ago',
-            imgUrl: '/assets/dummy-imgs/collection/aa2.png'
-        },
-        {
-            id: 3,
-            username: 'Amazing digital art',
-            address: 'Bid cancelled by 0xf4dc9d...',
-            timestamp: '2 minutes ago',
-            imgUrl: '/assets/dummy-imgs/collection/aa3.png'
-        },
-        {
-            id: 4,
-            username: 'Amazing digital art',
-            address: 'Listed by james_j. for 0xf4dc9d...',
-            timestamp: '2 minutes ago',
-            imgUrl: '/assets/dummy-imgs/collection/aa4.png'
-        },
-        {
-            id: 5,
-            username: 'Amazing digital art',
-            address: 'transferred from j_booze to 0xf4dc9d...',
-            timestamp: '2 minutes ago',
-            imgUrl: '/assets/dummy-imgs/collection/aa5.png'
-        },
-        {
-            id: 6,
-            username: 'Amazing digital art',
-            address: 'transferred from j_booze to 0xf4dc9d...',
-            timestamp: '2 minutes ago',
-            imgUrl: '/assets/dummy-imgs/collection/aa6.png'
-        },
-        {
-            id: 7,
-            username: 'Amazing digital art',
-            address: 'transferred from j_booze to 0xf4dc9d...',
-            timestamp: '2 minutes ago',
-            imgUrl: '/assets/dummy-imgs/collection/aa7.png'
-        },
+  const api_url = Environment.api_url;
+  const [dataset3, setdataset3] = useState();
+  const activityData = [
+    {
+      id: 1,
+      username: "Amazing digital art",
+      address: "Sell to 0xf4dc9d...",
+      timestamp: "2 minutes ago",
+      imgUrl: "/assets/dummy-imgs/collection/aa1.png",
+    },
+    {
+      id: 2,
+      username: "Amazing digital art",
+      address: "Bid on j_booze from 0xf4dc9d...",
+      timestamp: "2 minutes ago",
+      imgUrl: "/assets/dummy-imgs/collection/aa2.png",
+    },
+    {
+      id: 3,
+      username: "Amazing digital art",
+      address: "Bid cancelled by 0xf4dc9d...",
+      timestamp: "2 minutes ago",
+      imgUrl: "/assets/dummy-imgs/collection/aa3.png",
+    },
+    {
+      id: 4,
+      username: "Amazing digital art",
+      address: "Listed by james_j. for 0xf4dc9d...",
+      timestamp: "2 minutes ago",
+      imgUrl: "/assets/dummy-imgs/collection/aa4.png",
+    },
+    {
+      id: 5,
+      username: "Amazing digital art",
+      address: "transferred from j_booze to 0xf4dc9d...",
+      timestamp: "2 minutes ago",
+      imgUrl: "/assets/dummy-imgs/collection/aa5.png",
+    },
+    {
+      id: 6,
+      username: "Amazing digital art",
+      address: "transferred from j_booze to 0xf4dc9d...",
+      timestamp: "2 minutes ago",
+      imgUrl: "/assets/dummy-imgs/collection/aa6.png",
+    },
+    {
+      id: 7,
+      username: "Amazing digital art",
+      address: "transferred from j_booze to 0xf4dc9d...",
+      timestamp: "2 minutes ago",
+      imgUrl: "/assets/dummy-imgs/collection/aa7.png",
+    },
+  ];
 
-    ];
+  const getNftActivityDetails = async () => {
+    let tok = localStorage.getItem("accessToken");
+    var config = "";
 
-    const getNftActivityDetails = async () => {
-        let tok = localStorage.getItem("accessToken");
-        var config = ''
+    config = {
+      method: "get",
+      url: `${api_url}/users/nfts-offer?offset=1&limit=20`,
+      headers: {
+        authorization: `Bearer ` + tok,
+      },
+    };
 
-        config = {
-            method: "get",
-            url: `${api_url}/users/nfts-offer?offset=1&limit=20`,
-            headers: {
-                authorization: `Bearer ` + tok
-            },
-        }
+    axios(config)
+      .then(function (response) {
+        setdataset3(response?.data?.data?.userOffer);
+        // console.log(response.data.data);
+        // setLoader(false);
+        // setUpcomingdata(response.data.data.upcomingLaunchpads[0])
+        // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
+      })
+      .catch(function (error) {
+        // setLoader(false);
+        // localStorage.removeItem("accessToken");
+        // localStorage.removeItem("user");
+        // window.location.assign("/")
+        // window.location.reload();
+      });
+  };
+  useEffect(() => {
+    getNftActivityDetails();
+    // var val = window.location.href;
+    // setlinkuser(val)
+    // setlinktext('NFT Detail Here TokenID = #' + dataset?.tokenID)
+  }, []);
 
-        axios(config)
-            .then(function (response) {
-                setdataset3(response?.data?.data?.userOffer)
-                // console.log(response.data.data);
-                // setLoader(false);
-                // setUpcomingdata(response.data.data.upcomingLaunchpads[0])
-                // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
-            })
-            .catch(function (error) {
-                // setLoader(false);
-                // localStorage.removeItem("accessToken");
-                // localStorage.removeItem("user");
-                // window.location.assign("/")
-                // window.location.reload();
-            });
-    }
-    useEffect(() => {
-        getNftActivityDetails()
-        // var val = window.location.href;
-        // setlinkuser(val)
-        // setlinktext('NFT Detail Here TokenID = #' + dataset?.tokenID)
-    }, [])
-
-    return (
-        <>
-            <section className="activity-section author-activity-section bid-activity">
-                <div className="parent-activity">
-                    <div className="left-side">
-                        {dataset3?.map(item,id => (
-                           
-                            <div key={id}>
-                                <div className="single-item" >
-                                    <div className="profile">
-                                        <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
-                                        {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
-                                    </div>
-                                    <div className="right-content">
-                                        <h5>{item?.launchpadId?.name} #{item?.tokenID}</h5>
-                                        <h6>
-                                            <span className='text-span-color'> Offer Price  {' '}
-                                                <span className='text-light'>{item?.offerPrice}</span>  Core
-                                            </span>
-                                        </h6>
-                                        <p>{moment(item?.createdAt).fromNow()}</p>
-                                    </div>
-                                        <div className="right-sidee">
-                                        <Link href={`/nftdetail?id=${item?.nftId}`} className='btn-view'>View</Link>
-                                        </div>
-                                </div>
-
-                            </div>
-                        ))}
-                    </div>
-                    {/* <div className="right-side">
+  return (
+    <>
+      <section className="activity-section author-activity-section bid-activity">
+        <div className="parent-activity">
+          <div className="left-side">
+            {dataset3?.map((item, id) => (
+              <div key={id}>
+                <div className="single-item">
+                  <div className="profile">
+                    <img
+                      src={"https://ipfs.io/ipfs/" + item?.nft}
+                      alt="img"
+                      className="img-fluid main-img-profile"
+                    />
+                    {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
+                  </div>
+                  <div className="right-content">
+                    <h5>
+                      {item?.launchpadId?.name} #{item?.tokenID}
+                    </h5>
+                    <h6>
+                      <span className="text-span-color">
+                        {" "}
+                        Offer Price{" "}
+                        <span className="text-light">
+                          {item?.offerPrice}
+                        </span>{" "}
+                        Core
+                      </span>
+                    </h6>
+                    <p>{moment(item?.createdAt).fromNow()}</p>
+                  </div>
+                  <div className="right-sidee">
+                    <Link
+                      href={`/nftdetail?id=${item?.nftId}`}
+                      className="btn-view"
+                    >
+                      View
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* <div className="right-side">
                         <h6 className="heading-text">Filters</h6>
                         <div className="all-filters-item">
                             <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -160,10 +173,10 @@ const AuthorOffersActivity = () => {
                             </svg> Mints</a>
                         </div>
                     </div> */}
-                </div>
-            </section>
-        </>
-    );
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default AuthorOffersActivity;
