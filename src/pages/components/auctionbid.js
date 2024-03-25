@@ -323,7 +323,7 @@ const Auctionbid = ({tab}) => {
                     <div className="upper-content">
                         <h5>Live Auctions</h5>
                         <div className="right-btns">
-                            <Link href="/collections" className="btn-seeall">
+                            <Link href="/launchpads" className="btn-seeall">
                                 Explore All
                             </Link>
                         </div>

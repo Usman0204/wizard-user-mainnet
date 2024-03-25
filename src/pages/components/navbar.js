@@ -376,7 +376,7 @@ const Navbar = () => {
                           <h6 className="collectiontext">Collection</h6>
                         </div>
                         {datasearch?.launchpadResult?.map((card, index) => (
-                          <Link key={index} href={`/collections?id=${card?._id}`}>
+                          <Link key={index} href={`/launchpads?id=${card?._id}`}>
                             <div className="collectionresult">
                               <div className="collectionresultleft">
                                 <div className="collectionimg">
@@ -708,7 +708,7 @@ const Navbar = () => {
                   <div className="collectionhead">
                     <h6 className="collectiontext">Collection</h6>
                   </div>
-                  <Link href="/collections" onClick={handleClose2}>
+                  <Link href="/launchpads" onClick={handleClose2}>
                     <div className="collectionresult">
                       <div className="collectionresultleft">
                         <div className="collectionimg">
@@ -722,7 +722,7 @@ const Navbar = () => {
                       <p className="collectionrightpara">7.9 Core</p>
                     </div>
                   </Link>
-                  <Link href="/collections" onClick={handleClose2}>
+                  <Link href="/launchpads" onClick={handleClose2}>
                     <div className="collectionresult">
                       <div className="collectionresultleft">
                         <div className="collectionimg">
@@ -736,7 +736,7 @@ const Navbar = () => {
                       <p className="collectionrightpara">7.9 Core</p>
                     </div>
                   </Link>
-                  <Link href="/collections" onClick={handleClose2}>
+                  <Link href="/launchpads" onClick={handleClose2}>
                     <div className="collectionresult">
                       <div className="collectionresultleft">
                         <div className="collectionimg">

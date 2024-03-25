@@ -533,7 +533,7 @@ const Discovercollection = () => {
                           <td>{index + 1}</td>
                           <td>
                             <Link
-                              href={`/collections?id=${item?._id}`}
+                              href={`/launchpads?id=${item?._id}`}
                               className="gctcgctctc"
                             >
                               <div className="maincollectiontd">

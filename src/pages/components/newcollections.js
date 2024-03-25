@@ -24,7 +24,7 @@ const Newcollections = () => {
         dots: false,
         dotsEach: false,
         loop: false,
-        autoplay: true,
+        autoplay:false,
         navText: [
             "<img src='/assets/landing/static/carousel-arrow-back.svg' alt='img' />",
             "<img src='/assets/landing/static/carousel-arrow-next.svg' alt='img' />",
@@ -196,7 +196,7 @@ const Newcollections = () => {
                                 {...owl_option}
                             >
                                 {mainCardData?.map((item, index) => (
-                                    <Link key={index} href={`/collections?id=${item?._id}`}>
+                                    <Link key={index} href={`/launchpads?id=${item?._id}`}>
                                         {console.log('item',item)}
                                         <div className="main-card-new" >
                                             <span className='bottom-bg-linear'></span>

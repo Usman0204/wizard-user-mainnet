@@ -11,12 +11,14 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Link from 'next/link';
 import axios from 'axios';
-
+// import OwlCarousel from 'react-owl-carousel';
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 const Launchpaddrops = () => {
     const api_url = Environment.api_url
-    const [mainCardData, setMainCardData] = useState(null);
+    const [mainCardData, setMainCardData] = useState([]);
+    const [time, setTime] = useState({ name: 'Live', value: 'live' })
+    const [rend, setRend] = useState(false)
     const [accessToken, setAccessToken] = useState("");
     const owl_option = {
         nav: true,
@@ -88,13 +90,9 @@ const Launchpaddrops = () => {
 
     const getLaunchPadDrops = async () => {
         try {
-            const response = await axios.get(`${api_url}/launchpads/listed?limit=200&offset=1&duration[]=live`, {
-                // headers: {
-                //     Authorization: "Bearer " + accessToken,
-                //     'Content-Type': 'application/json',
-                // },
-            });
-            setMainCardData(response.data.data);
+            const response = await axios.get(`${api_url}/launchpads/listed?limit=200&offset=1&duration[]=${time?.value}`);
+            setMainCardData(response?.data.data.launchpads);
+            setRend(!rend);
         } catch (error) {
             console.error('Error fetching launch pad data:', error);
         }
@@ -108,87 +106,43 @@ const Launchpaddrops = () => {
     useEffect(() => {
         console.log("mainCardData", mainCardData);
         getLaunchPadDrops();
-    }, []);
+      setTimeout(() => {
+          getLaunchPadDrops();
+      }, 500);
 
-    // const mainCardData = [
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/1.png",
-    //         title: "GREENCY-NEKO",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/2.png",
-    //         title: "Ordinal Codes",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/3.png",
-    //         title: "Quekz x SolPlug",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/4.png",
-    //         title: "SAGA",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/5.png",
-    //         title: "GREENCY-NEKO",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/6.png",
-    //         title: "GREENCY-NEKO",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/7.png",
-    //         title: "GREENCY-NEKO",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-    //     {
-    //         imageUrl: "/assets/dummy-imgs/allcards/8.png",
-    //         title: "GREENCY-NEKO",
-    //         price: "584.85 Core",
-    //         items: "7,777",
-    //         minted: "6789",
-    //     },
-
-    // ];
+    }, [time]);
+    console.log(mainCardData,);
 
     return (
-        mainCardData.launchpads.length > 0 && 
-        <section className='launchpad-drops'>
+        <section className='top-collections launchpad-drops '>
             <div className="custom-container">
                 <div className="upper-content">
                     <h5>Launchpad drops</h5>
                     <div className="right-btns">
+                        <div className="dropdown">
+                            <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {time?.name} <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
+                            </button>
+                            <ul className="dropdown-menu">
+                                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Live', value: 'live' }) }} >Live</a></li>
+                                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Upcomming', value: 'upcoming' }) }} >Upcomming</a></li>
+                                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Past', value: 'past' }) }} >Past</a></li>
+                            </ul>
+                        </div>
                         <Link href="/launchpad" className="btn-seeall">See All</Link>
                     </div>
+
                 </div>
-                {mainCardData.launchpads.length > 0 &&
+                {mainCardData &&
                     (
+
                         <div className="bottom-cards">
                             <div className="owl_option">
                                 <OwlCarousel
                                     className="owl-theme"
                                     {...owl_option}
                                 >
-                                    {mainCardData.launchpads.map((item, index) => (
+                                    {mainCardData?.map((item, index) => (
                                         <Link key={index} href={'/launchpaddetailpage?id=' + item?._id}>
                                             <div className="main-card" key={index}>
                                                 <div className="main-img">
@@ -217,12 +171,11 @@ const Launchpaddrops = () => {
                                 </OwlCarousel>
                             </div>
                         </div>
-                    )
-                }
+                    )}
 
             </div>
         </section>
-        
+
     );
 };
 

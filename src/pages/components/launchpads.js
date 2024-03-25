@@ -13,7 +13,6 @@ import { useRouter } from 'next/router';
 import Footer from './footer';
 import axios from 'axios';
 import Environment from '@/utils/Enviroment';
-
 const Collections = () => {
     const api_url = Environment.api_url;
     const [show, setShow] = useState(false);
@@ -21,7 +20,6 @@ const Collections = () => {
     const [dataset, setdataset] = useState();
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     const [show1, setShow1] = useState(false);
     const handleClose1 = () => setShow1(false);
     const handleShow1 = () => setShow1(true);
