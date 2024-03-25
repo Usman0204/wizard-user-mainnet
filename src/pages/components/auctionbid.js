@@ -19,7 +19,7 @@ const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 const Auctionbid = ({tab}) => {
     const [cardData, setUpcomingdata] = useState([])
-    const [filters, setFilters] = useState({ name: 'All', value: '1' })
+    const [filters, setFilters] = useState({ name: 'Low to High', value: '1' })
     const [dataset, setdataset] = useState();
     const [loader, setloader] = useState(false)
     const api_url = Environment?.api_url
