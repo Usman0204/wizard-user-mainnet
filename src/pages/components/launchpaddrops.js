@@ -125,7 +125,7 @@ const Launchpaddrops = () => {
                             </button>
                             <ul className="dropdown-menu">
                                 <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Live', value: 'live' }) }} >Live</a></li>
-                                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Upcomming', value: 'upcoming' }) }} >Upcomming</a></li>
+                                <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Upcomming', value: 'upcoming' }) }} >Upcoming</a></li>
                                 <li><a className="dropdown-item" onClick={() => { setTime({ name: 'Past', value: 'past' }) }} >Past</a></li>
                             </ul>
                         </div>
