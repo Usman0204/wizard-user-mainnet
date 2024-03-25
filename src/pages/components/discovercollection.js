@@ -551,7 +551,7 @@ const Discovercollection = () => {
                             </Link>
                           </td>
                           <td>{item?.floorToday?.price || 0} Core</td>
-                          <td>{parseFloat(item?.volume)?.toFixed(4)} Core</td>
+                          <td>{parseFloat(item?.volume)?.toFixed(2)} Core</td>
                           {/* <td>{parseFloat(item?.marketCap * 0.99)?.toFixed(2)} USDC</td> */}
                           <td>
                             {isNaN(result) || result === 0
