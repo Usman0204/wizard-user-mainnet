@@ -1423,7 +1423,7 @@ const Nftdetail = () => {
                     <div className="placebiddatamain">
                         <div className="placebiddata">
                             <p className="placebiddataleft">Your balance</p>
-                            <h6 className="placebiddataright">{parseFloat(balance)?.toFixed(4)}  Core</h6>
+                            <h6 className="placebiddataright">{parseFloat(balance)?.toFixed(2)}  Core</h6>
                         </div>
                         <div className="placebiddata">
                             <p className="placebiddataleft">Service fee</p>
@@ -1497,7 +1497,7 @@ const Nftdetail = () => {
                     <div className="placebiddatamain">
                         <div className="placebiddata">
                             <p className="placebiddataleft">Your balance</p>
-                            <h6 className="placebiddataright">{parseFloat(balanceOf)?.toFixed(4)}  WCore</h6>
+                            <h6 className="placebiddataright">{parseFloat(balanceOf)?.toFixed(2)}  WCore</h6>
                         </div>
                         <div className="placebiddata">
                             <p className="placebiddataleft">Service fee</p>
