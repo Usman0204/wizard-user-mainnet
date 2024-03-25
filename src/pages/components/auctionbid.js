@@ -206,7 +206,7 @@ const Auctionbid = ({tab}) => {
                                                     alt="img"
                                                     className="img-fluid"
                                                 />
-                                                {card?.price} <span>Core</span>
+                                                {card?.price || 0} <span>Core</span>
                                             </h5>
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@ const Auctionbid = ({tab}) => {
                                                                             alt="img"
                                                                             className="img-fluid"
                                                                         />
-                                                                        {card.price} <span>Core</span>
+                                                                        {card.price || 0} <span>Core</span>
                                                                     </h5>
                                                                 </div>
                                                             </div>

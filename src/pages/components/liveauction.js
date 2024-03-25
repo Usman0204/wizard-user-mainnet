@@ -199,7 +199,7 @@ const Liveauction = ({ tab }) => {
                                                         className="img-fluid"
                                                     />
                                                 </h6>
-                                                <h5>#{card?.tokenID}</h5>
+                                                <h5>#{card?.tokenID || 0}</h5>
                                             </div>
                                             <div className="right-text">
                                                 <h6>Price</h6>
@@ -209,7 +209,7 @@ const Liveauction = ({ tab }) => {
                                                         alt="img"
                                                         className="img-fluid"
                                                     />
-                                                    {card?.price} <span>Core</span>
+                                                    {card?.price || 0} <span>Core</span>
                                                 </h5>
                                             </div>
                                         </div>
@@ -269,7 +269,7 @@ const Liveauction = ({ tab }) => {
                                                                         alt="img"
                                                                         className="img-fluid"
                                                                     />
-                                                                    {card.price} <span>Core</span>
+                                                                    {card.price || 0} <span>Core</span>
                                                                 </h5>
                                                             </div>
                                                         </div>
