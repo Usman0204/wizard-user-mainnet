@@ -171,6 +171,7 @@ const Launchpaddrops = () => {
     // ];
 
     return (
+        mainCardData.launchpads.length > 0 && 
         <section className='launchpad-drops'>
             <div className="custom-container">
                 <div className="upper-content">
@@ -179,7 +180,7 @@ const Launchpaddrops = () => {
                         <Link href="/launchpad" className="btn-seeall">See All</Link>
                     </div>
                 </div>
-                {mainCardData &&
+                {mainCardData.launchpads.length > 0 &&
                     (
                         <div className="bottom-cards">
                             <div className="owl_option">
@@ -221,6 +222,7 @@ const Launchpaddrops = () => {
 
             </div>
         </section>
+        
     );
 };
 
