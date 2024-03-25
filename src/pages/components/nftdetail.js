@@ -35,7 +35,7 @@ const Nftdetail = () => {
     const [idnft, setidnft] = useState();
     const [dataset, setdataset] = useState();
     const [likestatus, setLikesStatus] = useState();
-    
+    const [coreUsdValue, setCoreUsdValue] = useState(0)
     const [dataset2, setdataset2] = useState();
     const [dataset3, setdataset3] = useState();
     const [dataset4, setdataset4] = useState();
@@ -881,10 +881,21 @@ const Nftdetail = () => {
         }
     }, [account, dataset, router]);
 
+    function getCoreUsdPrice() {
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=coredaoorg&vs_currencies=usd')
+            .then(response => response.json())
+            .then(data => {
+                console.log(`The current price of Bitcoin is $${data.coredaoorg.usd}`);
+                setCoreUsdValue(data.coredaoorg.usd)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
 
-
-    // console.log("highest bid", dataset4[0]?.bidPrice)
-
+    }
+    useEffect(() => {
+        getCoreUsdPrice()
+    }, [])
     return (
         <>
             {loader && <Loader />}
@@ -982,8 +993,8 @@ const Nftdetail = () => {
                                             (
                                                 <div className="pricebidinner">
                                                     <p className="pricebidpara">Price</p>
-                                                    <h6 className="pricebidhead">{dataset?.price} Core</h6>
-                                                    <p className="pricebidlowerpara">${(dataset?.price * 1.5).toFixed(6)}</p>
+                                                    <h6 className="pricebidhead">{dataset?.price || 0} Core</h6>
+                                                <p className="pricebidlowerpara">${((dataset?.price * coreUsdValue) || 0).toFixed(2)}</p>
                                                 </div>
                                             )
                                         }
@@ -1015,8 +1026,8 @@ const Nftdetail = () => {
                                             (
                                                 <div className="pricebidinner">
                                                     <p className="pricebidpara">Price</p>
-                                                    <h6 className="pricebidhead">{dataset?.price} Core</h6>
-                                                    <p className="pricebidlowerpara">${(dataset?.price * 1.5).toFixed(6)}</p>
+                                                    <h6 className="pricebidhead">{dataset?.price || 0} Core</h6>
+                                                <p className="pricebidlowerpara">${((dataset?.price * coreUsdValue) || 0).toFixed(2)}</p>
                                                 </div>
                                             )
                                         }
@@ -1032,7 +1043,7 @@ const Nftdetail = () => {
                                         <div className='divdivss'>
                                             <div className="pricebidbtns">
 
-                                                <button onClick={handleShow} className="bluebtn uyyuyuy">Buy for {dataset?.price} Core</button>
+                                                <button onClick={handleShow} className="bluebtn uyyuyuy">Buy for {dataset?.price || 0} Core</button>
 
                                                 {/* <button className="borderbtn" onClick={handleShow2}>Place a bid</button> */}
                                             </div>
@@ -1388,7 +1399,7 @@ const Nftdetail = () => {
                         <h6 className="buyitemhead">Item Price</h6>
                         <div className="buyitemright">
                             <img src="\assets\nftdetailassets\token.svg" alt="buyitemimg" className="buyitemimg" />
-                            <h6 className="buyitemright">{dataset?.price}</h6>
+                            <h6 className="buyitemright">{dataset?.price || 0}</h6>
                             <p className="buyitemrightpara">Core</p>
                         </div>
                     </div>
@@ -1396,12 +1407,12 @@ const Nftdetail = () => {
                         <div className="buydata">
                             <p className="buydataleft">Service fee</p>
                             <h6 className="buydataright">{!isNaN((dataset?.launchpad[0]?.platformFee || 0)) ?
-                                (((dataset?.launchpad[0]?.platformFee || 0 )/ 100) * dataset?.price).toFixed(6) : '0'} Core</h6>
+                                (((dataset?.launchpad[0]?.platformFee || 0 )/ 100) * dataset?.price).toFixed(2) : '0'} Core</h6>
                         </div>
                         <div className="buydata">
                             <p className="buydataleft">Total Amount</p>
                             <h6 className="buydataright">{!isNaN((dataset?.launchpad[0]?.platformFee || 0)) ?
-                                (dataset?.price + ((dataset?.launchpad[0]?.platformFee || 0 )/ 100 * dataset?.price)).toFixed(6) : dataset?.price} Core</h6>
+                                (dataset?.price + ((dataset?.launchpad[0]?.platformFee || 0 )/ 100 * dataset?.price)).toFixed(2) : dataset?.price} Core</h6>
                         </div>
                     </div>
 
@@ -1468,7 +1479,7 @@ const Nftdetail = () => {
                         </div>
                         <div className="placebiddata">
                             <p className="placebiddataleft">Service fee</p>
-                            <h6 className="placebiddataright">{(((dataset?.launchpad[0]?.platformFee || 0) / 100) * (corevalue)).toFixed(4)} Core</h6>
+                            <h6 className="placebiddataright">{(((dataset?.launchpad[0]?.platformFee || 0) / 100) * (corevalue)).toFixed(2)} Core</h6>
                         </div>
                     </div>
                     <div className="buyitemmain p-0">
@@ -1542,7 +1553,7 @@ const Nftdetail = () => {
                         </div>
                         <div className="placebiddata">
                             <p className="placebiddataleft">Service fee</p>
-                            <h6 className="placebiddataright">{(((dataset?.launchpad[0]?.platformFee || 0) / 100) * (corevalue)).toFixed(4)} WCore</h6>
+                            <h6 className="placebiddataright">{(((dataset?.launchpad[0]?.platformFee || 0) / 100) * (corevalue)).toFixed(2)} WCore</h6>
                         </div>
                     </div>
                     <div className="buyitemmain p-0">

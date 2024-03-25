@@ -142,7 +142,7 @@ const TopCollection = () => {
                         <div className="text">
                           <h6>{collection.name}</h6>
                           {curruncy === 'USD' ?
-                            <p><span>Floor:</span> {parseFloat(collection?.cheapestNFTToday?.price || 0) * parseFloat(coreUsdValue)} <span style={{ textTransform: "uppercase" }}>USD</span></p>
+                            <p><span>Floor:</span> ${(parseFloat(collection?.cheapestNFTToday?.price || 0) * parseFloat(coreUsdValue)).toFixed(2)} <span style={{ textTransform: "uppercase" }}>USD</span></p>
 
                           :
                           <p><span>Floor:</span> {collection?.cheapestNFTToday?.price || 0} <span style={{ textTransform: "uppercase" }}>Core</span></p>

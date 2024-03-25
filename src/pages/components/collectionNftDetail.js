@@ -1355,12 +1355,12 @@ const Nftdetail = () => {
                         <div className="buydata">
                             <p className="buydataleft">Service fee</p>
                             <h6 className="buydataright">{!isNaN(dataset?.launchpad[0]?.platformFee) ?
-                                ((dataset?.launchpad[0]?.platformFee / 100) * dataset?.price).toFixed(6) : '0'} Core</h6>
+                                ((dataset?.launchpad[0]?.platformFee / 100) * dataset?.price).toFixed(2) : '0'} Core</h6>
                         </div>
                         <div className="buydata">
                             <p className="buydataleft">Total Amount</p>
                             <h6 className="buydataright">{!isNaN(dataset?.launchpad[0]?.platformFee) ?
-                                (dataset?.price + (dataset?.launchpad[0]?.platformFee / 100 * dataset?.price)).toFixed(6) : dataset?.price} Core</h6>
+                                (dataset?.price + (dataset?.launchpad[0]?.platformFee / 100 * dataset?.price)).toFixed(2) : dataset?.price} Core</h6>
                         </div>
                     </div>
 
@@ -1427,7 +1427,7 @@ const Nftdetail = () => {
                         </div>
                         <div className="placebiddata">
                             <p className="placebiddataleft">Service fee</p>
-                            <h6 className="placebiddataright">{((dataset?.launchpad[0]?.platformFee / 100) * (corevalue)).toFixed(4)} Core</h6>
+                            <h6 className="placebiddataright">{((dataset?.launchpad[0]?.platformFee / 100) * (corevalue)).toFixed(2)} Core</h6>
                         </div>
                     </div>
                     <div className="buyitemmain p-0">
@@ -1501,7 +1501,7 @@ const Nftdetail = () => {
                         </div>
                         <div className="placebiddata">
                             <p className="placebiddataleft">Service fee</p>
-                            <h6 className="placebiddataright">{((dataset?.launchpad[0]?.platformFee / 100) * (corevalue)).toFixed(4)} WCore</h6>
+                            <h6 className="placebiddataright">{((dataset?.launchpad[0]?.platformFee / 100) * (corevalue)).toFixed(2)} WCore</h6>
                         </div>
                     </div>
                     <div className="buyitemmain p-0">
