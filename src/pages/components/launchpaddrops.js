@@ -18,7 +18,6 @@ const Launchpaddrops = () => {
     const api_url = Environment.api_url
     const [mainCardData, setMainCardData] = useState([]);
     const [time, setTime] = useState({ name: 'Live', value: 'live' })
-    const [rend, setRend] = useState(false)
     const [accessToken, setAccessToken] = useState("");
     const owl_option = {
         nav: true,
@@ -91,8 +90,11 @@ const Launchpaddrops = () => {
     const getLaunchPadDrops = async () => {
         try {
             const response = await axios.get(`${api_url}/launchpads/listed?limit=200&offset=1&duration[]=${time?.value}`);
-            setMainCardData(response?.data.data.launchpads);
-            setRend(!rend);
+            let launchpadDrops = response?.data.data.launchpads
+            setMainCardData(launchpadDrops);
+            // if (launchpadDrops?.length  === 0){
+            //     setTime({ name: 'Upcomming', value: 'upcoming' })
+            // }
         } catch (error) {
             console.error('Error fetching launch pad data:', error);
         }

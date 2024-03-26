@@ -76,17 +76,27 @@ const Collections = () => {
                 // window.location.reload();
             });
     }
+    // useEffect(() => {
+    //     const searchParams = new URLSearchParams(window.location.search);
+    //     const id = searchParams.get('id');
+    //     console.log(id);
+    //     getCollectionDetails(id)
+    //     setidnft(id)
+    //     var val = window.location.href;
+    //     setlinkuser(val)
+    //     setlinktext('Collection Detail Here Name = ' + dataset?.name)
+    // }, [])
     useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const id = searchParams.get('id');
+        const id = router.query.id;
         console.log(id);
-        getCollectionDetails(id)
-        setidnft(id)
-        var val = window.location.href;
-        setlinkuser(val)
-        setlinktext('Collection Detail Here Name = ' + dataset?.name)
-    }, [])
-
+        if (id) {
+            getCollectionDetails(id);
+            setidnft(id);
+            const val = window.location.href;
+            setlinkuser(val);
+            setlinktext('Collection Detail Here Name = ' + dataset?.name);
+        }
+    }, [router.query.id]);
     // console.log("dataset here is", idnft)
 
     const [linkUser, setlinkuser] = useState();

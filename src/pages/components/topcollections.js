@@ -129,7 +129,7 @@ const TopCollection = () => {
                 : "/assets/landing/static/green-arrow.svg"; // Assuming you have a neutral icon for no change
 
             return (
-              <Link key={index} href={`/launchpads?id=${collection?._id}`}>
+              <Link key={index} href={`/launchpads/${collection?._id}`}>
                 <div className="single-collection">
                   <div className="left-side">
                     <div className="inner-left">

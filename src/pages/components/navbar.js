@@ -376,7 +376,7 @@ const Navbar = () => {
                           <h6 className="collectiontext">Collection</h6>
                         </div>
                         {datasearch?.launchpadResult?.map((card, index) => (
-                          <Link key={index} href={`/launchpads?id=${card?._id}`}>
+                          <Link key={index} href={`/launchpads/${card?._id}`}>
                             <div className="collectionresult">
                               <div className="collectionresultleft">
                                 <div className="collectionimg">
