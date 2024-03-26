@@ -11,13 +11,14 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Link from 'next/link';
 import axios from 'axios';
+import CountdownTimer from './auctiontimer';
 // import OwlCarousel from 'react-owl-carousel';
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 const Launchpaddrops = () => {
     const api_url = Environment.api_url
     const [mainCardData, setMainCardData] = useState([]);
-    const [time, setTime] = useState({ name: 'Live', value: 'live' })
+    // const [time, setTime] = useState({ name: 'Live', value: 'live' })
     const [accessToken, setAccessToken] = useState("");
     const owl_option = {
         nav: true,
@@ -89,7 +90,7 @@ const Launchpaddrops = () => {
 
     const getLaunchPadDrops = async () => {
         try {
-            const response = await axios.get(`${api_url}/launchpads/listed?limit=200&offset=1&duration[]=${time?.value}`);
+            const response = await axios.get(`${api_url}/launchpads/listed?limit=200&offset=1&duration[]=live&duration[]=upcoming`);
             let launchpadDrops = response?.data.data.launchpads
             setMainCardData(launchpadDrops);
             // if (launchpadDrops?.length  === 0){
@@ -108,19 +109,20 @@ const Launchpaddrops = () => {
     useEffect(() => {
         console.log("mainCardData", mainCardData);
         getLaunchPadDrops();
-      setTimeout(() => {
-          getLaunchPadDrops();
-      }, 500);
+        setTimeout(() => {
+            getLaunchPadDrops();
+        }, 500);
 
-    }, [time]);
+    }, []);
     console.log(mainCardData,);
 
     return (
-        <section className='top-collections launchpad-drops '>
+        // top - collections
+        <section className=' launchpad-drops '>
             <div className="custom-container">
                 <div className="upper-content">
                     <h5>Launchpad drops</h5>
-                    <div className="right-btns">
+                    {/* <div className="right-btns">
                         <div className="dropdown">
                             <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {time?.name} <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" />
@@ -132,7 +134,7 @@ const Launchpaddrops = () => {
                             </ul>
                         </div>
                         <Link href="/launchpad" className="btn-seeall">See All</Link>
-                    </div>
+                    </div> */}
 
                 </div>
                 {mainCardData &&
@@ -144,8 +146,9 @@ const Launchpaddrops = () => {
                                     className="owl-theme"
                                     {...owl_option}
                                 >
-                                    {mainCardData?.map((item, index) => (
-                                        <Link key={index} href={'/launchpaddetailpage?id=' + item?._id}>
+                                    {mainCardData?.map((item, index) => {
+                                        let isUpcoming = new Date(item?.mintStartTime) > new Date()
+                                        return (<Link key={index} href={'/launchpaddetailpage?id=' + item?._id}>
                                             <div className="main-card" key={index}>
                                                 <div className="main-img">
                                                     <img src={item?.imageUrl} alt="img" className='img-fluid' />
@@ -166,10 +169,20 @@ const Launchpaddrops = () => {
                                                             <p>{item?.minted}</p>
                                                         </div>
                                                     </div>
+
+                                                    {isUpcoming ?
+                                                        <div className="timer ">
+                                                            <h6>Starts <CountdownTimer endDate={item?.mintStartTime} /></h6>
+                                                        </div>
+                                                        :
+                                                        <div className="timer ">
+                                                            <h6>🟢 Live <CountdownTimer endDate={item?.mintEndTime} /></h6>
+                                                        </div>
+                                                    }
                                                 </div>
                                             </div>
-                                        </Link>
-                                    ))}
+                                        </Link>)
+                                    })}
                                 </OwlCarousel>
                             </div>
                         </div>

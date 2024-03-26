@@ -99,12 +99,15 @@ const AuthorOffersActivity = () => {
       <section className="activity-section author-activity-section bid-activity">
         <div className="parent-activity">
           <div className="left-side">
-            {dataset3?.map((item, id) => (
-              <div key={id}>
+            {dataset3?.map((item, id) => {
+              console.log(item?.nft);
+              let imgUrl = item?.nft?.includes('https://ipfs.io/ipfs') ? item.nft : 'https://ipfs.io/ipfs' + item.nft;
+              console.log(imgUrl, id);
+            return(  <div key={id}>
                 <div className="single-item">
                   <div className="profile">
                     <img
-                      src={"https://ipfs.io/ipfs/" + item?.nft}
+                    src={imgUrl}
                       alt="img"
                       className="img-fluid main-img-profile"
                     />
@@ -135,8 +138,8 @@ const AuthorOffersActivity = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)
+})}
           </div>
           {/* <div className="right-side">
                         <h6 className="heading-text">Filters</h6>

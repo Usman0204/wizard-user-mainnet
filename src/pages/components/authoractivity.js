@@ -99,13 +99,16 @@ const AuthorActivity = () => {
             <section className="activity-section author-activity-section">
                 <div className="parent-activity">
                     <div className="left-side">
-                        {dataset3?.map(item => (
-                            <div key={item.id}>
+                        {dataset3?.map((item,id) => {
+                            console.log(item?.nft);
+                            let imgUrl = item?.nft?.includes('https://ipfs.io/ipfs') ? item.nft : 'https://ipfs.io/ipfs' + item.nft;
+                            console.log(imgUrl, id);
+                          return ( <div key={item.id}>
                                 {item?.type === 'sell' ?
                                     (
                                         <div className="single-item" >
                                             <div className="profile">
-                                                <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
+                                                <img src={imgUrl} alt="img" className='img-fluid main-img-profile' />
                                                 {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
                                             </div>
                                             <div className="right-content">
@@ -137,7 +140,7 @@ const AuthorActivity = () => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
+                                                    <img src={imgUrl} alt="img" className='img-fluid main-img-profile' />
                                                     {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
                                                 </div>
                                                 <div className="right-content">
@@ -160,7 +163,7 @@ const AuthorActivity = () => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid main-img-profile' />
+                                                    <img src={imgUrl} alt="img" className='img-fluid main-img-profile' />
                                                     {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
                                                 </div>
                                                 <div className="right-content">
@@ -179,9 +182,9 @@ const AuthorActivity = () => {
                                             </div>
                                         )
                                 }
-                            </div>
+                            </div>)
 
-                        ))}
+                            })}
                     </div>
                     {/* <div className="right-side">
                         <h6 className="heading-text">Filters</h6>
