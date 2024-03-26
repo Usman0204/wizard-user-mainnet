@@ -13,7 +13,7 @@ import Environment from '@/utils/Enviroment';
 import AuctionTimmer from './auctiontimer';
 import CountdownTimer from './auctiontimer';
 import ReactPaginate from 'react-paginate';
-// import Loader from '@/hooks/loader';
+import Loader from '@/hooks/loader';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
@@ -144,7 +144,7 @@ const Auctionbid = ({tab}) => {
     };
     return (
         <>
-            {/* {loader && (tab === 'liveauction' && <Loader />)} */}
+            {loader && (tab === 'liveauction' && <Loader />)}
             <section className="live-auction">
                 <div className="custom-container">
                     <div className="upper-content">

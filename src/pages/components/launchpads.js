@@ -13,8 +13,10 @@ import { useRouter } from 'next/router';
 import Footer from './footer';
 import axios from 'axios';
 import Environment from '@/utils/Enviroment';
+import Loader from '@/hooks/loader';
 const Collections = () => {
     const api_url = Environment.api_url;
+    const [loader, setloader] = useState(false)
     const [show, setShow] = useState(false);
     const [idnft, setidnft] = useState();
     const [dataset, setdataset] = useState();
@@ -49,6 +51,7 @@ const Collections = () => {
     };
 
     const getCollectionDetails = async (id) => {
+        setloader(true)
         let tok = localStorage.getItem("accessToken");
         var config = ''
 
@@ -63,12 +66,14 @@ const Collections = () => {
         axios(config)
             .then(function (response) {
                 setdataset(response.data.data[0])
+                setloader(false)
                 // console.log(response.data.data);
                 // setLoader(false);
                 // setUpcomingdata(response.data.data.upcomingLaunchpads[0])
                 // console.log("response data upcoming", response.data.data.upcomingLaunchpads[0])
             })
             .catch(function (error) {
+                setloader(false)
                 // setLoader(false);
                 // localStorage.removeItem("accessToken");
                 // localStorage.removeItem("user");
@@ -112,6 +117,7 @@ const Collections = () => {
 
     return (
         <>
+      {loader &&  <Loader/>}
             <Navbar />
             <section className="collections">
                 <div className="custom-container">

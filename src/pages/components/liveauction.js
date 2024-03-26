@@ -11,7 +11,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import ReactPaginate from 'react-paginate';
-// import Loader from '@/store/hooks/loader';
+import Loader from '@/store/hooks/loader';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
@@ -147,7 +147,7 @@ const Liveauction = ({ tab }) => {
     };
     return (
         <>
-            {/* {loader && (tab === 'buynow' && <Loader/>)} */}
+            {loader && (tab === 'buynow' && <Loader/>)}
             <section className="live-auction">
                 <div className="custom-container">
                     <div className="upper-content">
