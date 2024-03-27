@@ -188,6 +188,7 @@ const Launchpaddetailpage = () => {
     }
     return sequentialArray;
   }
+  console.log(dataset);
   async function mintNFtFunc() {
     let mintedNfts = await mintNftsInfo(dataset?.projectId)
     console.log(mintedNfts);

@@ -8,7 +8,7 @@ const MintNft = () => {
     var { account } = useWeb3React();
     const mintNfts = useCallback(
         async (purchaseTokens, pId,amount,_id) => {
-            // console.log('purchaseTokens',purchaseTokens, pId, amount, _id);
+            console.log('purchaseTokens',purchaseTokens, pId, amount, _id);
             let totalPrice= parseFloat(purchaseTokens) * amount
             const tokenAddress =  Environment.nftLaunchpad;
             const contract = getNtLaunchedPadContract(tokenAddress, web3);
@@ -24,21 +24,21 @@ const MintNft = () => {
             console.log(pId, _id, amount, nd, 'utils');
 
             try {
-                const gas = await contract.methods
-                    .purchaseTokens(pId, _id, amount )
-                    .estimateGas({ value: nd, from: account });
+                // const gas = await contract.methods
+                //     .purchaseTokens(pId, _id, amount )
+                //     .estimateGas({ value: nd, from: account });
                 // let gasPrice = await web3.eth.getGasPrice();
                 const details = await contract.methods
                     .purchaseTokens(pId, _id, amount )
                     .send({
                         value: nd,
                         from: account,
-                        gas,
+                        // gas,
                         gasPrice: gasFunPrice
                     })
                 return details;
             } catch (error) {
-                // console.log("borrow", error)
+                console.log("mint", error)
                 throw (error)
             }
         },
