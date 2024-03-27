@@ -193,30 +193,59 @@ const Collections = () => {
                             <div className="upper-table">
                                 <div className="text">
                                     <p>FLOOR</p>
-                                    <h6 className='d-flex align-items-center'>{dataset?.floorToday?.price > 1000 ? parseFloat(dataset?.floorToday?.price / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.floorToday?.price)?.toFixed(2)}  <img src="\assets\launchpaddetailassets\clogo.svg" alt="balanceinnerimg" className="balanceinnerimg p-2" /></h6>
+                                    <h6 className='d-flex align-items-center'>
+                                        {dataset?.floorToday?.price ?
+                                            (dataset.floorToday.price > 1000 ?
+                                                (parseFloat(dataset.floorToday.price / 1000).toFixed(2) + 'k') :
+                                                parseFloat(dataset.floorToday.price).toFixed(2)) :
+                                            '0'}
+                                        <img src="\assets\launchpaddetailassets\clogo.svg" alt="balanceinnerimg" className="balanceinnerimg p-2" />
+                                    </h6>
                                 </div>
                                 <div className="text">
                                     <p>TOTAL VOL</p>
-                                    <h6 className='d-flex align-items-center'>{dataset?.volume > 1000 ? parseFloat(dataset?.volume / 1000)?.toFixed(2) + 'k' : parseFloat(dataset?.volume)?.toFixed(2)} <img src="\assets\launchpaddetailassets\clogo.svg" alt="balanceinnerimg" className="balanceinnerimg p-2" /></h6>
+                                    <h6 className='d-flex align-items-center'>
+                                        {dataset?.volume ?
+                                            (dataset.volume > 1000 ?
+                                                (parseFloat(dataset.volume / 1000).toFixed(2) + 'k') :
+                                                parseFloat(dataset.volume).toFixed(2)) :
+                                            '0'}
+                                        <img src="\assets\launchpaddetailassets\clogo.svg" alt="balanceinnerimg" className="balanceinnerimg p-2" />
+                                    </h6>
                                 </div>
                                 <div className="text">
                                     <p>OWNERS</p>
-                                    <h6>{dataset?.ownersCount > 1000 ? dataset?.ownersCount / 1000 + ' k' : dataset?.ownersCount}</h6>
+                                    <h6>
+                                        {dataset?.ownersCount ?
+                                            (dataset.ownersCount > 1000 ?
+                                                (parseFloat(dataset.ownersCount / 1000).toFixed(2) + 'k') :
+                                                dataset.ownersCount) :
+                                            '0'}
+                                    </h6>
                                 </div>
                                 <div className="text">
                                     <p>LISTED</p>
-                                    <h6>{dataset?.totalNftsOnSale > 1000 ? dataset?.totalNftsOnSale / 1000 + ' k' : dataset?.totalNftsOnSale}</h6>
+                                    <h6>
+                                        {dataset?.totalNftsOnSale ?
+                                            (dataset.totalNftsOnSale > 1000 ?
+                                                (parseFloat(dataset.totalNftsOnSale / 1000).toFixed(2) + 'k') :
+                                                dataset.totalNftsOnSale) :
+                                            '0'}
+                                    </h6>
                                 </div>
                                 <div className="text">
                                     <p>TOTAL SUPPLY</p>
-                                    <h6>{dataset?.totalSupply > 1000 ? dataset?.totalSupply / 1000 + ' k' : dataset?.totalSupply}</h6>
+                                    <h6>
+                                        {dataset?.totalSupply ?
+                                            (dataset.totalSupply > 1000 ?
+                                                (parseFloat(dataset.totalSupply / 1000).toFixed(2) + 'k') :
+                                                dataset.totalSupply) :
+                                            '0'}
+                                    </h6>
                                 </div>
-                                {/* <div className="text">
-                                    <p>RANGE</p>
-                                    <h6>0 to {dataset?.totalSupply > 1000 ? dataset?.totalSupply / 1000 + ' k' : dataset?.totalSupply}</h6>
-                                </div> */}
                             </div>
-                            </div>
+                        </div>
+
                         {/* <div className="right-content">
                             <div className="upper-table">
                                 <div className="text">

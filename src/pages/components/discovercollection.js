@@ -569,7 +569,7 @@ const Discovercollection = () => {
                             </p>
                           </td>
                           <td className="text-light">
-                            {item?.volumeToday} Core
+                            {parseFloat(item?.volumeToday)?.toFixed(2)} Core
                           </td>
                           <td>
                             <p className={className}>

@@ -176,7 +176,7 @@ const Launchpaddrops = () => {
                                                         </div>
                                                         :
                                                         <div className="timer ">
-                                                            <h6>🟢 Live <CountdownTimer endDate={item?.mintEndTime} /></h6>
+                                                            <h6>🟢 <span className='green'>Live</span> <CountdownTimer endDate={item?.mintEndTime} /></h6>
                                                        </div>
                                                     }
                                                 </div>
