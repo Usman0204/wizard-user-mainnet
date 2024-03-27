@@ -84,7 +84,7 @@ const TopCollection = () => {
     <section className="top-collections">
       <div className="custom-container">
         <div className="upper-content">
-          <h5>TOP Collections</h5>
+          <h5 className='me-5'>TOP Collections</h5>
           <div className="right-btns">
             <div className="dropdown">
               <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

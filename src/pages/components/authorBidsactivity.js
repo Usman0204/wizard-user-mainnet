@@ -99,46 +99,49 @@ const AuthorBidsActivity = () => {
       <section className="activity-section author-activity-section bid-activity">
         <div className="parent-activity">
           <div className="left-side">
-            {dataset3?.map((item, id) => (
-              <div key={id}>
-                <div className="single-item">
-                  <div className="left-sidee">
-                    <div className="profile">
-                      <img
-                        src={"https://ipfs.io/ipfs" + item?.nft}
-                        alt="img"
-                        className="img-fluid main-img-profile"
-                      />
-                      {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
+            {dataset3?.map((item, id) => {
+              let imgUrl = item?.nft?.includes('https://ipfs.io/ipfs') ? item.nft : 'https://ipfs.io/ipfs' + item.nft;
+              return (
+                <div key={id}>
+                  <div className="single-item">
+                    <div className="left-sidee">
+                      <div className="profile">
+                        <img
+                          src={imgUrl}
+                          alt="img"
+                          className="img-fluid main-img-profile"
+                        />
+                        {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
+                      </div>
+                      <div className="right-content">
+                        <h5>
+                          {item?.launchpadId?.name} #{item?.tokenID}
+                        </h5>
+                        <h6>
+                          <span className="text-span-color">
+                            {" "}
+                            Bid Price{" "}
+                            <span className="text-light">
+                              {item?.bidPrice}
+                            </span>{" "}
+                            Core
+                          </span>
+                        </h6>
+                        <p>{moment(item?.createdAt).fromNow()}</p>
+                      </div>
                     </div>
-                    <div className="right-content">
-                      <h5>
-                        {item?.launchpadId?.name} #{item?.tokenID}
-                      </h5>
-                      <h6>
-                        <span className="text-span-color">
-                          {" "}
-                          Bid Price{" "}
-                          <span className="text-light">
-                            {item?.bidPrice}
-                          </span>{" "}
-                          Core
-                        </span>
-                      </h6>
-                      <p>{moment(item?.createdAt).fromNow()}</p>
+                    <div className="right-sidee">
+                      <Link
+                        href={`/nftdetail?id=${item?.nftId}`}
+                        className="btn-view"
+                      >
+                        View
+                      </Link>
                     </div>
-                  </div>
-                  <div className="right-sidee">
-                    <Link
-                      href={`/nftdetail?id=${item?.nftId}`}
-                      className="btn-view"
-                    >
-                      View
-                    </Link>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           {/* <div className="right-side">
                         <h6 className="heading-text">Filters</h6>

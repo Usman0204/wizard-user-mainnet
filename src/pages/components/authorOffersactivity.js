@@ -100,34 +100,35 @@ const AuthorOffersActivity = () => {
         <div className="parent-activity">
           <div className="left-side">
             {dataset3?.map((item, id) => {
-              console.log(item?.nft);
               let imgUrl = item?.nft?.includes('https://ipfs.io/ipfs') ? item.nft : 'https://ipfs.io/ipfs' + item.nft;
-              console.log(imgUrl, id);
-            return(  <div key={id}>
+            return(  
+              <div key={id}>
                 <div className="single-item">
-                  <div className="profile">
-                    <img
-                    src={imgUrl}
-                      alt="img"
-                      className="img-fluid main-img-profile"
-                    />
-                    {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
-                  </div>
-                  <div className="right-content">
-                    <h5>
-                      {item?.launchpadId?.name} #{item?.tokenID}
-                    </h5>
-                    <h6>
-                      <span className="text-span-color">
-                        {" "}
-                        Offer Price{" "}
-                        <span className="text-light">
-                          {item?.offerPrice}
-                        </span>{" "}
-                        Core
-                      </span>
-                    </h6>
-                    <p>{moment(item?.createdAt).fromNow()}</p>
+                  <div className="left-sidee">
+                    <div className="profile">
+                      <img
+                        src={imgUrl}
+                        alt="img"
+                        className="img-fluid main-img-profile"
+                      />
+                      {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
+                    </div>
+                    <div className="right-content">
+                      <h5>
+                        {item?.launchpadId?.name} #{item?.tokenID}
+                      </h5>
+                      <h6>
+                        <span className="text-span-color">
+                          {" "}
+                          Offer Price{" "}
+                          <span className="text-light">
+                            {item?.offerPrice}
+                          </span>{" "}
+                          Core
+                        </span>
+                      </h6>
+                      <p>{moment(item?.createdAt).fromNow()}</p>
+                    </div>
                   </div>
                   <div className="right-sidee">
                     <Link
@@ -138,9 +139,12 @@ const AuthorOffersActivity = () => {
                     </Link>
                   </div>
                 </div>
-              </div>)
+              </div>
+              )
 })}
           </div>
+
+          
           {/* <div className="right-side">
                         <h6 className="heading-text">Filters</h6>
                         <div className="all-filters-item">
