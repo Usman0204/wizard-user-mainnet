@@ -36,12 +36,9 @@ const Launchpad = () => {
     }
 
     useEffect(() => {
-
-        const { tab } = router.query;
-        if (tab && (tab === 'all' || tab === 'edition')) {
-            setActiveTab(tab);
-        }
-    }, [router.query]);
+setActiveTab('all');
+    
+    }, []);
 
     const handleTabSelect = (selectedTab) => {
 
@@ -165,13 +162,13 @@ const Launchpad = () => {
         return endtime;
     }
 
-    useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const id = searchParams.get('id');
-        console.log(id);
-        setActiveTab(id)
-        setTab(id)
-    }, [])
+    // useEffect(() => {
+    //     const searchParams = new URLSearchParams(window.location.search);
+    //     const id = searchParams.get('id');
+    //     console.log(id);
+    //     setActiveTab(id)
+    //     setTab(id)
+    // }, [])
     return (
         <>
 
