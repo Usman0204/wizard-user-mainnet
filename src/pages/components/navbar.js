@@ -587,7 +587,7 @@ const Navbar = () => {
             // setclickedbtn(() => { (false), localStorage.setItem("wallet", false) });
             // loginUserss()
             // loginUser()
-            connectWallet('1116')
+            connectWallet('1115')
             handleClose();
           }}>
             <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
@@ -597,7 +597,7 @@ const Navbar = () => {
             // setclickedbtn(false);
             handleClose();
             handleClose1();
-            trustWallet("1116")
+            trustWallet("1115")
 
           }}>
             <img src="\assets\navbarassets\walletconnect.svg" alt="connectimg" className="connectimg" />
@@ -608,7 +608,7 @@ const Navbar = () => {
 
           {isBrowser ?
             <div className="connectmain d-sm-none d-flex " onClick={() => {
-              connectWallet('1116')
+              connectWallet('1115')
               handleClose();
             }}>
               <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
@@ -627,7 +627,7 @@ const Navbar = () => {
                 :
                 <div className="connectmain d-sm-none d-flex " onClick={() => {
 
-                  connectWallet('1116')
+                  connectWallet('1115')
                   handleClose();
                 }}>
                   <img src="\assets\navbarassets\metamask.svg" alt="connectimg" className="connectimg" />
