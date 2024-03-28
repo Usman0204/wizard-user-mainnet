@@ -104,7 +104,22 @@ const Launchpaddrops = () => {
     //     const val = localStorage.getItem("accessToken");
     //     setAccessToken(val);
     // }, []);
+    let stagePrice = function (mintStages, mintStartTime) {
+            const now = new Date();
+            const liveStage = mintStages?.find((stage, index) => {
 
+                const stageStartTime = index === 0 ? new Date(mintStartTime) : new Date(mintStages[index - 1].mintStageTime);
+                const stageEndTime = index === mintStages.length - 1 ? new Date(mintStages[index].mintStageTime) : new Date(mintStages[index].mintStageTime);
+                return now >= stageStartTime && now < stageEndTime;
+            });
+            let _id = mintStages?.indexOf(liveStage)
+            // console.log(_id);
+            if (liveStage) {
+                return liveStage.price
+            } else {
+                return 0
+            }
+        }
 
     useEffect(() => {
         console.log("mainCardData", mainCardData);
@@ -148,6 +163,8 @@ const Launchpaddrops = () => {
                                 >
                                     {mainCardData?.map((item, index) => {
                                         let isUpcoming = new Date(item?.mintStartTime) > new Date()
+                                        let mintStage = item?.mintStages
+                                        let mintStartTime = item?.mintStartTime
                                         return (<Link key={index} href={'/launchpaddetailpage?id=' + item?._id}>
                                             <div className="main-card" key={index}>
                                                 <div className="main-img">
@@ -158,7 +175,7 @@ const Launchpaddrops = () => {
                                                     <div className="inner-text">
                                                         <div className="text">
                                                             <h6>PRICE</h6>
-                                                            <p>{item?.price || 0}</p>
+                                                            <p>{stagePrice(mintStage,mintStartTime)}</p>
                                                         </div>
                                                         <div className="text">
                                                             <h6>Items</h6>

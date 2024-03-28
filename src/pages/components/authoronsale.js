@@ -49,7 +49,7 @@ const Authoronsale = ({ tab, profile }) => {
     }, [offset, tab, profile])
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <section className="onsale-section">
                 {/* <div className="upper-content">
                     <div className="left-side">

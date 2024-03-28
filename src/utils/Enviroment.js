@@ -1,5 +1,5 @@
 let Environment = {
-  // api_url: "http://192.168.20.69:8080",
+  // api_url: "http://192.168.20.48:8080",
   // api_url: "https://wizardapi.quecko.com", // old version
   api_url: "https://api.wizardgallery.xyz", // new version
   // api_url: "http://ec2-54-191-120-95.us-west-2.compute.amazonaws.com:8080", 
