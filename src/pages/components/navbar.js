@@ -60,9 +60,7 @@ const Navbar = () => {
     }
     else if (tok !== "null" && tok !== "undefined" && wall === account) {
       console.log("User is already logged in.");
-    }
-
-    else {
+    } else {
       console.log("hererrerererrere")
       try {
         const res = await userSign(account);
@@ -174,23 +172,11 @@ const Navbar = () => {
         .then((response) => {
           toast.success("User Registered Successfully");
           loginUser()
-          // loginUser()/
         })
         .catch((err) => {
           loginUser()
         });
     }
-    //  async function balance() { 
-    //    let res = await web3.eth.getBalance(account)
-    //    console.log(res / 1e18);
-    //    seBalance(res / 1e18)
-
-
-    //   }
-    //   if(account && web3){
-    //     balance()
-    //   }
-
   }, [account]);
 
 
@@ -428,11 +414,11 @@ const Navbar = () => {
               <Link href="/discovercollection" className="innernavlink">Discover</Link>
               <Dropdown align='end'>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Mint <img src="\assets\navbarassets\arrow-down.svg" alt="arrowimg" className="arrowimg" />
+                  Mint <img src="\assets\navbarassets\arrow-down.svg" alt="arrowimg" className="arrowimg" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Link href="/launchpad" className="dropitem">Launchpad</Link>
-                   {/* <Link href="/launchpad?id=edition" className="dropitem">Open Editions</Link>
+                  {/* <Link href="/launchpad?id=edition" className="dropitem">Open Editions</Link>
                   <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link> */}
                   <Link href="https://creator.wizardgallery.xyz/" target='_blank' className="dropitem">Apply For launchpad</Link>
                   {/* <p className="dropitem marginleft">Presale</p> */}

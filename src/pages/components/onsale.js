@@ -48,7 +48,7 @@ const Onsale = ({ tab, setLoader, loader }) => {
     }, [offset, tab])
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <section className="onsale-section">
                 {/* <div className="upper-content">
                     <div className="left-side">
