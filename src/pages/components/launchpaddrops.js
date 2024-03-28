@@ -117,7 +117,7 @@ const Launchpaddrops = () => {
             if (liveStage) {
                 return liveStage.price
             } else {
-                return 0
+                return mintStages?.[0]?.price || 0
             }
         }
 
