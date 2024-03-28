@@ -1041,7 +1041,7 @@ const Launchpaddetailpage = () => {
 
       <Modal className='buymodal' show={show3} onHide={handleClose3} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Claim back your {testData}</Modal.Title>
+          <Modal.Title>Claim your NFT </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <img src="\assets\discovercollection\loadermain.png" alt="loader" className='loaderimg' />
