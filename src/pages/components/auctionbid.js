@@ -42,18 +42,18 @@ const Auctionbid = ({tab}) => {
             361: {
                 items: 1.2,
                 margin: 10,
-                loop: false,
-                nav: false,
-                dots: true,
-                dotsEach: true
+                // loop: false,
+                // nav: false,
+                // dots: true,
+                // dotsEach: true
             },
             600: {
                 items: 1.2,
                 margin: 10,
-                loop: false,
-                nav: false,
-                dots: true,
-                dotsEach: true
+                // loop: false,
+                // nav: false,
+                // dots: true,
+                // dotsEach: true
             },
             700: {
                 items: 2.2,
