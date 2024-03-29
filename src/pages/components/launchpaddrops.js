@@ -38,12 +38,10 @@ const Launchpaddrops = () => {
             361: {
                 items: 1,
                 margin: 10,
-               
             },
             600: {
                 items: 1,
                 margin: 10,
-                
             },
             700: {
                 items: 3,
@@ -71,6 +69,7 @@ const Launchpaddrops = () => {
             },
         },
     };
+
 
     // useEffect(() => {
     //     const storedData = localStorage.getItem('mainCardData');
@@ -146,7 +145,7 @@ const Launchpaddrops = () => {
                     </div> */}
 
                 </div>
-                {mainCardData &&
+                {mainCardData?.length > 0 &&
                     (
 
                         <div className="bottom-cards">
