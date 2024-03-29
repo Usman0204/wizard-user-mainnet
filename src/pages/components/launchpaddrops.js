@@ -38,18 +38,12 @@ const Launchpaddrops = () => {
             361: {
                 items: 1.3,
                 margin: 10,
-                loop: false,
-                nav: false,
-                dots: true,
-                dotsEach: true
+               
             },
             600: {
                 items: 1.3,
                 margin: 10,
-                loop: false,
-                nav: false,
-                dots: true,
-                dotsEach: true
+                
             },
             700: {
                 items: 3,
