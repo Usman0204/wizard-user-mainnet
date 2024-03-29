@@ -21,7 +21,7 @@ const Topseller = () => {
         nav: true,
         dots: false,
         dotsEach: false,
-        loop: false,
+        loop: true,
         autoplay: false,
         navText: [
             "<img src='/assets/landing/static/carousel-arrow-back.svg' alt='img' />",
@@ -35,18 +35,18 @@ const Topseller = () => {
             361: {
                 items: 1.9,
                 margin: 10,
-                loop: true,
-                nav: false,
-                dots: true,
-                dotsEach: true
+                // loop: true,
+                // nav: false,
+                // dots: true,
+                // dotsEach: true
             },
             600: {
                 items: 1.9,
                 margin: 10,
-                loop: true,
-                nav: false,
-                dots: true,
-                dotsEach: true
+                // loop: true,
+                // nav: false,
+                // dots: true,
+                // dotsEach: true
             },
             700: {
                 items: 3.5,
