@@ -123,7 +123,7 @@ const Collections = () => {
                 <div className="custom-container">
                     <div className="collection-bg-parent">
                         <div className="collection-bg">
-                            <img src={dataset?.imageUrl || '/assets/cover.png'} alt="img" className='img-fluid' />
+                            <img src={dataset?.featureImageUrl || '/assets/cover.png'} alt="img" className='img-fluid' />
                             <div className="socialicons">
                                 {dataset?.twitterUrl &&  <a href={dataset?.twitterUrl} target='_blank'>
                                 <img src="\assets\twittericon.svg" alt="twittericon" className="innersocialicon" />
