@@ -36,12 +36,12 @@ const Launchpaddrops = () => {
                 margin: 10,
             },
             361: {
-                items: 1.3,
+                items: 1,
                 margin: 10,
                
             },
             600: {
-                items: 1.3,
+                items: 1,
                 margin: 10,
                 
             },
