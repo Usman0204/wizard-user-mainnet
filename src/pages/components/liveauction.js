@@ -25,7 +25,7 @@ const Liveauction = ({ tab }) => {
         nav: true,
         dots: false,
         dotsEach: false,
-        loop: false,
+        loop: true,
         autoplay: false,
         navText: [
             "<img src='/assets/landing/static/carousel-arrow-back.svg' alt='img' />",
