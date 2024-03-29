@@ -32,15 +32,15 @@ const Launchpaddrops = () => {
         ],
         responsive: {
             0: {
-                items: 1,
+                items: 1.3,
                 margin: 10,
             },
             361: {
-                items: 1,
+                items: 1.3,
                 margin: 10,
             },
             600: {
-                items: 1,
+                items: 1.3,
                 margin: 10,
             },
             700: {
