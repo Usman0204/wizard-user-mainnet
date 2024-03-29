@@ -23,30 +23,26 @@ const Topseller = () => {
         dotsEach: false,
         loop: true,
         autoplay: false,
+        autoplayTimeout: 2000,
         navText: [
             "<img src='/assets/landing/static/carousel-arrow-back.svg' alt='img' />",
             "<img src='/assets/landing/static/carousel-arrow-next.svg' alt='img' />",
         ],
         responsive: {
             0: {
-                items: 1,
+                items: 1.3,
                 margin: 10,
+                autoplay: true,
             },
             361: {
-                items: 1.9,
+                items: 1.3,
                 margin: 10,
-                // loop: true,
-                // nav: false,
-                // dots: true,
-                // dotsEach: true
+                autoplay: true,
             },
             600: {
-                items: 1.9,
+                items: 1.3,
                 margin: 10,
-                // loop: true,
-                // nav: false,
-                // dots: true,
-                // dotsEach: true
+                autoplay: true,
             },
             700: {
                 items: 3.5,

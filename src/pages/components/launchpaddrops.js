@@ -26,6 +26,7 @@ const Launchpaddrops = () => {
         dotsEach: false,
         loop: true,
         autoplay: false,
+        autoplayTimeout: 2000,
         navText: [
             "<img src='/assets/landing/static/carousel-arrow-back.svg' alt='img' />",
             "<img src='/assets/landing/static/carousel-arrow-next.svg' alt='img' />",
@@ -34,14 +35,17 @@ const Launchpaddrops = () => {
             0: {
                 items: 1.3,
                 margin: 10,
+                autoplay: true,
             },
             361: {
                 items: 1.3,
                 margin: 10,
+                autoplay: true,
             },
             600: {
                 items: 1.3,
                 margin: 10,
+                autoplay: true,
             },
             700: {
                 items: 3,

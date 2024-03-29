@@ -660,7 +660,7 @@ const Navbar = () => {
             {/* <Link href="/launchpad?tab=edition" className="dropitemmbl marginleft">Open Editions</Link> */}
             {/* <Link href="https://creator.wizardgallery.xyz/collectiondashbord" target='_blank' className="dropitem">Creator Dashboard</Link> */}
             <Link href="https://creator.wizardgallery.xyz/" className="dropitemmbl marginleft">Apply for launchpad</Link>
-            <p className="dropitemmbl marginleft">Presale</p>
+            {/* <p className="dropitemmbl marginleft">Presale</p> */}
 
           </div>
           <div className="mblbtns">
