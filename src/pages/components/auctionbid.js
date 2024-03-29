@@ -251,7 +251,7 @@ const Auctionbid = ({tab}) => {
                                                                 <div className="left-text">
                                                                     <h6>
                                                                         <span>By</span>
-                                                                        {card.artist}{' '}
+                                                                {card?.launchpadId?.name}{' '}
                                                                         <img
                                                                             src="/assets/landing/static/verify-icon.svg"
                                                                             alt="img"
@@ -259,7 +259,7 @@ const Auctionbid = ({tab}) => {
                                                                             style={{ width: "auto" }}
                                                                         />
                                                                     </h6>
-                                                                    <h5>{card.cardNumber}</h5>
+                                                            <h5>#{card?.tokenID}</h5>
                                                                 </div>
                                                                 <div className="right-text">
                                                                     <h6>Price</h6>
@@ -273,6 +273,12 @@ const Auctionbid = ({tab}) => {
                                                                     </h5>
                                                                 </div>
                                                             </div>
+                                                    <div className="timer ">
+                                                        {/* card?.duration = 2024-02-24T07:26:00.000Z */}
+                                                        {/* <h6><Timer endTime="2024-02-24T07:26:00.000Z" /></h6> */}
+                                                        {/* <h6><Timer duration={"2024-02-24T07:26:00.000Z"} /></h6> */}
+                                                        <h6><CountdownTimer endDate={card?.duration} /></h6>
+                                                    </div>
                                                             {/* <div className="timer">
                                              <h6>05D : 12H : 07M : 45S</h6>
                                          </div> */}
