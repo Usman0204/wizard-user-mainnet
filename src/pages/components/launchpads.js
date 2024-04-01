@@ -278,7 +278,7 @@ const Collections = () => {
                         id="uncontrolled-tab-example"
                     >
                         <Tab eventKey="items" title="Items">
-                            <Items idnft={idnft} />
+                            <Items idnft={idnft} launchpadName={dataset?.name}/>
                         </Tab>
                         <Tab eventKey="activity" title="Activity">
                             <Activity idnft={idnft} />

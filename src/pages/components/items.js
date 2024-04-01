@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useWeb3React } from '@web3-react/core';
 import ReactPaginate from 'react-paginate';
 
-const Items = ({ idnft }) => {
+const Items = ({ idnft, launchpadName }) => {
     // console.log("items++++++++", idnft)
     const [price, setPrice] = useState({ name: 'All', value: '1' })
     const [search,setSearch]=useState()
@@ -222,18 +222,18 @@ console.log(datasetArr);
                                                             alt="img"
                                                             className="img-fluid main-img-card"
                                                         />
-                                                        {isOwner && <img
+                                                        <img
                                                             src="/assets/landing/static/live-auction-abs.svg"
                                                             alt="img"
                                                             className="img-fluid abs-img"
-                                                        />}
+                                                        />
                                                     </div>
                                                     <div className="bottom-text">
                                                         <div className="twice-text">
                                                             <div className="left-text">
                                                                 <h6>
                                                                     <span>By</span>
-                                                                    {card?.launchpadId?.name}{' '}
+                                                                    {card?.launchpadId?.name || `${launchpadName?.slice(0, 12)}...${launchpadName?.slice(-10)}`}{' '}
                                                                     <img
                                                                         src="/assets/landing/static/verify-icon.svg"
                                                                         alt="img"
