@@ -12,16 +12,16 @@ import ReactPaginate from 'react-paginate';
 const Items = ({ idnft, launchpadName }) => {
     // console.log("items++++++++", idnft)
     const [price, setPrice] = useState({ name: 'All', value: '1' })
-    const [search,setSearch]=useState()
+    const [search, setSearch] = useState()
     let { account } = useWeb3React();
     const api_url = Environment.api_url;
     // const [show, setShow] = useState(false);
     // const [idnft, setidnft] = useState();
     const [dataset, setdataset] = useState();
-    const [page, setPage]=useState(1)
+    const [page, setPage] = useState(1)
     const [datasetArr, setdatasetArr] = useState([]);
     const [toggle, setToggle] = useState(true);
-    const [grid, setGrid] = useState(undefined); 
+    const [grid, setGrid] = useState(undefined);
 
     useEffect(() => {
         let res = localStorage.getItem("toggle");
@@ -45,7 +45,7 @@ const Items = ({ idnft, launchpadName }) => {
     const resetDataAndFetch = () => {
         setdatasetArr([]); // Clear existing data
         setPage(1); // Reset pagination to page 1
-       
+
         // getCollectionItemsDetails(); // Fetch data with new filters/sort
     };
     const getCollectionItemsDetails = async () => {
@@ -92,10 +92,10 @@ const Items = ({ idnft, launchpadName }) => {
             });
     };
 
-console.log(datasetArr);
+    console.log(datasetArr);
     useEffect(() => {
         getCollectionItemsDetails()
-    }, [idnft, price, search,page])
+    }, [idnft, price, search, page])
 
     console.log("dataset", dataset?.pages)
     const handlePageChange = (e) => {
@@ -126,7 +126,7 @@ console.log(datasetArr);
                             Filters</a>
                     </div> */}
                     <div className={"option-field displaynoneinmobile"}>
-                        <input onChange={(e)=>{
+                        <input onChange={(e) => {
                             resetDataAndFetch();
                             setSearch(e.target.value)
                         }} type="number" value={search} placeholder='Search by nft number' />
@@ -170,10 +170,10 @@ console.log(datasetArr);
                             </svg>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'All', value: '1' }); resetDataAndFetch();  setSearch('') }} >All</a></li>
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to High', value: '1' }); resetDataAndFetch();  setSearch('') }} >Low to High</a></li>
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'High to Low', value: '-1' }); resetDataAndFetch();  setSearch('') }} >High to Low</a></li>
-                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Recently Listed', value: '-1' }); resetDataAndFetch();  setSearch('') }} >Recently Listed</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'All', value: '1' }); resetDataAndFetch(); setSearch('') }} >All</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Low to High', value: '1' }); resetDataAndFetch(); setSearch('') }} >Low to High</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'High to Low', value: '-1' }); resetDataAndFetch(); setSearch('') }} >High to Low</a></li>
+                            <li><a className="dropdown-item" onClick={() => { setPrice({ name: 'Recently Listed', value: '-1' }); resetDataAndFetch(); setSearch('') }} >Recently Listed</a></li>
                         </ul>
                     </div>
                     {grid !== undefined &&
@@ -209,13 +209,12 @@ console.log(datasetArr);
                                     {/* displaynoneinmobile */}
                                     <div className="bottom-cards ">
                                         {datasetArr?.map((card) => {
-                                            // console.log(card?.walletAddress == account); // Log the current card object
                                             return (
                                                 <>
                                                     <Link href={`/${card?.walletAddress == account?.toLowerCase() ? "putonsale" : "nftdetail"}?id=${card?._id}`} key={card.id} className="main-card">
                                                         <div className="main-img">
                                                             <img
-                                                                src={'https://ipfs.io/ipfs'+ card?.nft}
+                                                                src={'https://ipfs.io/ipfs' + card?.nft}
                                                                 alt="img"
                                                                 className="img-fluid main-img-card"
                                                             />
@@ -239,35 +238,35 @@ console.log(datasetArr);
                                                                     </h6>
                                                                     <h5>#{card.tokenID}</h5>
                                                                 </div>
-                                                               {parseFloat(card?.price) > 0 && <div className="right-text">
-                                                                    <h6>Price</h6>
-                                                                    <h5>
-                                                                        <img
-                                                                            src="/assets/landing/static/price-icon.svg"
-                                                                            alt="img"
-                                                                            className="img-fluid"
-                                                                        />
-                                                                        {card.price || 0} <span>Core</span>
-                                                                    </h5>
-                                                                </div>}
+                                                                {parseFloat(card?.price) > 0 &&
+                                                                    <div className="right-text">
+                                                                        <h6>Price</h6>
+                                                                        <h5>
+                                                                            <img
+                                                                                src="/assets/landing/static/price-icon.svg"
+                                                                                alt="img"
+                                                                                className="img-fluid"
+                                                                            />
+                                                                            {card.price || 0} <span>Core</span>
+                                                                        </h5>
+                                                                    </div>
+                                                                }
                                                             </div>
                                                             {card?.walletAddress == account?.toLowerCase() ?
                                                                 <>
-                                                                <div className="timer ">
-                                                                {/* 05D : 12H : 07M : 45S */}
-                                                                <h6>View</h6>
-                                                            </div>
-                                                            <Link href={`/putonsale?id=${card?._id}`} className='btn-forbid'>View</Link>
+                                                                    <div className="timer ">
+                                                                        <h6>View</h6>
+                                                                    </div>
+                                                                    <Link href={`/putonsale?id=${card?._id}`} className='btn-forbid'>View</Link>
                                                                 </>
-                                                                : 
+                                                                :
                                                                 <>
                                                                     <div className="timer ">
-                                                                        {/* 05D : 12H : 07M : 45S */}
-                                                                        {card?.price > 0 ? (card?.isFixedPrice ? <h6>Buy Now</h6> : card?.openForBid ? <h6>Place a Bid</h6> : <h6>Make an Offer</h6>) : <h6>Make an offer</h6>   }
+                                                                        {card?.price > 0 ? (card?.isFixedPrice ? <h6>Buy Now</h6> : card?.openForBid ? <h6>Place a Bid</h6> : <h6>Make an Offer</h6>) : <h6>Make an offer</h6>}
                                                                     </div>
-                                                                    <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>{card?.price > 0 ? (card?.isFixedPrice ? `Buy Now` : card?.openForBid ? `Place a Bid` : `Make an Offer`) : `Make an offer`  }</Link>
+                                                                    <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>{card?.price > 0 ? (card?.isFixedPrice ? `Buy Now` : card?.openForBid ? `Place a Bid` : `Make an Offer`) : `Make an offer`}</Link>
                                                                 </>
-                                                      }
+                                                            }
                                                         </div>
                                                     </Link>
                                                 </>
@@ -275,31 +274,31 @@ console.log(datasetArr);
                                         })}
                                     </div>
 
-                                   {/* {dataset?.pages > page &&  */}
-                                {/* //    <button onClick={()=>setPage(page + 1)} className="exploreallbtn">See More</button> */}
-                                        <div className="paginationmain mt-5">
-                                            <ReactPaginate
-                                                previousLabel="Previous"
-                                                nextLabel="Next"
-                                                pageClassName="page-item"
-                                                pageLinkClassName="page-link"
-                                                previousClassName="page-item"
-                                                previousLinkClassName="page-link"
-                                                nextClassName="page-item"
-                                                nextLinkClassName="page-link"
-                                                breakLabel="..."
-                                                breakClassName="page-item"
-                                                breakLinkClassName="page-link"
-                                                pageCount={Math.ceil(dataset?.pages)}
-                                                marginPagesDisplayed={2}
-                                                pageRangeDisplayed={2}
-                                                onPageChange={handlePageChange}
-                                                containerClassName="pagination"
-                                                activeClassName="active"
-                                                forcePage={page - 1}
-                                            />
-                                        </div>
-                                   {/* } */}
+                                    {/* {dataset?.pages > page &&  */}
+                                    {/* //    <button onClick={()=>setPage(page + 1)} className="exploreallbtn">See More</button> */}
+                                    <div className="paginationmain mt-5">
+                                        <ReactPaginate
+                                            previousLabel="Previous"
+                                            nextLabel="Next"
+                                            pageClassName="page-item"
+                                            pageLinkClassName="page-link"
+                                            previousClassName="page-item"
+                                            previousLinkClassName="page-link"
+                                            nextClassName="page-item"
+                                            nextLinkClassName="page-link"
+                                            breakLabel="..."
+                                            breakClassName="page-item"
+                                            breakLinkClassName="page-link"
+                                            pageCount={Math.ceil(dataset?.pages)}
+                                            marginPagesDisplayed={2}
+                                            pageRangeDisplayed={2}
+                                            onPageChange={handlePageChange}
+                                            containerClassName="pagination"
+                                            activeClassName="active"
+                                            forcePage={page - 1}
+                                        />
+                                    </div>
+                                    {/* } */}
                                 </div>
                             </section>
                         </div>
