@@ -192,7 +192,7 @@ const Newcollections = () => {
                                 {...owl_option}
                             >
                                 {mainCardData?.map((item, index) => (
-                                    <Link key={index} href={`/launchpads/${item?._id}`}>
+                                    <Link key={index} href={item?.type ? `/collection/${item?._id}` : `/launchpads/${item?._id}`}>
                                         {console.log('item',item)}
                                         <div className="main-card-new" >
                                             <span className='bottom-bg-linear'></span>

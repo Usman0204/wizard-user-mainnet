@@ -21,7 +21,7 @@ const Items = ({ idnft }) => {
     const [page, setPage]=useState(1)
     const [datasetArr, setdatasetArr] = useState([]);
     const [toggle, setToggle] = useState(true);
-    const [grid, setGrid] = useState(undefined);
+    const [grid, setGrid] = useState(undefined); 
 
     useEffect(() => {
         let res = localStorage.getItem("toggle");
@@ -207,38 +207,42 @@ console.log(datasetArr);
                             <section className="live-auction">
                                 <div className="custom-container">
                                     {/* displaynoneinmobile */}
-                                    <div className="bottom-cards ">
+                                    <div className="bottom-cards">
                                         {datasetArr?.map((card) => {
-                                            // console.log(card?.walletAddress == account); // Log the current card object
+                                            const isOwner = card?.walletAddress === account?.toLowerCase();
+                                            const detailLink = isOwner ? `/putonsale?id=${card?._id}` : `/nftdetail?id=${card?._id}`;
+                                            const buttonText = !card?.price > 0 ? "Make an offer" : (card?.isFixedPrice ? "Buy Now" : "Place a Bid");
+                                            const timerText = isOwner ? "View" : (!card?.price > 0 ? "Make an offer" : (card?.isFixedPrice ? "Buy Now" : "Place a Bid"));
+
                                             return (
-                                                <>
-                                                    <Link href={`/${card?.walletAddress == account?.toLowerCase() ? "putonsale" : "nftdetail"}?id=${card?._id}`} key={card.id} className="main-card">
-                                                        <div className="main-img">
-                                                            <img
-                                                                src={'https://ipfs.io/ipfs'+ card?.nft}
-                                                                alt="img"
-                                                                className="img-fluid main-img-card"
-                                                            />
-                                                            <img
-                                                                src="/assets/landing/static/live-auction-abs.svg"
-                                                                alt="img"
-                                                                className="img-fluid abs-img"
-                                                            />
-                                                        </div>
-                                                        <div className="bottom-text">
-                                                            <div className="twice-text">
-                                                                <div className="left-text">
-                                                                    <h6>
-                                                                        <span>By</span>
-                                                                        {card?.launchpadId?.name}{' '}
-                                                                        <img
-                                                                            src="/assets/landing/static/verify-icon.svg"
-                                                                            alt="img"
-                                                                            className="img-fluid"
-                                                                        />
-                                                                    </h6>
-                                                                    <h5>#{card.tokenID}</h5>
-                                                                </div>
+                                                <Link href={detailLink} key={card._id} className="main-card">
+                                                    <div className="main-img">
+                                                        <img
+                                                            src={`https://ipfs.io/ipfs${card?.nft}`}
+                                                            alt="img"
+                                                            className="img-fluid main-img-card"
+                                                        />
+                                                        {isOwner && <img
+                                                            src="/assets/landing/static/live-auction-abs.svg"
+                                                            alt="img"
+                                                            className="img-fluid abs-img"
+                                                        />}
+                                                    </div>
+                                                    <div className="bottom-text">
+                                                        <div className="twice-text">
+                                                            <div className="left-text">
+                                                                <h6>
+                                                                    <span>By</span>
+                                                                    {card?.launchpadId?.name}{' '}
+                                                                    <img
+                                                                        src="/assets/landing/static/verify-icon.svg"
+                                                                        alt="img"
+                                                                        className="img-fluid"
+                                                                    />
+                                                                </h6>
+                                                                <h5>#{card.tokenID}</h5>
+                                                            </div>
+                                                            {(card.price > 0) && (
                                                                 <div className="right-text">
                                                                     <h6>Price</h6>
                                                                     <h5>
@@ -250,13 +254,18 @@ console.log(datasetArr);
                                                                         {card.price || 0} <span>Core</span>
                                                                     </h5>
                                                                 </div>
-                                                            </div>
+                                                            )}
                                                         </div>
-                                                    </Link>
-                                                </>
+                                                        <div className="timer">
+                                                            <h6>{timerText}</h6>
+                                                        </div>
+                                                        <Link href={detailLink} className="btn-forbid">{buttonText}</Link>
+                                                    </div>
+                                                </Link>
                                             );
                                         })}
                                     </div>
+
 
                                    {/* {dataset?.pages > page &&  */}
                                 {/* //    <button onClick={()=>setPage(page + 1)} className="exploreallbtn">See More</button> */}
