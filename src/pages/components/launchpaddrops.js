@@ -87,7 +87,9 @@ const Launchpaddrops = () => {
 
     const getLaunchPadDrops = async () => {
         try {
-            const response = await axios.get(`${api_url}/launchpads/listed?limit=200&&orderField=createdAt&orderDirection=-1&offset=1&duration[]=live&duration[]=upcoming`);
+            // const response = await axios.get(`${api_url}/launchpads/listed?limit=200&&orderField=createdAt&orderDirection=-1&offset=1&duration[]=live&duration[]=upcoming`);
+
+            const response = await axios.get(`${api_url}/launchpads/listed?limit=200&offset=1&duration[]=live&duration[]=upcoming`);
             let launchpadDrops = response?.data.data.launchpads
             setMainCardData(launchpadDrops);
             // if (launchpadDrops?.length  === 0){

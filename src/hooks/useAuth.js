@@ -9,7 +9,7 @@ const useAuth = () => {
     const connector = connectorsByName[connectorID];
     if (connector) {
       if (connectorID === "injected") {
-        await connector.activate(1116);
+        await connector.activate(1115);
       } else {
         await connector.activate();
       }
@@ -51,7 +51,7 @@ export default useAuth;
 //   const login = async (connectorID, chain) => {
 //     const connector = connectorsByName[connectorID];
 //     if (connector) {
-//       if (chain === '1116') {
+//       if (chain === '1115') {
 //         console.log(chain, 'Ethereum TestNet Georli');
 //         const hasSetup = await setupNetwork(chain);
 //         if (hasSetup) {
@@ -66,14 +66,14 @@ export default useAuth;
 //       //   }
       
 //       // }
-//       else if (chain === '1116') {
+//       else if (chain === '1115') {
 //         console.log(chain, 'core mainnet');
 //         const hasSetup = await setupNetwork(chain);
 //         if (hasSetup) {
 //           await connector.activate(parseInt(chain));
 //         }
 //       }
-//       // else if (chain === '1116') {
+//       // else if (chain === '1115') {
 //       //   console.log(chain, 'mainnet');
 //       //   const hasSetup = await setupNetwork(chain);
 //       //   if (hasSetup) {

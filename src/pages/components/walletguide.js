@@ -25,7 +25,7 @@ const Walletguide = () => {
                             <h6>Core Dao chain mainnet</h6>
                             <p>
                                 Chain Name: Core Blockchain <br />
-                                Chain ID: 1116 <br />
+                                Chain ID: 1115 <br />
                                 Symbol: CORE <br />
                                 New RPC URL: https://rpc.coredao.org/ <br />
                                 Block Explorer URL: https://scan.coredao.org/ <br />

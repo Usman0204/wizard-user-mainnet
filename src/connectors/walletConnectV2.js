@@ -15,8 +15,8 @@ export const [walletConnectV2, hooks] = initializeConnector(
       actions,
       options: {
         projectId: "c4ec78a803d413d1caad6a1a808a6738",
-        chains: [1116],
-        optionalChains: [1116],
+        chains: [1115],
+        optionalChains: [1115],
         showQrModal: true
       },
 
@@ -33,8 +33,8 @@ export const [walletConnectV2, hooks] = initializeConnector(
 //       actions,
 //       options: {
 //         projectId: "202a3d538b088d735b99722b0cea4910",
-//         chains: [1116],
-//         optionalChains: [1116],
+//         chains: [1115],
+//         optionalChains: [1115],
 //         showQrModal: true
 //       },
 //       timeout : 10000,

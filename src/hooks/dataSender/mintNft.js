@@ -38,7 +38,7 @@ const MintNft = () => {
                     })
                 return details;
             } catch (error) {
-                // console.log("borrow", error)
+                console.log("borrow", error)
                 throw (error)
             }
         },
