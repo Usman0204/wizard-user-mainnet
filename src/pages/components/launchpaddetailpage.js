@@ -493,6 +493,13 @@ const Launchpaddetailpage = () => {
   useEffect(() => {
     chainges()
   })
+  function parseDescription(description) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return description.replace(urlRegex, (url) => {
+      return `<a href="${url}" target="_blank" class="textColor font-weight-bold">${url}</a>`;
+    });
+  }
+
   return (
     <>
       {loader && <Loader />}
@@ -763,7 +770,11 @@ const Launchpaddetailpage = () => {
                       </div>
                     </div>
                     <div className="overviewparas">
-                      <p className="overviewupperpara">{dataset?.description}</p>
+                      <p className="overviewupperpara">
+                        {dataset?.description && (
+                          <span dangerouslySetInnerHTML={{ __html: parseDescription(dataset.description) }} />
+                        )}
+                      </p>
                       {/* <p className="overviewlowerpara">
                         Azuki starts with a collection of 10,000 avatars that give you membership access to The Garden: a corner of the internet where artists, builders, and web3 enthusiasts meet to create a decentralized future.
                       </p>
