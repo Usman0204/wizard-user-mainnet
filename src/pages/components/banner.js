@@ -15,7 +15,7 @@ const Banner = () => {
                 <p>Wizard Gallery is a marketplace built on and for the Core ecosystem</p>
                 <div className="twice-btns">
                   <Link href="/discovercollection" className='btn-explore'>Explore</Link>
-                  <a href="https://creatorwizard.vercel.app/" target='_blank' className='btn-learn'>Apply For LaunchPad</a>
+                  <a href="https://creator.wizardgallery.xyz/" target='_blank' className='btn-learn'>Apply For LaunchPad</a>
                 </div>
               </div>
             </div>
