@@ -131,7 +131,7 @@ const Collections = () => {
                                 {dataset?.discordUrl && <a href={dataset?.discordUrl} target='_blank'>
                                 <img src="\assets\discordicon.svg" alt="discordicon" className="innersocialicon" />
                                 </a>}
-                                {dataset?.websiteUrl && <a href={dataset?.websiteUrls} target='_blank'>
+                                {dataset?.websiteUrl && <a href={dataset?.websiteUrl} target='_blank'>
                                 <img src="\assets\webicon.svg" alt="webicon" className="innersocialicon" />
                                 </a>
 }
