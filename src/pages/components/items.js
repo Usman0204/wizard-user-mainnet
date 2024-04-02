@@ -136,7 +136,7 @@ const Items = ({ idnft, launchpadName }) => {
                         </svg>
                     </div>
                     <div className='d-none displayblockinmobilec udvctdvtcvdtvtcd' style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "20px", width: "100%" }}>
-                        <div className="filter-btn d-none displayblockinmobile" >
+                        {/* <div className="filter-btn d-none displayblockinmobile" >
                             <a onClick={handleShow}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M18.3333 6.04199H13.3333C12.9916 6.04199 12.7083 5.75866 12.7083 5.41699C12.7083 5.07533 12.9916 4.79199 13.3333 4.79199H18.3333C18.6749 4.79199 18.9583 5.07533 18.9583 5.41699C18.9583 5.75866 18.6749 6.04199 18.3333 6.04199Z" fill="white" />
@@ -147,7 +147,7 @@ const Items = ({ idnft, launchpadName }) => {
                                     <path d="M11.6667 18.1253C9.71667 18.1253 8.125 16.5337 8.125 14.5837C8.125 12.6337 9.71667 11.042 11.6667 11.042C13.6167 11.042 15.2083 12.6337 15.2083 14.5837C15.2083 16.5337 13.6167 18.1253 11.6667 18.1253ZM11.6667 12.292C10.4 12.292 9.375 13.317 9.375 14.5837C9.375 15.8503 10.4 16.8753 11.6667 16.8753C12.9333 16.8753 13.9583 15.8503 13.9583 14.5837C13.9583 13.317 12.9333 12.292 11.6667 12.292Z" fill="white" />
                                 </svg>
                             </a>
-                        </div>
+                        </div> */}
                         <div className={searchbar ? "option-field d-none displayblockinmobile " : "option-field d-none displayblockinmobile custom-widthsearchbar"} onClick={() => { setSearchBar(!searchbar) }} >
                             <input type="text" placeholder='Search by collection' />
                             <svg className='search-icon' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

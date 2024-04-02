@@ -199,7 +199,7 @@ const Discovercollection = () => {
           {clickedSearch ? (
             <div className="dicovercollectionuppermbl d-none">
               <div className="dicovercollectionbtns">
-                <button className="filterbtnmbl" onClick={handleShow}>
+                {/* <button className="filterbtnmbl" onClick={handleShow}>
                   <svg
                     width="26"
                     height="26"
@@ -233,7 +233,7 @@ const Discovercollection = () => {
                       fill="white"
                     />
                   </svg>
-                </button>
+                </button> */}
 
                 <button
                   className="filterbtnmbl"
@@ -264,7 +264,7 @@ const Discovercollection = () => {
                   </svg>
                 </button>
               </div>
-              <button className="lastbtn">
+              {/* <button className="lastbtn">
                 <p>last 1D</p>
                 <div className="arrowimages">
                   <svg
@@ -292,7 +292,7 @@ const Discovercollection = () => {
                     />
                   </svg>
                 </div>
-              </button>
+              </button> */}
             </div>
           ) : (
             <>
