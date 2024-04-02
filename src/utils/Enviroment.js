@@ -8,7 +8,7 @@ let Environment = {
   // launchPadContract: "0xFc1F0Be40C59aBa1124532f4ceDE63Ff5CB84f1F",
   // nftLaunchpad: '0x5D22b2400cF591a6A08D8EBa5D69f871D1DeD367'
   launchPadContract: "0xFc1F0Be40C59aBa1124532f4ceDE63Ff5CB84f1F",
-  nftLaunchpad: '0x9efC1BdfC1B34fdea8020AF7e413140dE048BE23', //testnet versions
+  nftLaunchpad: '0xdc2B2EB369754D1eA323C8c8ed8eE8D74791ABDD', //testnet versions
   wcoretoken: '0x40375C92d9FAf44d2f9db9Bd9ba41a3317a2404f'
 };
 

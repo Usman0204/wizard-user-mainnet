@@ -11,6 +11,41 @@
         "type": "constructor"
     },
     {
+        "inputs": [],
+        "name": "FeeShouldLessThanMaxFee",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "InvalidAmount",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "LaunchpadEnds",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "MaxCapReached",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "MaxMintStageLimitReached",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "MaxWalletLimitReached",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "NotOwnerOfThisProject",
+        "type": "error"
+    },
+    {
         "inputs": [
             {
                 "name": "owner",
@@ -34,67 +69,27 @@
     },
     {
         "inputs": [],
-        "name": "alreadyClaimed",
+        "name": "StageTimeError",
         "type": "error"
     },
     {
         "inputs": [],
-        "name": "alreadyFinalized",
+        "name": "TimeNotReached",
         "type": "error"
     },
     {
         "inputs": [],
-        "name": "claimNotAllowed",
+        "name": "TransferFailed",
         "type": "error"
     },
     {
         "inputs": [],
-        "name": "invalidAmount",
+        "name": "allNFTsSoldInThisStage",
         "type": "error"
     },
     {
         "inputs": [],
-        "name": "launchpadEnds",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "launchpadFinalized",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "maxCapReached",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "maxWalletLimitReached",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "notFinalized",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "notOwnerOfThisProject",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "notPurchaseAnyNFT",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "stageTimeError",
-        "type": "error"
-    },
-    {
-        "inputs": [],
-        "name": "timeNotReached",
+        "name": "onlyWhiteListAddressesAllowed",
         "type": "error"
     },
     {
@@ -131,6 +126,93 @@
     {
         "inputs": [
             {
+                "indexed": false,
+                "name": "ERC721Contract",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "name": "amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "MaxWalletMimitUpdated",
+        "anonymous": false,
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "id",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "owner",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "name": "ERC721Deployed",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "name": "name",
+                "internalType": "string",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "symbol",
+                "internalType": "string",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "ipfs",
+                "internalType": "string",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "totalSupply",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "NewCollectionDeployed",
+        "anonymous": false,
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "previousOwner",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "name": "newOwner",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferStarted",
+        "anonymous": false,
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
                 "indexed": true,
                 "name": "previousOwner",
                 "internalType": "address",
@@ -144,6 +226,19 @@
             }
         ],
         "name": "OwnershipTransferred",
+        "anonymous": false,
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "fee",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "PlatformFeeUpdated",
         "anonymous": false,
         "type": "event"
     },
@@ -192,12 +287,27 @@
                         "type": "uint256"
                     },
                     {
+                        "name": "NFTsAmount",
+                        "internalType": "uint256",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "NFTsSoldInThisStage",
+                        "internalType": "uint256",
+                        "type": "uint256"
+                    },
+                    {
                         "name": "price",
                         "internalType": "uint256",
                         "type": "uint256"
                     },
                     {
                         "name": "whiteList",
+                        "internalType": "bool",
+                        "type": "bool"
+                    },
+                    {
+                        "name": "stageClosed",
                         "internalType": "bool",
                         "type": "bool"
                     }
@@ -277,6 +387,12 @@
             },
             {
                 "indexed": false,
+                "name": "ERC721Address",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "indexed": false,
                 "name": "buyer",
                 "internalType": "address",
                 "type": "address"
@@ -308,80 +424,12 @@
         "inputs": [
             {
                 "indexed": false,
-                "name": "ERC721Contract",
+                "name": "",
                 "internalType": "address",
                 "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "amount",
-                "internalType": "uint256",
-                "type": "uint256"
             }
         ],
-        "name": "maxWalletMimitUpdated",
-        "anonymous": false,
-        "type": "event"
-    },
-    {
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "id",
-                "internalType": "uint256",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "name": "owner",
-                "internalType": "address",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "ERC721Deployed",
-                "internalType": "address",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "name",
-                "internalType": "string",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "name": "symbol",
-                "internalType": "string",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "name": "ipfs",
-                "internalType": "string",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "name": "totalSupply",
-                "internalType": "uint256",
-                "type": "uint256"
-            }
-        ],
-        "name": "newCollectionDeployed",
-        "anonymous": false,
-        "type": "event"
-    },
-    {
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "fee",
-                "internalType": "uint256",
-                "type": "uint256"
-            }
-        ],
-        "name": "platformFeeUpdated",
+        "name": "TreasuryWalletUpdated",
         "anonymous": false,
         "type": "event"
     },
@@ -400,14 +448,8 @@
     },
     {
         "outputs": [],
-        "inputs": [
-            {
-                "name": "projectId",
-                "internalType": "uint256",
-                "type": "uint256"
-            }
-        ],
-        "name": "FinalizeSale",
+        "inputs": [],
+        "name": "acceptOwnership",
         "stateMutability": "nonpayable",
         "type": "function"
     },
@@ -415,12 +457,22 @@
         "outputs": [],
         "inputs": [
             {
-                "name": "projectId",
+                "name": "category",
                 "internalType": "uint256",
                 "type": "uint256"
+            },
+            {
+                "name": "project",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "addresses",
+                "internalType": "address[]",
+                "type": "address[]"
             }
         ],
-        "name": "claim",
+        "name": "addToWhitelist",
         "stateMutability": "nonpayable",
         "type": "function"
     },
@@ -487,12 +539,27 @@
                         "type": "uint256"
                     },
                     {
+                        "name": "NFTsAmount",
+                        "internalType": "uint256",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "NFTsSoldInThisStage",
+                        "internalType": "uint256",
+                        "type": "uint256"
+                    },
+                    {
                         "name": "price",
                         "internalType": "uint256",
                         "type": "uint256"
                     },
                     {
                         "name": "whiteList",
+                        "internalType": "bool",
+                        "type": "bool"
+                    },
+                    {
+                        "name": "stageClosed",
                         "internalType": "bool",
                         "type": "bool"
                     }
@@ -591,12 +658,27 @@
                                 "type": "uint256"
                             },
                             {
+                                "name": "NFTsAmount",
+                                "internalType": "uint256",
+                                "type": "uint256"
+                            },
+                            {
+                                "name": "NFTsSoldInThisStage",
+                                "internalType": "uint256",
+                                "type": "uint256"
+                            },
+                            {
                                 "name": "price",
                                 "internalType": "uint256",
                                 "type": "uint256"
                             },
                             {
                                 "name": "whiteList",
+                                "internalType": "bool",
+                                "type": "bool"
+                            },
+                            {
+                                "name": "stageClosed",
                                 "internalType": "bool",
                                 "type": "bool"
                             }
@@ -627,21 +709,6 @@
                     },
                     {
                         "name": "isLimitedEdition",
-                        "internalType": "bool",
-                        "type": "bool"
-                    },
-                    {
-                        "name": "finalize",
-                        "internalType": "bool",
-                        "type": "bool"
-                    },
-                    {
-                        "name": "allowClaim",
-                        "internalType": "bool",
-                        "type": "bool"
-                    },
-                    {
-                        "name": "success",
                         "internalType": "bool",
                         "type": "bool"
                     }
@@ -707,7 +774,20 @@
                 "type": "uint256"
             }
         ],
-        "name": "idToOnlyOwnerCollectionDetails",
+        "name": "idToCollectionDetails",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "maxFee",
         "stateMutability": "view",
         "type": "function"
     },
@@ -764,6 +844,19 @@
             }
         ],
         "name": "ownerCollections",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "inputs": [],
+        "name": "pendingOwner",
         "stateMutability": "view",
         "type": "function"
     },
@@ -844,21 +937,6 @@
                 "name": "isLimitedEdition",
                 "internalType": "bool",
                 "type": "bool"
-            },
-            {
-                "name": "finalize",
-                "internalType": "bool",
-                "type": "bool"
-            },
-            {
-                "name": "allowClaim",
-                "internalType": "bool",
-                "type": "bool"
-            },
-            {
-                "name": "success",
-                "internalType": "bool",
-                "type": "bool"
             }
         ],
         "inputs": [
@@ -913,7 +991,7 @@
                 "type": "uint256"
             },
             {
-                "name": "claimed",
+                "name": "isLimitedEdition",
                 "internalType": "bool",
                 "type": "bool"
             }
@@ -932,6 +1010,29 @@
         ],
         "name": "purchasedNftsInfo",
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "category",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "project",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "addresses",
+                "internalType": "address[]",
+                "type": "address[]"
+            }
+        ],
+        "name": "removeFromWhitelist",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -983,6 +1084,35 @@
         ],
         "name": "setTreasuryWallet",
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "bool",
+                "type": "bool"
+            }
+        ],
+        "inputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "name": "stageWhitelists",
+        "stateMutability": "view",
         "type": "function"
     },
     {
