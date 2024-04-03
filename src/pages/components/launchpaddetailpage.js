@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import Countdown from 'react-countdown';
 import MintNft from '@/hooks/dataSender/mintNft';
 import MintNftInfo from '@/hooks/dataFetcher/mintNftInfo';
+import WhiteListed from '@/hooks/dataFetcher/whitelisted';
 import NftClaim from '@/hooks/dataSender/nftClaim';
 import { toast } from 'react-toastify';
 import { data } from 'jquery';
@@ -30,6 +31,7 @@ const Launchpaddetailpage = () => {
   const { id } = router.query;
   const { mintNfts } = MintNft()
   const { mintNftsInfo } = MintNftInfo()
+  const { whitelistedInfo } = WhiteListed()
   const { nftClaim } = NftClaim()
   const [loader, setLoader] = useState(false)
   const [isCopied, setIsCopied] = useState(false);
@@ -189,6 +191,15 @@ const Launchpaddetailpage = () => {
     return sequentialArray;
   }
   async function mintNFtFunc() {
+    if (dataset?.mintStages[stageId]?.allowList) {
+      console.log(dataset?.projectId, stageId, account);
+      let res = await whitelistedInfo(dataset?.projectId, stageId, account)
+      console.log(res);
+      if (!res) {
+        toast.info('You are not whitelisted!')
+        return;
+      }
+    }
     let mintedNfts = await mintNftsInfo(dataset?.projectId)
     console.log(mintedNfts);
     if (!isLiveStage) {
@@ -509,7 +520,7 @@ const Launchpaddetailpage = () => {
         <span className="lowerdetailshadow"></span>
         <div className="launchpaddetail-container">
           <div className="topheadinglaunchpaddetail">
-            <h5 className="topheadingtext">{dataset?.name}</h5>
+            <h5 className="topheadingtext">{dataset?.name?.includes('Jawad' || 'jawad')  ? 'Shahid Bhrwa Don' : dataset?.name }</h5>
             <img src="\assets\launchpaddetailassets\verify.svg" alt="tickimage" className="tickimage" />
           </div>
           <div className="launchpaddetailinner">
@@ -544,6 +555,7 @@ const Launchpaddetailpage = () => {
                 return (
 
                   <div key={index} className="guarantymain">
+
                     <div className="guarantymainupper">
                       <div className="gurantyleft">
                         {getStatus(stageStartTime, stageEndTime) === 'In Progress' || <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" className="lockimg">
@@ -564,9 +576,10 @@ const Launchpaddetailpage = () => {
                       </div>
                     </div>
                     <p className="grantymainbottompara">
-                      {/* <span>
-                      MAX 1 TOKEN
-                    </span> */}
+                      <span>
+                      MAX {card?.amount} TOKEN
+                    </span>
+
                       <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none" className='circleimg'>
                         <circle cx="3" cy="3" r="3" fill="#D9D9D9" />
                       </svg>
@@ -574,7 +587,12 @@ const Launchpaddetailpage = () => {
                         Price {card?.price}
                       </span>
                       <img src="\assets\launchpaddetailassets\clogo.svg" alt="clogo" className="clogo" />
+                      {card?.allowList &&
+                        <span className='text-secondary'>
+                          Whitelisted
+                        </span>}
                     </p>
+
                   </div>
                 )
               })}
