@@ -275,14 +275,25 @@ const Launchpaddetailpage = () => {
   }
   const tokenIds2 = generateSequentialArray(0, dataset?.minted);
   console.log(tokenIds2, 'tokenIds2');
+  // function calculatePercentage(minted, totalSupply) {
+  //   if (totalSupply === 0) {
+  //     return '0%'; // To avoid division by zero error
+  //   }
+  //   const percentage = (minted / totalSupply) * 100;
+  //   return `${percentage.toFixed(1)}`;
+  // }
   function calculatePercentage(minted, totalSupply) {
     if (totalSupply === 0) {
       return '0%'; // To avoid division by zero error
     }
     const percentage = (minted / totalSupply) * 100;
-    return `${percentage.toFixed()}`;
-  }
 
+    // Check if the percentage has decimal places
+    const hasDecimal = percentage % 1 !== 0;
+
+    // If percentage has decimal places, show it with two decimal places, otherwise show it without decimal
+    return hasDecimal ? `${percentage.toFixed(2)}` : `${percentage.toFixed(0)}`;
+  }
   // useEffect(() => {
   //   const axios = require('axios').default;
 
