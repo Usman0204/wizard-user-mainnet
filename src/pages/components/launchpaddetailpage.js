@@ -277,7 +277,8 @@ const Launchpaddetailpage = () => {
         toast.error("Contract interaction error occurred. Please check your input data or contract state.");
       } else {
         // Handle other generic errors
-        toast.error("An error occurred: " + error.message);
+        // toast.error("An error occurred: " + error.message);
+        toast.error(`Max mint limit reached for this stage`);
       }
 
       // Additional error handling or cleanup
@@ -742,13 +743,13 @@ const Launchpaddetailpage = () => {
 
                 <>
                   {console.log(dataset, 'dataset')}
-                  {dataset?.status === "completed" || dataset?.status === "failed" ?
+                  {/* {dataset?.status === "completed" || dataset?.status === "failed" ?
                     <button disabled={!mintInfoStatus?.purchased || mintInfoStatus?.claimed ? true : false} className={!mintInfoStatus?.purchased || mintInfoStatus?.claimed ? "bluebtnexplore disable" : "bluebtnexplore"} onClick={claimnft}>Claim Back</button>
-                    :
-                    <button disabled={dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" : "bluebtnexplore"}>Mint</button>
-                    // <button disabled={true} onClick={mintNFtFunc} className={"bluebtnexplore disable"}>Mint</button>
+                    : */}
+                    <button disabled={dataset?.minted === dataset?.totalSupply || dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage} onClick={mintNFtFunc} className={(dataset?.minted === dataset?.totalSupply || dataset?.status === "completed" || dataset?.status === "failed" || !isLiveStage) ? "bluebtnexplore disable" : "bluebtnexplore"}>Mint</button>
+                    {/* // <button disabled={true} onClick={mintNFtFunc} className={"bluebtnexplore disable"}>Mint</button> */}
 
-                  }
+                  {/* } */}
                 </>
 
 
