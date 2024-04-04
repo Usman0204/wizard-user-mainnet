@@ -34,6 +34,7 @@ const Navbar = () => {
       setSearchText(e.target.value);
     }, 1000);
   };
+  console.log(isBrowser,'isBrowser');
 
   const [show, setShow] = useState(false);
   // console.log("account get",account)
