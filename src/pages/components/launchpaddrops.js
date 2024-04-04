@@ -184,7 +184,13 @@ const Launchpaddrops = () => {
                                                         </div>
                                                     </div>
 
-                                                    {isUpcoming ?
+                                                    { 
+                                                        item?.minted === item?.itemsCreated ? 
+                                                            <div className="timer ">
+                                                                <h6 className='text-secondary'>Sold Out</h6>
+                                                            </div> 
+                                                            :
+                                                    isUpcoming ?
                                                         <div className="timer ">
                                                             <h6>Starts <CountdownTimer endDate={item?.mintStartTime} /></h6>
                                                         </div>
