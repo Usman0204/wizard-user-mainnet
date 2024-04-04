@@ -23,6 +23,7 @@ const Putonsale = () => {
     const [offerid, setofferid] = useState(null)
     const [offerindex, setofferindex] = useState(null)
     const [dataset, setdataset] = useState();
+    const [metaData, setMetaData]=useState()
     const [loader, setLoader] = useState(false)
     const [show, setShow] = useState(false);
     const [bool, setBool] = useState(false);
@@ -410,7 +411,7 @@ const Putonsale = () => {
         try {
             setLoader(true)
             // console.log(dataset?.collectionAddress, dataset?.tokenID);
-            let res = await AcceptOfferHook(dataset?.collectionAddress, dataset?.tokenID, offerindex, dataset?.openForBid, dataset?.isFixedPrice )
+            let res = await AcceptOfferHook(dataset?.collectionAddress, dataset?.tokenID, offerindex, dataset?.openForBid, dataset?.isFixedPrice)
             console.log(res);
             if (res) {
                 // setLoader(true)
@@ -422,14 +423,30 @@ const Putonsale = () => {
             setShow6(false);
             // setLoader(false)
         }
+    } 
+    // console.log(dataset?.launchpad[0]?.ipfsHash, dataset?.tokenID);
+    async function metadat() {
+        try {
+            let hash = dataset?.launchpad[0]?.ipfsHash
+            let tokenId = dataset?.tokenID
+            let res = await axios.get(`https://ipfs.io/ipfs/${hash}/`)
+            // console.log(res.data[tokenId]);
+            setMetaData(res.data[tokenId])
+        } catch (error) {
+            console.log(error);
+        }
     }
+    useEffect(() => {
+        if (dataset?.launchpad[0]?.ipfsHash) {
+            metadat()
+        }
+    }, [dataset])
 
-
-        // console.log("item", offerid, idd)
+    // console.log("item", offerid, idd)
 
     useEffect(() => {
-       
-        if (dataset && dataset.currentOwner?.[0]?.walletAddress !== account?.toLowerCase()){
+
+        if (dataset && dataset.currentOwner?.[0]?.walletAddress !== account?.toLowerCase()) {
             router.push(`/nftdetail?id=${dataset._id}`);
         }
     }, [account, dataset, router]);
@@ -451,7 +468,9 @@ const Putonsale = () => {
                                 <h6 className="nftownername">{dataset?.launchpad[0]?.name}</h6>
                                 <img src="\assets\nftdetailassets\verify.svg" alt="verifiedimage" className="verifiedimage" />
                             </div>
-                            <h5 className="nftname">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</h5>
+                            {/* <h5 className="nftname">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</h5> */}
+                            <h5 className="nftname">{metaData?.name} #{dataset?.tokenID}</h5>
+                            <p className='text-light mb-4'>{metaData?.description}</p>
                             {/* <div className="royalitymain">
                                 <h6 className="royalitypara">Royalties</h6>
                                 <span className="royalitypercentage">5%</span>
@@ -616,9 +635,9 @@ const Putonsale = () => {
                                     )
                                 }
                                 {dataset3?.length > 0 &&
-                                <Nav.Item>
-                                    <Nav.Link eventKey="link-4">Activity</Nav.Link>
-                                </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="link-4">Activity</Nav.Link>
+                                    </Nav.Item>
                                 }
                                 <Nav.Item>
                                     <Nav.Link eventKey="link-5">Offers</Nav.Link>
