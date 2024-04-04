@@ -250,7 +250,7 @@ const Collectiondetailpage = () => {
   //       const links = htmlDocument.getElementsByTagName('a');
 
   //       const jsonFiles = Array.from(links)
-  //         .map(link => 'https://ipfs.io' + link.getAttribute('href')) // Prepend base URL
+  //         .map(link => 'https://dweb.link' + link.getAttribute('href')) // Prepend base URL
   //         .filter(href => href.endsWith('.json') && !href.includes('_metadata.json')); // Exclude _metadata.json
 
   //       const imageUrlsSet = new Set(); // Use a Set to store unique URLs
@@ -271,7 +271,7 @@ const Collectiondetailpage = () => {
   //     }
   //   };
 
-  //  let res=  fetchImages('https://ipfs.io/ipfs/QmSakZfxkgigFAvXyK8Nf8zJcQhbEUrciTiwK8ACrxPtT2/');
+  //  let res=  fetchImages('https://dweb.link/ipfs/QmSakZfxkgigFAvXyK8Nf8zJcQhbEUrciTiwK8ACrxPtT2/');
 
   // }, []);
   // console.log('imagess', imagess);

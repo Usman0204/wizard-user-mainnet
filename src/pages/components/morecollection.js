@@ -114,7 +114,7 @@ const MoreCollection = ({ dataset2 }) => {
                             <div key={index} className="main-card">
                                 <div className="main-img">
                                     <img
-                                        src={'https://ipfs.io/ipfs'+ card?.nft}
+                                        src={'https://dweb.link/ipfs'+ card?.nft}
                                         alt="img"
                                         className="img-fluid main-img-card"
                                     />
@@ -173,7 +173,7 @@ const MoreCollection = ({ dataset2 }) => {
                                     <div  className="main-card">
                                         <div className="main-img">
                                             <img
-                                                src={'https://ipfs.io/ipfs'+ card?.nft}
+                                                src={'https://dweb.link/ipfs'+ card?.nft}
                                                 alt="img"
                                                 className="img-fluid main-img-card"
                                             />

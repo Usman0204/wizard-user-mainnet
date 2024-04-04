@@ -96,7 +96,7 @@ const Activity = ({ idnft }) => {
                                     (
                                         <div className="single-item" >
                                             <div className="profile">
-                                                <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' />
+                                                <img src={'https://dweb.link/ipfs' + item?.nft} alt="img" className='img-fluid' />
                                             </div>
                                             <div className="right-content">
                                                 <h5>{item?.launchpadId?.name} #{item.tokenId}</h5>
@@ -124,7 +124,7 @@ const Activity = ({ idnft }) => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' />
+                                                    <img src={'https://dweb.link/ipfs' + item?.nft} alt="img" className='img-fluid' />
                                                 </div>
                                                 <div className="right-content">
                                                     <h5>{item?.launchpadId?.name} #{item.tokenId}</h5>
@@ -147,7 +147,7 @@ const Activity = ({ idnft }) => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' />
+                                                    <img src={'https://dweb.link/ipfs' + item?.nft} alt="img" className='img-fluid' />
                                                 </div>
                                                 <div className="right-content">
                                                     <h5>{item?.launchpadId?.name} #{item.tokenId}</h5>

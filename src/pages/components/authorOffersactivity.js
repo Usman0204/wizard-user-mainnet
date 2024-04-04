@@ -100,7 +100,7 @@ const AuthorOffersActivity = () => {
         <div className="parent-activity">
           <div className="left-side">
             {dataset3?.map((item, id) => {
-              let imgUrl = item?.nft?.includes('https://ipfs.io/ipfs') ? item.nft : 'https://ipfs.io/ipfs' + item.nft;
+              let imgUrl = item?.nft?.includes('https://dweb.link/ipfs') ? item.nft : 'https://dweb.link/ipfs' + item.nft;
             return(  
               <div key={id}>
                 <div className="single-item">
