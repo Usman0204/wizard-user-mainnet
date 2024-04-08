@@ -180,8 +180,8 @@ const Discovercollection = () => {
               <ul className="dropdown-menu">
                 <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '-1' }); setFilterName('Volume High to Low') }} >Volume High to Low</a></li>
                 <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '1' }); setFilterName('Volume Low to High') }} >Volume Low to High</a></li>
-                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '1' }); setFilterName('Name A to Z') }} >Name A to Z</a></li>
-                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '-1' }); setFilterName('Name Z to A') }} >Name Z to A</a></li>
+                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '1' }); setFilterName('Collection Name A to Z') }} >Collection Name A to Z</a></li>
+                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '-1' }); setFilterName('Collection Name Z to A') }} >Collection Name Z to A</a></li>
 
               </ul>
             </div>
@@ -287,8 +287,8 @@ const Discovercollection = () => {
                   <ul className="dropdown-menu">
                     <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '-1' }); setFilterName('Volume High to Low') }} >Volume High to Low</a></li>
                     <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '1' }); setFilterName('Volume Low to High') }} >Volume Low to High</a></li>
-                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '1' }); setFilterName('Name A to Z') }} >Name A to Z</a></li>
-                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '-1' }); setFilterName('Name Z to A') }} >Name Z to A</a></li>
+                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '1' }); setFilterName('Collection Name A to Z') }} >Collection Name A to Z</a></li>
+                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '-1' }); setFilterName('Collection Name Z to A') }} >Collection Name Z to A</a></li>
 
                   </ul>
                 </div>
