@@ -17,7 +17,8 @@ const Discovercollection = () => {
   const [limit] = useState(10);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState([]);
-
+ const [filter, setFilter] = useState({name: 'volume' , value: -1});
+ const [filterName, setFilterName] = useState('Volume High to Low')
   const handleSpanClick = (span) => {
     setActiveSpan(span);
   };
@@ -64,7 +65,7 @@ const Discovercollection = () => {
       } else {
         config = {
           method: "get",
-          url: `${api_url}/launchpads/discover?offset=${page}&limit=${limit}`,
+          url: `${api_url}/launchpads/discover?offset=${page}&limit=${limit}&orderField=${filter?.name}&orderDirection=${filter?.value}`,
           // headers: {
           //     Authorization: "Bearer " + accessToken,
           // },
@@ -101,7 +102,7 @@ const Discovercollection = () => {
     } else {
       getDescription();
     }
-  }, [searchvalue, page]);
+  }, [searchvalue, page, filter]);
 
   return (
     <>
@@ -111,6 +112,7 @@ const Discovercollection = () => {
         <div className="discovercollectioncontainer">
           <h5 className="discovercollectionhead">Collections</h5>
           <div className="dicovercollectionupper">
+           
             {/* <button className={toggle ? "collectionfilterbtn" : "collectionfilterbtntext"} onClick={() => { setToggle(!toggle), localStorage.setItem("toggle", !toggle) }}>
                             {toggle ?
                                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" className="filterimginner">
@@ -138,6 +140,7 @@ const Discovercollection = () => {
                                     <p className={toggle ? 'hidepara' : 'showpara'}>Filters</p>
                                 </>
                             }
+          
                         </button> */}
             <div className="searchcollectionmain">
               <input
@@ -168,6 +171,19 @@ const Discovercollection = () => {
                   fill="#745F8C"
                 />
               </svg>
+            </div>
+            <div className="dropdown dropdownCollection">
+              <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {filterName}
+                {/* <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" /> */}
+              </button>
+              <ul className="dropdown-menu">
+                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '-1' }); setFilterName('Volume High to Low') }} >Volume High to Low</a></li>
+                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '1' }); setFilterName('Volume Low to High') }} >Volume Low to High</a></li>
+                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '1' }); setFilterName('Name A to Z') }} >Name A to Z</a></li>
+                <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '-1' }); setFilterName('Name Z to A') }} >Name Z to A</a></li>
+
+              </ul>
             </div>
             {/* <div className="timefilter">
                             <span
@@ -263,6 +279,19 @@ const Discovercollection = () => {
                     </g>
                   </svg>
                 </button>
+                <div className="dropdown dropdownCollection">
+                  <button className="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {filterName}
+                    {/* <img src="\assets\landing\static\dropdown-arrow.svg" alt="img" className="img-fluid" /> */}
+                  </button>
+                  <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '-1' }); setFilterName('Volume High to Low') }} >Volume High to Low</a></li>
+                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'volume', value: '1' }); setFilterName('Volume Low to High') }} >Volume Low to High</a></li>
+                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '1' }); setFilterName('Name A to Z') }} >Name A to Z</a></li>
+                    <li><a className="dropdown-item" onClick={() => { setFilter({ name: 'name', value: '-1' }); setFilterName('Name Z to A') }} >Name Z to A</a></li>
+
+                  </ul>
+                </div>
               </div>
               {/* <button className="lastbtn">
                 <p>last 1D</p>
@@ -469,7 +498,7 @@ const Discovercollection = () => {
                         </div>
                       </th>
                       <th>Market cap</th>
-                      <th>Floor 1d%</th>
+                      {/* <th>Floor 1d%</th> */}
                       <th>
                         <div className="theadmain">
                           <p className="theadpara">Volume 1d</p>
@@ -560,14 +589,14 @@ const Discovercollection = () => {
                             USDC
                           </td>
 
-                          <td>
+                          {/* <td>
                             <p className={classNameFloor}>
                               {parseFloat(
                                 displayPercentageChangeOfFloor
                               )?.toFixed(2)}{" "}
                               %
                             </p>
-                          </td>
+                          </td> */}
                           <td className="text-light">
                             {parseFloat(item?.volumeToday)?.toFixed(2)} Core
                           </td>

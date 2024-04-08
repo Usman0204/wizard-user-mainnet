@@ -6,7 +6,7 @@
 
     .discovercollectionshade {
         border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        background: linear-gradient(180deg, rgba(13, 7, 20, 0.00) 0%, #0D0714 100%);
+        background: linear-gradient(180deg, rgba(13, 7, 20, 0) 0%, #0d0714 100%);
         width: 100%;
         height: 414px;
         position: absolute;
@@ -24,7 +24,7 @@
     }
 
     .discovercollectionhead {
-        color: var(--On-Surface, #FFF);
+        color: var(--On-Surface, #fff);
         font-size: 26px;
         font-style: normal;
         font-weight: 500;
@@ -47,14 +47,16 @@
             gap: 10px;
             border: none;
             outline: none;
-            color: var(--On-Surface, #FFF);
+            color: var(--On-Surface, #fff);
             font-size: 14px;
             font-style: normal;
             font-weight: 400;
             line-height: 120%;
             height: 48px;
             width: 106px;
-            transition: opacity 0.3s ease, width 0.3s ease;
+            transition:
+                opacity 0.3s ease,
+                width 0.3s ease;
 
             p {
                 opacity: 0;
@@ -75,11 +77,11 @@
             }
 
             &:hover {
-                color: #862FC0;
+                color: #862fc0;
                 transition: 0.3s;
 
                 .arrowimgfilter path {
-                    fill: #862FC0;
+                    fill: #862fc0;
                     transition: 0.3s;
                 }
             }
@@ -87,7 +89,7 @@
 
         .collectionfilterbtn {
             border-radius: 10px;
-            background: #0D0A0F;
+            background: #0d0a0f;
             display: flex;
             width: 48px;
             height: 48px;
@@ -95,11 +97,13 @@
             align-items: center;
             border: none;
             outline: none;
-            transition: opacity 0.3s ease, width 0.3s ease;
+            transition:
+                opacity 0.3s ease,
+                width 0.3s ease;
 
             &:hover {
                 .filterimginner path {
-                    fill: #862FC0;
+                    fill: #862fc0;
                     transition: 0.3s;
                 }
             }
@@ -114,9 +118,9 @@
                 border: none;
                 outline: none;
                 border-radius: 10px;
-                background: #0D0A0F;
+                background: #0d0a0f;
                 height: 48px;
-                color: #FFF;
+                color: #fff;
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
@@ -125,17 +129,17 @@
                 border: 1px solid transparent;
 
                 &:focus {
-                    border: 1px solid #862FC0;
+                    border: 1px solid #862fc0;
                     transition: 0.3s;
 
-                    &+.searchcollectionimg path {
+                    & + .searchcollectionimg path {
                         transition: 0.3s;
-                        fill: #862FC0;
+                        fill: #862fc0;
                     }
                 }
 
                 &::placeholder {
-                    color: var(--Light-Text-Color, #745F8C);
+                    color: var(--Light-Text-Color, #745f8c);
                     font-size: 14px;
                     font-style: normal;
                     font-weight: 400;
@@ -155,7 +159,7 @@
             padding: 3px;
             align-items: flex-start;
             border-radius: 10px;
-            background: #0D0A0F;
+            background: #0d0a0f;
 
             .timespan {
                 display: flex;
@@ -164,7 +168,7 @@
                 align-items: center;
                 width: 56px;
                 height: 42px;
-                color: var(--On-Surface, #FFF);
+                color: var(--On-Surface, #fff);
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
@@ -175,6 +179,40 @@
 
             .active {
                 background: #141017;
+            }
+        }
+        .dropdownCollection {
+            .dropdown-toggle {
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background-color: transparent;
+                padding: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                color: #fff;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+                text-transform: uppercase;
+                transition: 0.3s linear;
+            }
+            .dropdown-menu {
+                border-radius: 6px;
+                border: 1px solid #251834;
+                background: #1b1027;
+                color: white !important;
+                a {
+                    padding: 14px 18px;
+                    color: var(--Light-Text-Color, #745f8c);
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 100%;
+                    transition: 0.3s linear;
+                }
             }
         }
     }
@@ -189,11 +227,15 @@
 
         .filter {
             opacity: 1;
-            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, padding 0.3s ease;
+            transition:
+                opacity 0.3s ease,
+                width 0.3s ease,
+                height 0.3s ease,
+                padding 0.3s ease;
             width: 303px;
             min-height: 836px;
             border-radius: 10px;
-            background: #0D0A0F;
+            background: #0d0a0f;
             padding: 36px 0px 20px 0px;
             position: relative;
 
@@ -233,7 +275,7 @@
                         border-radius: 0px;
 
                         .accordion-button::after {
-                            background: url('../../public/assets/discovercollection/arrow-down.svg');
+                            background: url("../../public/assets/discovercollection/arrow-down.svg");
                             background-repeat: no-repeat;
                             background-position: center;
                             background-size: cover;
@@ -254,7 +296,7 @@
                             box-shadow: none;
                             border: none;
                             border-radius: 0px;
-                            color: var(--On-Surface, #FFF);
+                            color: var(--On-Surface, #fff);
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 400;
@@ -263,7 +305,7 @@
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
-                            border-bottom: 1px solid #1B1B1B;
+                            border-bottom: 1px solid #1b1b1b;
                             outline: none !important;
                             white-space: nowrap;
                         }
@@ -286,7 +328,7 @@
                                 justify-content: space-between;
                                 align-items: center;
                                 padding-bottom: 19px;
-                                border-bottom: 1px solid #1B1B1B;
+                                border-bottom: 1px solid #1b1b1b;
 
                                 .option-field {
                                     position: relative;
@@ -294,10 +336,10 @@
 
                                     input {
                                         border-radius: 6px;
-                                        border: 1px solid #19131D;
-                                        background: #130F16;
+                                        border: 1px solid #19131d;
+                                        background: #130f16;
                                         padding: 16px 15px;
-                                        color: #FFF;
+                                        color: #fff;
                                         font-size: 14px;
                                         font-style: normal;
                                         font-weight: 400;
@@ -328,7 +370,11 @@
             opacity: 0;
             width: 0;
             height: 0;
-            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, padding 0.3s ease;
+            transition:
+                opacity 0.3s ease,
+                width 0.3s ease,
+                height 0.3s ease,
+                padding 0.3s ease;
             pointer-events: none;
             padding: 0px;
         }
@@ -339,8 +385,8 @@
 
         .maindicovercollectiontable {
             border-radius: 10px;
-            border: 1px solid #1B1B1B;
-            background: rgba(8, 5, 10, 0.00);
+            border: 1px solid #1b1b1b;
+            background: rgba(8, 5, 10, 0);
             width: 100%;
 
             .dicovercollectiontable {
@@ -356,15 +402,15 @@
 
                     thead {
                         th {
-                            color: #FFF;
+                            color: #fff;
                             font-size: 13px;
                             font-style: normal;
                             font-weight: 400;
                             line-height: 18px;
                             letter-spacing: -0.013px;
                             text-transform: uppercase;
-                            border-bottom: 1px solid #1B1B1B;
-                            background: rgba(8, 5, 10, 0.00);
+                            border-bottom: 1px solid #1b1b1b;
+                            background: rgba(8, 5, 10, 0);
                             padding: 19px 24px;
                             white-space: nowrap;
 
@@ -388,15 +434,15 @@
                     tbody {
                         tr {
                             td {
-                                color: #FFF;
+                                color: #fff;
                                 font-size: 14px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 20px;
                                 letter-spacing: -0.014px;
                                 padding: 19px 24px;
-                                border-bottom: 1px solid #1B1B1B;
-                                background: rgba(8, 5, 10, 0.00);
+                                border-bottom: 1px solid #1b1b1b;
+                                background: rgba(8, 5, 10, 0);
                                 white-space: nowrap;
 
                                 .maincollectiontd {
@@ -426,7 +472,7 @@
                                 }
 
                                 .redtext {
-                                    color: #D72727;
+                                    color: #d72727;
                                     font-size: 14px;
                                     font-style: normal;
                                     font-weight: 400;
@@ -435,7 +481,7 @@
                                 }
 
                                 .greentext {
-                                    color: #49D632;
+                                    color: #49d632;
                                     font-size: 14px;
                                     font-style: normal;
                                     font-weight: 400;
@@ -462,7 +508,7 @@
                 padding: 12px 24px;
 
                 .paginationbtn {
-                    color: #FFF;
+                    color: #fff;
                     font-size: 14px;
                     font-style: normal;
                     font-weight: 600;
@@ -476,27 +522,26 @@
                     outline: none;
 
                     &:hover {
-                        color: #862FC0;
+                        color: #862fc0;
                         transition: 0.3s;
 
                         .pagearrowimg path {
-                            stroke: #862FC0 !important;
+                            stroke: #862fc0 !important;
                             transition: 0.3s;
                         }
                     }
                 }
 
                 .pagination {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                    .active>.page-link,
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    .active > .page-link,
                     .page-link.active {
-                        background-color: #862FC0 !important;
+                        background-color: #862fc0 !important;
                     }
 
                     .page-item {
-
                         .page-link {
                             display: flex;
                             width: 40px;
@@ -504,7 +549,7 @@
                             justify-content: center;
                             align-items: center;
                             border-radius: 5px !important;
-                            color: #FFF;
+                            color: #fff;
                             font-size: 14px;
                             font-style: normal;
                             font-weight: 500;
@@ -519,10 +564,10 @@
                             margin: 0px !important;
                         }
                     }
-                    .page-item:first-child .page-link{
+                    .page-item:first-child .page-link {
                         width: 100% !important;
                     }
-                    .page-item:last-child .page-link{
+                    .page-item:last-child .page-link {
                         width: 100% !important;
                     }
                 }
@@ -531,10 +576,8 @@
     }
 }
 
-
-
 .filtersidebar {
-    background: #08050A;
+    background: #08050a;
     height: 100% !important;
 
     .offcanvas-body {
@@ -548,18 +591,17 @@
             padding: 0px 20px;
 
             .filtersideheading {
-                color: #FFF;
+                color: #fff;
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 400;
                 line-height: 100%;
-            
             }
 
             .crossimg {
                 &:hover {
                     path {
-                        stroke: #862FC0;
+                        stroke: #862fc0;
                     }
                 }
             }
@@ -577,7 +619,6 @@
                 border: none;
                 border-radius: 0px;
 
-
                 .accordion-header {
                     background-color: transparent;
                     box-shadow: none;
@@ -586,7 +627,7 @@
                     padding: 0px 20px;
 
                     .accordion-button::after {
-                        background: url('../../public/assets/discovercollection/arrow-down.svg');
+                        background: url("../../public/assets/discovercollection/arrow-down.svg");
                         background-repeat: no-repeat;
                         background-position: center;
                         background-size: cover;
@@ -601,7 +642,7 @@
                         box-shadow: none;
                         border: none;
                         border-radius: 0px;
-                        color: var(--On-Surface, #FFF);
+                        color: var(--On-Surface, #fff);
                         font-size: 14px;
                         font-style: normal;
                         font-weight: 400;
@@ -610,7 +651,7 @@
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        border-top: 1px solid #1B1B1B;
+                        border-top: 1px solid #1b1b1b;
                         padding: 19px 0px;
                     }
                 }
@@ -637,10 +678,10 @@
 
                                 input {
                                     border-radius: 6px;
-                                    border: 1px solid #19131D;
-                                    background: #130F16;
+                                    border: 1px solid #19131d;
+                                    background: #130f16;
                                     padding: 16px 15px;
-                                    color: #FFF;
+                                    color: #fff;
                                     font-size: 14px;
                                     font-style: normal;
                                     font-weight: 400;
@@ -668,7 +709,7 @@
     }
 }
 
-@media(max-width:1024px) {
+@media (max-width: 1024px) {
     .discovercollectionmain .dicovercollectionupper {
         display: none !important;
     }
@@ -679,11 +720,13 @@
         gap: 20px;
         width: 100%;
         margin-bottom: 30px;
-        transition: opacity 0.3s ease, width 0.3s ease;
+        transition:
+            opacity 0.3s ease,
+            width 0.3s ease;
 
         .crossbtn {
             border-radius: 10px;
-            background: #0D0A0F;
+            background: #0d0a0f;
             display: flex;
             width: 48px;
             height: 48px;
@@ -695,12 +738,12 @@
 
             &:hover {
                 .crossimg path {
-                    stroke: #862FC0;
+                    stroke: #862fc0;
                     transition: 0.3s;
                 }
 
                 .crossimg circle {
-                    stroke: #862FC0;
+                    stroke: #862fc0;
                     transition: 0.3s;
                 }
             }
@@ -715,9 +758,9 @@
                 border: none;
                 outline: none;
                 border-radius: 10px;
-                background: #0D0A0F;
+                background: #0d0a0f;
                 height: 48px;
-                color: #FFF;
+                color: #fff;
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
@@ -726,12 +769,12 @@
                 border: 1px solid transparent;
 
                 &:focus {
-                    border: 1px solid #862FC0;
+                    border: 1px solid #862fc0;
                     transition: 0.3s;
 
-                    &+.searchcollectionimg path {
+                    & + .searchcollectionimg path {
                         transition: 0.3s;
-                        fill: #862FC0;
+                        fill: #862fc0;
                     }
                 }
 
@@ -758,7 +801,9 @@
         align-items: center;
         margin-bottom: 30px;
         width: 100%;
-        transition: opacity 0.3s ease, width 0.3s ease;
+        transition:
+            opacity 0.3s ease,
+            width 0.3s ease;
 
         .dicovercollectionbtns {
             display: flex;
@@ -768,7 +813,7 @@
 
             .filterbtnmbl {
                 border-radius: 10px;
-                background: #0D0A0F;
+                background: #0d0a0f;
                 display: flex;
                 width: 48px;
                 height: 48px;
@@ -779,7 +824,7 @@
 
                 &:hover {
                     .filterimginner path {
-                        fill: #862FC0;
+                        fill: #862fc0;
                         transition: 0.3s;
                     }
                 }
@@ -788,14 +833,14 @@
 
         .lastbtn {
             border-radius: 10px;
-            border: 1px solid #862FC0;
+            border: 1px solid #862fc0;
             display: flex;
             padding: 0px 27px;
             height: 48px;
             justify-content: center;
             align-items: center;
-            background: #08050A;
-            color: #862FC0;
+            background: #08050a;
+            color: #862fc0;
             gap: 10px;
             text-align: center;
             font-size: 12px;
@@ -812,14 +857,14 @@
             }
 
             &:hover {
-                background-color: #862FC0;
-                color: #FFF;
+                background-color: #862fc0;
+                color: #fff;
                 transition: 0.3s;
 
                 .arrowimages {
                     svg path {
                         transition: 0.3s;
-                        fill: #FFF;
+                        fill: #fff;
                     }
                 }
             }
@@ -829,7 +874,6 @@
     .discovercollectionmain .discovercollectioncontainer {
         padding: 0 15px;
     }
-
 }
 
 @media (max-width: 390px) {
@@ -841,3 +885,39 @@
         font-size: 10px;
     }
 }
+
+
+ .dropdownCollection {
+            .dropdown-toggle {
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background-color: transparent;
+                padding: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                color: #fff;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+                text-transform: uppercase;
+                transition: 0.3s linear;
+            }
+            .dropdown-menu {
+                border-radius: 6px;
+                border: 1px solid #251834;
+                background: #1b1027;
+                color: white !important;
+                a {
+                    padding: 14px 18px;
+                    color: var(--Light-Text-Color, #745f8c);
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 100%;
+                    transition: 0.3s linear;
+                }
+            }
+        }
