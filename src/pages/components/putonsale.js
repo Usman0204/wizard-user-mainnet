@@ -561,7 +561,7 @@ const Putonsale = () => {
                                     Put on Auction</Link>
                             </div>
                             } */}
-                            {(dataset?.openForBid && account) && <div className="priceandbid">
+                            {(dataset?.openForBid) && <div className="priceandbid">
                                 <div className="pricebidinner">
                                     <p className="pricebidpara">Highest Bid</p>
                                     <h6 className="pricebidhead">{bidsData?.[0]?.bidPrice || 0} Core</h6>

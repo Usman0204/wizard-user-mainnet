@@ -11,7 +11,7 @@ import ReactPaginate from 'react-paginate';
 
 const Items = ({ idnft, launchpadName }) => {
     // console.log("items++++++++", idnft)
-    const [price, setPrice] = useState({ name: 'All', value: '1' })
+    const [price, setPrice] = useState({ name: 'Low to High', value: '1' })
     const [search, setSearch] = useState()
     let { account } = useWeb3React();
     const api_url = Environment.api_url;

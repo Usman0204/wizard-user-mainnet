@@ -246,9 +246,14 @@ const Nftdetail = () => {
             });
     };
     async function completebuy() {
-        // console.log(dataset?.launchpad[0]?.platformFee);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+        console.log(dataset?.launchpad[0]?.platformFee, 'dataset',);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         let fee = (dataset?.price + ((dataset?.launchpad[0]?.platformFee || 0) / 100 * dataset?.price)).toFixed(6)
-        // console.log("buy", fee)
+        console.log("dataset", balance, fee)
+        if(parseFloat(balance) < parseFloat(fee)){
+            toast.error(`Low Balance! You must have ${parseFloat(fee)?.toFixed(2)} Core in your account`)
+            // toast.error(`You must have ${fee} in your account`)
+            return
+        }
         try {
             setLoader(true)
             let res = await Buy(dataset?.collectionAddress, dataset?.tokenID, fee)
@@ -776,7 +781,9 @@ const Nftdetail = () => {
     // }
 
     const MakeOffers = async () => {
+        
         if (account) {
+           
             try {
 
                 const fee = parseFloat(corevalue) + ((dataset?.launchpad?.[0]?.platformFee || 0) / 100 * parseFloat(corevalue));
@@ -985,9 +992,7 @@ const Nftdetail = () => {
 
                             </div>
 
-                            {
-                                account &&
-                                (
+                           
                                     <div className="priceandbid">
                                         {dataset?.isFixedPrice &&
                                             (
@@ -1015,8 +1020,7 @@ const Nftdetail = () => {
                                         }
 
                                     </div>
-                                )
-                            }
+                                
 
                             {
                                 account &&
@@ -1034,7 +1038,7 @@ const Nftdetail = () => {
                                     </div>
                                 )
                             }
-
+                          
 
                             {
                                 dataset?.isFixedPrice && account &&
