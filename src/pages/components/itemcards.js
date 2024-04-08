@@ -33,7 +33,7 @@ const Itemcards = ({ dataset, setOffset, offset, loader, tab }) => {
             361: {
                 items: 1.2,
                 margin: 10,
-                loop: true,
+                loop: false,
                 nav: false,
                 dots: true,
                 dotsEach: true
@@ -41,7 +41,7 @@ const Itemcards = ({ dataset, setOffset, offset, loader, tab }) => {
             600: {
                 items: 1.2,
                 margin: 10,
-                loop: true,
+                loop: false,
                 nav: false,
                 dots: true,
                 dotsEach: true

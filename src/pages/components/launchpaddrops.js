@@ -24,7 +24,7 @@ const Launchpaddrops = () => {
         nav: true,
         dots: false,
         dotsEach: false,
-        loop: true,
+        loop: false,
         autoplay: false,
         autoplayTimeout: 2000,
         navText: [
@@ -34,16 +34,19 @@ const Launchpaddrops = () => {
         responsive: {
             0: {
                 items: 1.3,
+loop: true,
                 margin: 10,
                 autoplay: true,
             },
             361: {
                 items: 1.3,
+loop: true,
                 margin: 10,
                 autoplay: true,
             },
             600: {
                 items: 1.3,
+loop: true,
                 margin: 10,
                 autoplay: true,
             },

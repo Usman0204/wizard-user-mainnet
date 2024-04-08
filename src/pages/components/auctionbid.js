@@ -17,18 +17,18 @@ import Loader from '@/hooks/loader';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
-const Auctionbid = ({tab}) => {
+const Auctionbid = ({ tab }) => {
     const [cardData, setUpcomingdata] = useState([])
     const [filters, setFilters] = useState({ name: 'Low to High', value: '1' })
     const [dataset, setdataset] = useState();
     const [loader, setloader] = useState(false)
     const api_url = Environment?.api_url
-    const [page, setPage] = useState(1); 
+    const [page, setPage] = useState(1);
     const owl_option = {
         nav: true,
         dots: false,
         dotsEach: false,
-        loop: true,
+        loop: false,
         autoplay: false,
         autoplayTimeout: 2000,
         navText: [
@@ -38,16 +38,19 @@ const Auctionbid = ({tab}) => {
         responsive: {
             0: {
                 items: 1.3,
+                loop: true,
                 margin: 10,
                 autoplay: true,
             },
             361: {
                 items: 1.3,
+                loop: true,
                 margin: 10,
                 autoplay: true,
             },
             600: {
                 items: 1.3,
+                loop: true,
                 margin: 10,
                 autoplay: true,
             },
@@ -77,7 +80,7 @@ const Auctionbid = ({tab}) => {
             },
         },
     };
-    
+
     const GetUpcomingDetail = () => {
         setloader(true)
         let tok = localStorage.getItem("accessToken");
@@ -127,7 +130,7 @@ const Auctionbid = ({tab}) => {
         GetUpcomingDetail()
     }, [filters, page])
 
-  
+
     const resetDataAndFetch = () => {
         setUpcomingdata([]); // Clear existing data
         setPage(1); // Reset pagination to page 1
@@ -167,120 +170,120 @@ const Auctionbid = ({tab}) => {
                     <div className={tab === 'liveauction' ? "bottom-cards" : "bottom-cards displaynoneinmobile"}>
                         {cardData?.slice(0, tab === 'buynow' ? 20000 : 8)?.map((card, id) => (
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
-                            <div className="main-card">
-                                <div className="main-img">
-                                    <img
-                                        src={'https://dweb.link/ipfs'+ card?.nft}
-                                        alt="img"
-                                        className="img-fluid main-img-card"
-                                    />
-                                    <img
-                                        src="/assets/landing/static/live-auction-abs.svg"
-                                        alt="img"
-                                        className="img-fluid abs-img"
-                                    />
-                                </div>
-                                <div className="bottom-text">
-                                    <div className="twice-text">
-                                        <div className="left-text">
-                                            <h6>
-                                                <span>By</span>
-                                                {card?.launchpadId?.name}{' '}
-                                                <img
-                                                    src="/assets/landing/static/verify-icon.svg"
-                                                    alt="img"
-                                                    className="img-fluid"
-                                                />
-                                            </h6>
-                                            <h5>#{card?.tokenID}</h5>
+                                <div className="main-card">
+                                    <div className="main-img">
+                                        <img
+                                            src={'https://dweb.link/ipfs' + card?.nft}
+                                            alt="img"
+                                            className="img-fluid main-img-card"
+                                        />
+                                        <img
+                                            src="/assets/landing/static/live-auction-abs.svg"
+                                            alt="img"
+                                            className="img-fluid abs-img"
+                                        />
+                                    </div>
+                                    <div className="bottom-text">
+                                        <div className="twice-text">
+                                            <div className="left-text">
+                                                <h6>
+                                                    <span>By</span>
+                                                    {card?.launchpadId?.name}{' '}
+                                                    <img
+                                                        src="/assets/landing/static/verify-icon.svg"
+                                                        alt="img"
+                                                        className="img-fluid"
+                                                    />
+                                                </h6>
+                                                <h5>#{card?.tokenID}</h5>
+                                            </div>
+                                            <div className="right-text">
+                                                <h6>Price</h6>
+                                                <h5>
+                                                    <img
+                                                        src="/assets/landing/static/price-icon.svg"
+                                                        alt="img"
+                                                        className="img-fluid"
+                                                    />
+                                                    {card?.price || 0} <span>Core</span>
+                                                </h5>
+                                            </div>
                                         </div>
-                                        <div className="right-text">
-                                            <h6>Price</h6>
-                                            <h5>
-                                                <img
-                                                    src="/assets/landing/static/price-icon.svg"
-                                                    alt="img"
-                                                    className="img-fluid"
-                                                />
-                                                {card?.price || 0} <span>Core</span>
-                                            </h5>
+                                        <div className="timer ">
+                                            {/* card?.duration = 2024-02-24T07:26:00.000Z */}
+                                            {/* <h6><Timer endTime="2024-02-24T07:26:00.000Z" /></h6> */}
+                                            {/* <h6><Timer duration={"2024-02-24T07:26:00.000Z"} /></h6> */}
+                                            <h6><CountdownTimer endDate={card?.duration} /></h6>
                                         </div>
                                     </div>
-                                    <div className="timer ">
-                                        {/* card?.duration = 2024-02-24T07:26:00.000Z */}
-                                        {/* <h6><Timer endTime="2024-02-24T07:26:00.000Z" /></h6> */}
-                                        {/* <h6><Timer duration={"2024-02-24T07:26:00.000Z"} /></h6> */}
-                                        <h6><CountdownTimer endDate={card?.duration} /></h6>
-                                    </div>
+                                    <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>Place a bid</Link>
                                 </div>
-                                <Link href={`/nftdetail?id=${card?._id}`} className='btn-forbid'>Place a bid</Link>
-                            </div>
                             </Link>
                         ))}
                     </div>
                     {cardData?.length > 0 &&
                         (
-                        <div className={tab === 'liveauction' ? "bottom-cards d-none " : "bottom-cards d-none displayblockinmobile"}>
+                            <div className={tab === 'liveauction' ? "bottom-cards d-none " : "bottom-cards d-none displayblockinmobile"}>
                                 <div className="owl_option">
 
                                     <OwlCarousel
                                         className="owl-theme"
                                         {...owl_option}
-                                    > 
-                                    {cardData?.slice(0, tab === 'liveauction' ? 20000 : 8)?.map((card) => (
-                                                <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
-                                                    <div className="main-card">
-                                                        <div className="main-img">
-                                                            <img
-                                                        src={'https://dweb.link/ipfs' +card.nft}
-                                                                alt="img"
-                                                                className="img-fluid main-img-card"
-                                                            />
-                                                            <img
-                                                                src="/assets/landing/static/live-auction-abs.svg"
-                                                                alt="img"
-                                                                className="img-fluid abs-img"
-                                                            />
-                                                        </div>
-                                                        <div className="bottom-text">
-                                                            <div className="twice-text">
-                                                                <div className="left-text">
-                                                                    <h6>
-                                                                        <span>By</span>
-                                                                {card?.launchpadId?.name}{' '}
-                                                                        <img
-                                                                            src="/assets/landing/static/verify-icon.svg"
-                                                                            alt="img"
-                                                                            className="img-fluid"
-                                                                            style={{ width: "auto" }}
-                                                                        />
-                                                                    </h6>
-                                                            <h5>#{card?.tokenID}</h5>
-                                                                </div>
-                                                                <div className="right-text">
-                                                                    <h6>Price</h6>
-                                                                    <h5>
-                                                                        <img
-                                                                            src="/assets/landing/static/price-icon.svg"
-                                                                            alt="img"
-                                                                            className="img-fluid"
-                                                                        />
-                                                                        {card.price || 0} <span>Core</span>
-                                                                    </h5>
-                                                                </div>
-                                                            </div>
-                                                    <div className="timer ">
-                                                        {/* card?.duration = 2024-02-24T07:26:00.000Z */}
-                                                        {/* <h6><Timer endTime="2024-02-24T07:26:00.000Z" /></h6> */}
-                                                        {/* <h6><Timer duration={"2024-02-24T07:26:00.000Z"} /></h6> */}
-                                                        <h6><CountdownTimer endDate={card?.duration} /></h6>
+                                    >
+                                        {cardData?.slice(0, tab === 'liveauction' ? 20000 : 8)?.map((card) => (
+                                            <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
+                                                <div className="main-card">
+                                                    <div className="main-img">
+                                                        <img
+                                                            src={'https://dweb.link/ipfs' + card.nft}
+                                                            alt="img"
+                                                            className="img-fluid main-img-card"
+                                                        />
+                                                        <img
+                                                            src="/assets/landing/static/live-auction-abs.svg"
+                                                            alt="img"
+                                                            className="img-fluid abs-img"
+                                                        />
                                                     </div>
-                                                            {/* <div className="timer">
+                                                    <div className="bottom-text">
+                                                        <div className="twice-text">
+                                                            <div className="left-text">
+                                                                <h6>
+                                                                    <span>By</span>
+                                                                    {card?.launchpadId?.name}{' '}
+                                                                    <img
+                                                                        src="/assets/landing/static/verify-icon.svg"
+                                                                        alt="img"
+                                                                        className="img-fluid"
+                                                                        style={{ width: "auto" }}
+                                                                    />
+                                                                </h6>
+                                                                <h5>#{card?.tokenID}</h5>
+                                                            </div>
+                                                            <div className="right-text">
+                                                                <h6>Price</h6>
+                                                                <h5>
+                                                                    <img
+                                                                        src="/assets/landing/static/price-icon.svg"
+                                                                        alt="img"
+                                                                        className="img-fluid"
+                                                                    />
+                                                                    {card.price || 0} <span>Core</span>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div className="timer ">
+                                                            {/* card?.duration = 2024-02-24T07:26:00.000Z */}
+                                                            {/* <h6><Timer endTime="2024-02-24T07:26:00.000Z" /></h6> */}
+                                                            {/* <h6><Timer duration={"2024-02-24T07:26:00.000Z"} /></h6> */}
+                                                            <h6><CountdownTimer endDate={card?.duration} /></h6>
+                                                        </div>
+                                                        {/* <div className="timer">
                                              <h6>05D : 12H : 07M : 45S</h6>
                                          </div> */}
-                                                        </div>
-                                                    </div></Link>
-                                            ))
+                                                    </div>
+                                                </div></Link>
+                                        ))
                                         }
                                     </OwlCarousel>
 
@@ -292,32 +295,32 @@ const Auctionbid = ({tab}) => {
 
                 </div>
                 {tab != 'liveauction' ||
-                    (dataset?.pages > page && 
-                    <div className="bottom-btn-seemore">
-                    {/* <a className='' onClick={() => setPage(page + 1)}>{loader ? 'Loading...' : 'See more'} </a> */}
-                        <div className="paginationmain mt-5">
-                            <ReactPaginate
-                                previousLabel="Previous"
-                                nextLabel="Next"
-                                pageClassName="page-item"
-                                pageLinkClassName="page-link"
-                                previousClassName="page-item"
-                                previousLinkClassName="page-link"
-                                nextClassName="page-item"
-                                nextLinkClassName="page-link"
-                                breakLabel="..."
-                                breakClassName="page-item"
-                                breakLinkClassName="page-link"
-                                pageCount={Math.ceil(dataset?.pages)}
-                                marginPagesDisplayed={1}
-                                pageRangeDisplayed={2}
-                                onPageChange={handlePageChange}
-                                containerClassName="pagination"
-                                activeClassName="active"
-                                forcePage={page - 1}
-                            />
-                        </div>
-                    </div>)
+                    (dataset?.pages > page &&
+                        <div className="bottom-btn-seemore">
+                            {/* <a className='' onClick={() => setPage(page + 1)}>{loader ? 'Loading...' : 'See more'} </a> */}
+                            <div className="paginationmain mt-5">
+                                <ReactPaginate
+                                    previousLabel="Previous"
+                                    nextLabel="Next"
+                                    pageClassName="page-item"
+                                    pageLinkClassName="page-link"
+                                    previousClassName="page-item"
+                                    previousLinkClassName="page-link"
+                                    nextClassName="page-item"
+                                    nextLinkClassName="page-link"
+                                    breakLabel="..."
+                                    breakClassName="page-item"
+                                    breakLinkClassName="page-link"
+                                    pageCount={Math.ceil(dataset?.pages)}
+                                    marginPagesDisplayed={1}
+                                    pageRangeDisplayed={2}
+                                    onPageChange={handlePageChange}
+                                    containerClassName="pagination"
+                                    activeClassName="active"
+                                    forcePage={page - 1}
+                                />
+                            </div>
+                        </div>)
                 }
             </section>
             {/* <section className="live-auction">

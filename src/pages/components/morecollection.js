@@ -20,7 +20,7 @@ const MoreCollection = ({ dataset2 }) => {
         nav: true,
         dots: false,
         dotsEach: true,
-        loop: true,
+        loop: false,
         autoplay: false,
         navText: [
             "<img src='/assets/landing/static/carousel-arrow-back.svg' alt='img' />",
@@ -34,7 +34,7 @@ const MoreCollection = ({ dataset2 }) => {
             361: {
                 items: 1.2,
                 margin: 10,
-                loop: true,
+                loop: false,
                 nav: false,
                 dots: true,
                 dotsEach: true
@@ -42,7 +42,7 @@ const MoreCollection = ({ dataset2 }) => {
             600: {
                 items: 1.2,
                 margin: 10,
-                loop: true,
+                loop: false,
                 nav: false,
                 dots: true,
                 dotsEach: true
