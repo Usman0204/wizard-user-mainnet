@@ -20,7 +20,7 @@ export const BidTokens = () => {
       try {
         var gasFunPrice;
         web3.eth.getGasPrice().then((result) => {
-          var result2 = parseInt(result)
+          var result2 = parseInt(result) + 2000000000
           // // console.log("gasfun", typeof result2, result2)
           gasFunPrice = result2.toString()
         })
