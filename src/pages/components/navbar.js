@@ -86,7 +86,7 @@ const Navbar = () => {
           localStorage.setItem("wallet", account);
           // GetUser();
           // setChangeAccount(token);
-          toast.success("User Logged in Successfully");
+        account &&  toast.success("User Logged in Successfully");
         } else {
           console.error("Login failed:", response.data.msg);
           toast.error(response.data.msg, {
@@ -338,7 +338,20 @@ const Navbar = () => {
     const end = address.slice(-endLength);
     return `${start}...${end}`;
   };
-  // console.log("adsdsdsds++++++++", startwith)
+useEffect(() => {
+  web3.eth.getChainId()
+    .then(chainId => {
+      const CORE_NETWORK_ID = '1116'; 
+      if (chainId.toString() !== CORE_NETWORK_ID) {
+        toast.info('Connect to Core Network!');
+        logoutApi();
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching network ID:', error);
+    });
+}, [balance]);
+  
   return (
     <>
       <section className="mainnavbar">
