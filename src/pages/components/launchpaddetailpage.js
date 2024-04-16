@@ -189,6 +189,10 @@ const Launchpaddetailpage = () => {
     return sequentialArray;
   }
   async function mintNFtFunc() {
+    if (!account) {
+      toast.error('Connect your wallet')
+      return
+    }
     let mintedNfts = await mintNftsInfo(dataset?.projectId)
     console.log(mintedNfts);
     if (!isLiveStage) {
@@ -206,10 +210,7 @@ const Launchpaddetailpage = () => {
       toast.error(`You can't mint more than ${dataset?.perWalletLimit} nfts`)
       return
     }
-    if (!account) {
-      toast.error('Connect your wallet')
-      return
-    }
+   
 
     let tok = localStorage.getItem("accessToken");
 
