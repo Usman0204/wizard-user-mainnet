@@ -21,7 +21,7 @@ export const BuyTokens = () => {
         var gasFunPrice;
         web3.eth.getGasPrice().then((result) => {
           var result2 = parseInt(result) + 2000000000
-          // // console.log("gasfun", typeof result2, result2)
+          // // console.log("gasfun", typeof result2, result2) 
           gasFunPrice = result2.toString()
         })
         // const allowance = await approvecontract.methods.allowance(account, Environment.marketPlaceContract).call();
@@ -37,13 +37,6 @@ export const BuyTokens = () => {
         console.log("final",typeof address2,tokenID)
         const gas = await contract.methods.createMarketSale(adder, tokenID).estimateGas({ value: weiAmount, from: account, })
         const staked = await contract.methods.createMarketSale(adder, tokenID).send({ value: weiAmount, gas: gas,  from: account, gasPrice: gasFunPrice })
-        .on("transactionHash", (tx) => {
-            return tx.transactionHash
-          })
-          .catch((error) => {
-            throw error;
-            console.log("error metamask here", error)
-          });
         return staked;
       } catch (e) {
         throw e;

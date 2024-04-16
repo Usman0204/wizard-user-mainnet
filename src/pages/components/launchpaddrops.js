@@ -34,19 +34,19 @@ const Launchpaddrops = () => {
         responsive: {
             0: {
                 items: 1.3,
-loop: true,
+                loop: true,
                 margin: 10,
                 autoplay: true,
             },
             361: {
                 items: 1.3,
-loop: true,
+                loop: true,
                 margin: 10,
                 autoplay: true,
             },
             600: {
                 items: 1.3,
-loop: true,
+                loop: true,
                 margin: 10,
                 autoplay: true,
             },
@@ -105,21 +105,21 @@ loop: true,
     //     setAccessToken(val);
     // }, []);
     let stagePrice = function (mintStages, mintStartTime) {
-            const now = new Date();
-            const liveStage = mintStages?.find((stage, index) => {
+        const now = new Date();
+        const liveStage = mintStages?.find((stage, index) => {
 
-                const stageStartTime = index === 0 ? new Date(mintStartTime) : new Date(mintStages[index - 1].mintStageTime);
-                const stageEndTime = index === mintStages.length - 1 ? new Date(mintStages[index].mintStageTime) : new Date(mintStages[index].mintStageTime);
-                return now >= stageStartTime && now < stageEndTime;
-            });
-            let _id = mintStages?.indexOf(liveStage)
-            // console.log(_id);
-            if (liveStage) {
-                return liveStage.price
-            } else {
-                return mintStages?.[0]?.price || 0
-            }
+            const stageStartTime = index === 0 ? new Date(mintStartTime) : new Date(mintStages[index - 1].mintStageTime);
+            const stageEndTime = index === mintStages.length - 1 ? new Date(mintStages[index].mintStageTime) : new Date(mintStages[index].mintStageTime);
+            return now >= stageStartTime && now < stageEndTime;
+        });
+        let _id = mintStages?.indexOf(liveStage)
+        // console.log(_id);
+        if (liveStage) {
+            return liveStage.price
+        } else {
+            return mintStages?.[0]?.price || 0
         }
+    }
 
     useEffect(() => {
         console.log("mainCardData", mainCardData);
@@ -165,46 +165,82 @@ loop: true,
                                         let isUpcoming = new Date(item?.mintStartTime) > new Date()
                                         let mintStage = item?.mintStages
                                         let mintStartTime = item?.mintStartTime
-                                        return (<Link key={index} href={'/launchpaddetailpage?id=' + item?._id}>
-                                            <div className="main-card" key={index}>
-                                                <div className="main-img">
-                                                    <img src={item?.imageUrl} alt="img" className='img-fluid' />
-                                                </div>
-                                                <div className="bottom-text">
-                                                    <h5>{item?.name}</h5>
-                                                    <div className="inner-text">
-                                                        <div className="text">
-                                                            <h6>PRICE</h6>
-                                                            <p>{stagePrice(mintStage,mintStartTime)}</p>
-                                                        </div>
-                                                        <div className="text">
-                                                            <h6>Items</h6>
-                                                            <p>{item?.itemsCreated}</p>
-                                                        </div>
-                                                        <div className="text">
-                                                            <h6>MINTED</h6>
-                                                            <p>{item?.minted}</p>
-                                                        </div>
+                                        return (
+                                            item?.minted === item?.itemsCreated ||
+                                            <Link key={index} href={'/launchpaddetailpage?id=' + item?._id}>
+                                                <div className="main-card" key={index}>
+                                                    <div className="main-img">
+                                                        <img src={item?.imageUrl} alt="img" className='img-fluid' />
                                                     </div>
-
-                                                    { 
-                                                        item?.minted === item?.itemsCreated ? 
-                                                            <div className="timer ">
-                                                                <h6 className='text-secondary'>Sold Out</h6>
-                                                            </div> 
-                                                            :
-                                                    isUpcoming ?
-                                                        <div className="timer ">
-                                                            <h6>Starts <CountdownTimer endDate={item?.mintStartTime} /></h6>
+                                                    <div className="bottom-text">
+                                                        <h5>{item?.name}</h5>
+                                                        <div className="inner-text">
+                                                            <div className="text">
+                                                                <h6>PRICE</h6>
+                                                                <p>{stagePrice(mintStage, mintStartTime)}</p>
+                                                            </div>
+                                                            <div className="text">
+                                                                <h6>Items</h6>
+                                                                <p>{item?.itemsCreated}</p>
+                                                            </div>
+                                                            <div className="text">
+                                                                <h6>MINTED</h6>
+                                                                <p>{item?.minted}</p>
+                                                            </div>
                                                         </div>
-                                                        :
-                                                        <div className="timer ">
-                                                            <h6>🟢 <span className='green'>Live</span> <CountdownTimer endDate={item?.mintEndTime} /></h6>
-                                                       </div>
-                                                    }
+
+                                                        {
+                                                            isUpcoming ?
+                                                                <div className="timer ">
+                                                                    <h6>Starts <CountdownTimer endDate={item?.mintStartTime} /></h6>
+                                                                </div>
+                                                                :
+                                                                <div className="timer ">
+                                                                    <h6>🟢 <span className='green'>Live</span> <CountdownTimer endDate={item?.mintEndTime} /></h6>
+                                                                </div>
+                                                        }
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </Link>)
+                                            </Link>
+
+                                        )
+                                    })}
+                                    {mainCardData?.map((item, index) => {
+                                        let isUpcoming = new Date(item?.mintStartTime) > new Date()
+                                        let mintStage = item?.mintStages
+                                        let mintStartTime = item?.mintStartTime
+                                        return (
+                                            item?.minted === item?.itemsCreated &&
+                                            <Link key={index} href={'/launchpaddetailpage?id=' + item?._id}>
+                                                <div className="main-card" key={index}>
+                                                    <div className="main-img">
+                                                        <img src={item?.imageUrl} alt="img" className='img-fluid' />
+                                                    </div>
+                                                    <div className="bottom-text">
+                                                        <h5>{item?.name}</h5>
+                                                        <div className="inner-text">
+                                                            <div className="text">
+                                                                <h6>PRICE</h6>
+                                                                <p>{stagePrice(mintStage, mintStartTime)}</p>
+                                                            </div>
+                                                            <div className="text">
+                                                                <h6>Items</h6>
+                                                                <p>{item?.itemsCreated}</p>
+                                                            </div>
+                                                            <div className="text">
+                                                                <h6>MINTED</h6>
+                                                                <p>{item?.minted}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="timer ">
+                                                            <h6 className='text-secondary'>Sold Out</h6>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </Link>
+
+                                        )
                                     })}
                                 </OwlCarousel>
                             </div>

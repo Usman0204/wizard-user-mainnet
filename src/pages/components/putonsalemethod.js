@@ -61,7 +61,7 @@ const Putonsalemethod = () => {
                 // window.location.reload();
             });
     }
-    const putOnSale = () => {
+    const putOnSale = (transactionHash, collectionAddress, tokenID) => {
         let tok = localStorage.getItem("accessToken");
         const config = {
             method: 'patch',
@@ -69,6 +69,9 @@ const Putonsalemethod = () => {
             data: {
                 isFixedPrice: true,
                 price: fee,
+                transactionHash: transactionHash,
+                collectionAddress: collectionAddress,
+                tokenID: tokenID
             },
             headers: {
                 Authorization: "Bearer " + tok,
@@ -94,7 +97,7 @@ const Putonsalemethod = () => {
                 }
             });
     };
-    const putOnAuction = () => {
+    const putOnAuction = (transactionHash, collectionAddress, tokenID) => {
         let tok = localStorage.getItem("accessToken");
         const config = {
             method: 'patch',
@@ -102,6 +105,9 @@ const Putonsalemethod = () => {
             data: {
                 openForBid: true,
                 duration: dateValue,
+                transactionHash: transactionHash,
+                collectionAddress: collectionAddress,
+                tokenID: tokenID
             },
             headers: {
                 Authorization: "Bearer " + tok,
@@ -140,14 +146,16 @@ const Putonsalemethod = () => {
         try {
             setLoader(true)
             let res = await OnSale(dataset?.tokenID, dataset?.collectionAddress, fee)
+            let transactionHash = res?.transactionHash
             // console.log(res);
-            if (res) {
+            if (transactionHash) {
                 // setLoader(true)
-                putOnSale()
+                putOnSale(transactionHash, dataset?.collectionAddress, dataset?.tokenID)
                 // setLoader(false)
             }
             // let res = 
         } catch (error) {
+            console.log(error);
             setLoader(false)
         }
     }
@@ -168,10 +176,10 @@ const Putonsalemethod = () => {
                 let epochTime = selectedTime.getTime();
 
                 let res = await OnAuction(dataset?.tokenID, dataset?.collectionAddress, epochTime);
-                // console.log(res);
+                let transactionHash = res?.transactionHash
 
-                if (res) {
-                    putOnAuction();
+                if (transactionHash) {
+                    putOnAuction(transactionHash, dataset?.collectionAddress, dataset?.tokenID);
                 }
             } else {
                 // Show toast message if time is not greater

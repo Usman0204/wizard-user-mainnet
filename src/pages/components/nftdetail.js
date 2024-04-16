@@ -213,8 +213,8 @@ const Nftdetail = () => {
         getNftDetails()
 
     }, [idnft])
-    const buynow = () => {
-        setLoader(true)
+    const buynow = (transactionHash, collectionAddress, tokenID) => {
+        setLoader(true);
         let tok = localStorage.getItem("accessToken");
         const config = {
             method: 'patch',
@@ -222,44 +222,50 @@ const Nftdetail = () => {
             headers: {
                 Authorization: "Bearer " + tok,
             },
+            data: {
+                transactionHash: transactionHash,
+                collectionAddress: collectionAddress,
+                tokenID: tokenID
+            }
         };
         axios(config)
             .then(function (res) {
                 handleClose();
                 handleShow1();
-                toast.success("Nft Purchased successfully")
-                getNftDetails(idnft)
-                getNftActivityDetails()
-                setLoader(false)
-                // props?.GetBidDetail()
-                // history.push(`/explore`);
+                toast.success("Nft Purchased successfully");
+                getNftDetails(idnft);
+                getNftActivityDetails();
+                setLoader(false);
             })
             .catch(function (error) {
-                setLoader(false)
-                // if (error.response && error.response.data && error.response.data.message) {
-                //     const errorMessage = error.response.data.message;
-                //     toast.error(errorMessage);
-                // } else {
-                //     console.log(error.message, "ssssss");
-                //     toast.error("An error occurred.");
-                // }
+                setLoader(false);
+                // Below is a more detailed error handling approach:
+                if (error.response && error.response.data && error.response.data.message) {
+                    const errorMessage = error.response.data.message;
+                    toast.error(errorMessage);
+                } else {
+                    console.log(error.message, "Error occurred while purchasing NFT.");
+                    toast.error("An error occurred.");
+                }
             });
     };
+
     async function completebuy() {
         console.log(dataset?.launchpad[0]?.platformFee, 'dataset',);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         let fee = (dataset?.price + ((dataset?.launchpad[0]?.platformFee || 0) / 100 * dataset?.price)).toFixed(6)
         console.log("dataset", balance, fee)
-        if(parseFloat(balance) < parseFloat(fee)){
-            toast.error(`Low Balance! You must have ${parseFloat(fee)?.toFixed(2)} Core in your account`)
-            // toast.error(`You must have ${fee} in your account`)
-            return
-        }
+        // if(parseFloat(balance) < parseFloat(fee)){
+        //     toast.error(`Low Balance! You must have ${parseFloat(fee)?.toFixed(2)} Core in your account`)
+        //     // toast.error(`You must have ${fee} in your account`)
+        //     return
+        // }
         try {
             setLoader(true)
             let res = await Buy(dataset?.collectionAddress, dataset?.tokenID, fee)
-            // console.log(res);
-            if (res) {
-                buynow()
+            let transactionHash = res?.transactionHash
+            console.log('transactionHash',res);
+            if (transactionHash) {
+                buynow(transactionHash, dataset?.collectionAddress, dataset?.tokenID)
             }
             // let res = 
         } catch (error) {

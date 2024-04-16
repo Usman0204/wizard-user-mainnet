@@ -35,12 +35,7 @@ export const PutOnSaleTokens = () => {
                 let weiAmount = web3.utils.toWei(salePrice.toString())
                 const gas = await contract.methods.listItem(collectionAddr,tokenID, weiAmount).estimateGas({ from: account });
                 const staked = await contract.methods.listItem(collectionAddr, tokenID, weiAmount).send({ from: account, gasPrice: gasFunPrice, gas: gas })
-                    .on("transactionHash", (tx) => {
-                        return tx.transactionHash;
-                    })
-                    .catch((error) => {
-                        throw error;
-                    });
+                
                 return staked;
                 // } else {
                 //     throw new Error('Insufficient allowance for sale');

@@ -36,12 +36,6 @@ export const PutOnAuctionTokens = () => {
                 console.log(collectionAddr, tokenID, endAt);
                 const gas = await contract.methods.listNFTForAuction(collectionAddr,tokenID, endAt).estimateGas({ from: account });
                 const staked = await contract.methods.listNFTForAuction(collectionAddr, tokenID, endAt).send({ from: account, gasPrice: gasFunPrice, gas: gas })
-                    .on("transactionHash", (tx) => {
-                        return tx.transactionHash;
-                    })
-                    .catch((error) => {
-                        throw error;
-                    });
                 return staked;
                 // } else {
                 //     throw new Error('Insufficient allowance for sale');
