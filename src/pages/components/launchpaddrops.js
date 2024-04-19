@@ -206,7 +206,6 @@ const Launchpaddrops = () => {
                                         )
                                     })}
                                     {mainCardData?.map((item, index) => {
-                                        let isUpcoming = new Date(item?.mintStartTime) > new Date()
                                         let mintStage = item?.mintStages
                                         let mintStartTime = item?.mintStartTime
                                         return (
