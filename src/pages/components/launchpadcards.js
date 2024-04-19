@@ -147,7 +147,7 @@ const Launchpadcards = ({ Listeddata, data }) => {
                                                 Live
                                             </p> */}
                                             <h6>
-                                                <span>Sold Out</span> 
+                                                <span>SOLD OUT</span> 
                                             </h6>
                                         </div>
                                         : data === 'upcoming' ?
