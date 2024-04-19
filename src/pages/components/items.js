@@ -102,6 +102,9 @@ const Items = ({ idnft, launchpadName }) => {
         const selectedPage = e.selected;
         setPage(selectedPage + 1);
     };
+    useEffect(() => {
+        window.scrollTo(0, 900)
+    }, [page])
     return (
         <>
             <section className="items-section">
