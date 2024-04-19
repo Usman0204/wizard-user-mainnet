@@ -137,6 +137,9 @@ const Auctionbid = ({ tab }) => {
 
         // getCollectionItemsDetails(); // Fetch data with new filters/sort
     };
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [page])
     const handlePageChange = (e) => {
         const selectedPage = e.selected;
         setPage(selectedPage + 1);

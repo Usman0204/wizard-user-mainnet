@@ -103,7 +103,9 @@ const Discovercollection = () => {
       getDescription();
     }
   }, [searchvalue, page, filter]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [page])
   return (
     <>
       <Navbar />

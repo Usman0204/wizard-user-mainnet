@@ -131,7 +131,9 @@ loop: true,
     useEffect(() => {
         GetUpcomingDetail()
     }, [filters,page])
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [page])
 
 
     const resetDataAndFetch = () => {
@@ -139,7 +141,7 @@ loop: true,
         setPage(1); // Reset pagination to page 1
 
         // getCollectionItemsDetails(); // Fetch data with new filters/sort
-    };
+    }; 
     const handlePageChange = (e) => {
         const selectedPage = e.selected;
         setPage(selectedPage + 1);
