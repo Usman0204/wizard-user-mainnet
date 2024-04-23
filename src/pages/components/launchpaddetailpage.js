@@ -336,7 +336,7 @@ const Launchpaddetailpage = () => {
   //     }
   //   };
 
-  //  let res=  fetchImages('https://dweb.link/ipfs/QmSakZfxkgigFAvXyK8Nf8zJcQhbEUrciTiwK8ACrxPtT2/');
+  //  let res=  fetchImages('https://ipfs.io/ipfs/QmSakZfxkgigFAvXyK8Nf8zJcQhbEUrciTiwK8ACrxPtT2/');
 
   // }, []);
   // console.log('imagess', imagess);

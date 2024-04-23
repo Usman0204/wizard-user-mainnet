@@ -178,7 +178,7 @@ loop: true,
                                 <div className="main-card">
                                     <div className="main-img">
                                         <img
-                                            src={'https://dweb.link/ipfs' + card?.nft}
+                                            src={'https://ipfs.io/ipfs' + card?.nft}
                                             alt="img"
                                             className="img-fluid main-img-card"
                                         />
@@ -237,7 +237,7 @@ loop: true,
                                                 <div className="main-card">
                                                     <div className="main-img">
                                                         <img
-                                                            src={'https://dweb.link/ipfs' + card?.nft}
+                                                            src={'https://ipfs.io/ipfs' + card?.nft}
                                                             alt="img"
                                                             className="img-fluid main-img-card"
                                                         />

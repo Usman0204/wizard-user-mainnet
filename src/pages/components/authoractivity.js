@@ -101,7 +101,7 @@ const AuthorActivity = () => {
                     <div className="left-side">
                         {dataset3?.map((item,id) => {
                             console.log(item?.nft);
-                            let imgUrl = item?.nft?.includes('https://dweb.link/ipfs') ? item.nft : 'https://dweb.link/ipfs' + item.nft;
+                            let imgUrl = item?.nft?.includes('https://ipfs.io/ipfs') ? item.nft : 'https://ipfs.io/ipfs' + item.nft;
                             console.log(imgUrl, id);
                           return ( <div key={item.id}>
                                 {item?.type === 'sell' ?
