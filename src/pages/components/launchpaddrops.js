@@ -200,7 +200,7 @@ const Launchpaddrops = () => {
                                                                 </div>
                                                         }
                                                     </div>
-                                                    <a href="#" className='btn-mint'>Google Calender</a>
+                                                    {/* <a href="#" className='btn-mint'>Google Calender</a> */}
                                                 </div>
                                             </Link>
 
