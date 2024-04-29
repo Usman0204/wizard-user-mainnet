@@ -102,7 +102,7 @@ const Launchpadcards = ({ Listeddata, data }) => {
                                 {/* {Listeddata !== "upcoming" && Listeddata !== "past" && (
                                 <a href="#" className='btn-mint'>Mint</a>
                             )} */}
-                                <a href="#" className='btn-mint'>Mint</a>
+                                {/* <a href="#" className='btn-mint'>Mint</a> */}
                             </div>
                         </Link>
                     )
