@@ -917,7 +917,10 @@ const Nftdetail = () => {
                 <div className="custom-container">
                     <div className="nftdetailupper">
                         <div className="nftimagemain">
-                            <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" />
+                            <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" onError={(e) => {
+                                e.target.onerror = null; // Prevents looping
+                                e.target.src = `https://gateway.pinata.cloud/ipfs${dataset?.nft}`; // Fallback URL
+                            }} />
                         </div>
                         <div className="nftdetails">
                             <div className="nftownerdetail">
