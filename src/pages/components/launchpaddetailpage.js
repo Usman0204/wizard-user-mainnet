@@ -18,6 +18,7 @@ import useAuth from '@/hooks/useAuth';
 // import { Link } from 'react-router-dom';
 import Link from 'next/link';
 import Loader from '@/hooks/loader';
+import MediaType from './mediaType';
 // import Loader from '@/hooks/loader';
 // import mainloader from "../../assets/logo.svg";
 const Launchpaddetailpage = () => {
@@ -526,8 +527,8 @@ const Launchpaddetailpage = () => {
           <div className="launchpaddetailinner">
             <div className='imagegalleryhere sdfdsfdsfdsfsfds'>
               <div className='mainimage sdsdsdsdsdsd'>
-                <img src={dataset?.imageUrl} alt="tickimage" className="tickimage" />
-
+                {/* <img src={dataset?.imageUrl} alt="tickimage" className="tickimage" /> */}
+                <MediaType hash={dataset?.imageUrl} classNameD='tickimage' />
                 {/* <img src={dataset[0]?.launchpad_files[0]?.files[0]} alt="tickimage" className="tickimage" /> */}
               </div>
               <div className='image'>

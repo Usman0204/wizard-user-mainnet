@@ -3,6 +3,7 @@ import axios from "axios";
 import Environment from "@/utils/Enviroment";
 import moment from "moment";
 import Link from "next/link";
+import MediaType from "./mediaType";
 
 const AuthorOffersActivity = () => {
   const api_url = Environment.api_url;
@@ -106,6 +107,7 @@ const AuthorOffersActivity = () => {
                 <div className="single-item">
                   <div className="left-sidee">
                     <div className="profile">
+                      {/* <MediaType hash={item?.nft} classNameD='img-fluid main-img-profile' /> */}
                       <img
                         src={imgUrl}
                         alt="img"

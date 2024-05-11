@@ -8,6 +8,7 @@ import Environment from '@/utils/Enviroment';
 import Link from 'next/link';
 import { useWeb3React } from '@web3-react/core';
 import ReactPaginate from 'react-paginate';
+import MediaType from './mediaType';
 
 const Items = ({ idnft, launchpadName }) => {
     // console.log("items++++++++", idnft)
@@ -221,7 +222,8 @@ const Items = ({ idnft, launchpadName }) => {
                                                                 alt="img"
                                                                 className="img-fluid main-img-card"
                                                             /> */}
-                                                            <img
+                                                            <MediaType hash={card?.nft} classNameD='mg-fluid main-img-card' />
+                                                            {/* <img
                                                                 src={`https://ipfs.io/ipfs${card?.nft}`} // Assuming 'card?.nft' contains the hash path
                                                                 alt="img"
                                                                 className="img-fluid main-img-card"
@@ -229,7 +231,7 @@ const Items = ({ idnft, launchpadName }) => {
                                                                     e.target.onerror = null; // Prevents looping
                                                                     e.target.src = `https://gateway.pinata.cloud/ipfs${card?.nft}`; // Fallback URL
                                                                 }}
-                                                            />
+                                                            /> */}
                                                             <img
                                                                 src="/assets/landing/static/live-auction-abs.svg"
                                                                 alt="img"

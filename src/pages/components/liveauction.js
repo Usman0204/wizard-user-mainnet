@@ -12,6 +12,7 @@ import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import ReactPaginate from 'react-paginate';
 import Loader from '@/store/hooks/loader';
+import MediaType from './mediaType';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
@@ -177,11 +178,12 @@ loop: true,
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
                                 <div className="main-card">
                                     <div className="main-img">
-                                        <img
-                                            src={'https://ipfs.io/ipfs' + card?.nft}
+                                        <MediaType hash={card?.nft} classNameD='mg-fluid main-img-card' />
+                                        {/* <img
+                                            src={card?.nft?.includes('ipfs.io') ? card?.nft : 'https://ipfs.io/ipfs' + card?.nft}
                                             alt="img"
                                             className="img-fluid main-img-card"
-                                        />
+                                        /> */}
                                         <img
                                             src="/assets/landing/static/live-auction-abs.svg"
                                             alt="img"
@@ -236,11 +238,12 @@ loop: true,
                                             <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
                                                 <div className="main-card">
                                                     <div className="main-img">
-                                                        <img
+                                                        <MediaType hash={card?.nft} classNameD='img-fluid main-img-card' />
+                                                        {/* <img
                                                             src={'https://ipfs.io/ipfs' + card?.nft}
                                                             alt="img"
                                                             className="img-fluid main-img-card"
-                                                        />
+                                                        /> */}
                                                         <img
                                                             src="/assets/landing/static/live-auction-abs.svg"
                                                             alt="img"

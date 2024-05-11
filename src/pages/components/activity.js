@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import moment from 'moment';
+import MediaType from './mediaType';
 const Activity = ({ idnft }) => {
     const api_url = Environment.api_url;
     const [dataset3, setdataset3] = useState();
@@ -96,7 +97,8 @@ const Activity = ({ idnft }) => {
                                     (
                                         <div className="single-item" >
                                             <div className="profile">
-                                                <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' />
+                                                {/* <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' /> */}
+                                                <MediaType hash={item?.nft} classNameD='img-fluid' />
                                             </div>
                                             <div className="right-content">
                                                 <h5>{item?.launchpadId?.name} #{item.tokenId}</h5>
@@ -124,7 +126,8 @@ const Activity = ({ idnft }) => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' />
+                                                    {/* <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' /> */}
+                                                    <MediaType hash={item?.nft} classNameD='img-fluid' />
                                                 </div>
                                                 <div className="right-content">
                                                     <h5>{item?.launchpadId?.name} #{item.tokenId}</h5>
@@ -147,7 +150,8 @@ const Activity = ({ idnft }) => {
                                         (
                                             <div className="single-item" key={item.id}>
                                                 <div className="profile">
-                                                    <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' />
+                                                    {/* <img src={'https://ipfs.io/ipfs' + item?.nft} alt="img" className='img-fluid' /> */}
+                                                    <MediaType hash={item?.nft} classNameD='img-fluid' />
                                                 </div>
                                                 <div className="right-content">
                                                     <h5>{item?.launchpadId?.name} #{item.tokenId}</h5>

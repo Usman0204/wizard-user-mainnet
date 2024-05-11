@@ -23,6 +23,7 @@ import { getWcoreTokenContract } from '@/utils/contractHelpers';
 // import Loader from '@/hooks/loader';
 // import { parse } from 'next/dist/build/swc';
 import Link from 'next/link';
+import MediaType from './mediaType';
 
 const Nftdetail = () => {
     let { account } = useWeb3React();
@@ -853,7 +854,8 @@ const Nftdetail = () => {
                 <div className="custom-container">
                     <div className="nftdetailupper">
                         <div className="nftimagemain">
-                            <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" />
+                            <MediaType hash={dataset?.nft || '/assets/profile.png'} classNameD='nftimginner' />
+                            {/* <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" /> */}
                         </div>
                         <div className="nftdetails">
                             <div className="nftownerdetail">
@@ -1340,7 +1342,8 @@ const Nftdetail = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <MediaType hash={dataset?.nft} classNameD='buynowinnerimg' />
+                        {/* <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" /> */}
                     </div>
                     <p className="buynowpara">You are about to buy <span className="whitetext">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="buyitemmain">
@@ -1411,7 +1414,8 @@ const Nftdetail = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <MediaType hash={dataset?.nft} classNameD='buynowinnerimg' />
+                        {/* <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" /> */}
                     </div>
                     {console.log('highestbid',highestbid)} 
                     <p className="buynowpara">You are about to place a bid for <span className="whitetext">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
@@ -1487,7 +1491,8 @@ const Nftdetail = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <MediaType hash={dataset?.nft} classNameD='buynowinnerimg' />
+                        {/* <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" /> */}
                     </div>
                     <p className="buynowpara">You are about to send offer for <span className="whitetext">{dataset?.launchpad[0]?.name} #{dataset?.tokenID}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="bidinputmain">

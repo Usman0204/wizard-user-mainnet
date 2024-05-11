@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Environment from '@/utils/Enviroment';
 import moment from 'moment';
+import MediaType from './mediaType';
 
 const AuthorActivity = () => {
     const api_url = Environment.api_url;
@@ -108,7 +109,8 @@ const AuthorActivity = () => {
                                     (
                                         <div className="single-item" >
                                             <div className="profile">
-                                                <img src={imgUrl} alt="img" className='img-fluid main-img-profile' />
+                                                {/* <img src={imgUrl} alt="img" className='img-fluid main-img-profile' /> */}
+                                              <MediaType hash={item?.nft} classNameD='img-fluid main-img-profile' />
                                                 {/* <img src={item.imgUrl1} alt="img" className='img-fluid small-img-icon' /> */}
                                             </div>
                                             <div className="right-content">

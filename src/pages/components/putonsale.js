@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 import Router, { useRouter } from 'next/router';
 import AcceptOffer from '@/hooks/accpetoffer';
 import useAuth from '@/hooks/useAuth';
+import MediaType from './mediaType';
 const Putonsale = () => {
     const [activeTab, setActiveTab] = useState('link-1');
     const [offset, setOffset] = useState(1)
@@ -441,10 +442,11 @@ const Putonsale = () => {
                 <div className="custom-container">
                     <div className="nftdetailupper">
                         <div className="nftimagemain">
-                            <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" onError={(e) => {
+                            <MediaType hash={dataset?.nft || '/assets/profile.png'} classNameD='nftimginner' />
+                            {/* <img src={'https://ipfs.io/ipfs' + dataset?.nft || '/assets/profile.png'} alt="nftimginner" className="nftimginner" onError={(e) => {
                                 e.target.onerror = null; // Prevents looping
                                 e.target.src = `https://gateway.pinata.cloud/ipfs${dataset?.nft}`; // Fallback URL 
-                            }} />
+                            }} /> */}
                         </div>
                         <div className="nftdetails">
                             <div className="nftownerdetail">
@@ -879,7 +881,8 @@ const Putonsale = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <MediaType hash={dataset?.nft} classNameD='buynowinnerimg' />
+                        {/* <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" /> */}
                     </div>
                     <p className="buynowpara">You are about to Accept a bid for <span className="whitetext">{dataset?.launchpad[0]?.name}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="buyitemmain">
@@ -943,7 +946,8 @@ const Putonsale = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="buynowimg">
-                        <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" />
+                        <MediaType hash={dataset?.nft} classNameD='buynowinnerimg' />
+                        {/* <img src={'https://ipfs.io/ipfs' + dataset?.nft} alt="buynowinnerimg" className="buynowinnerimg" /> */}
                     </div>
                     <p className="buynowpara">You are about to Accept a Offer for <span className="whitetext">{dataset?.launchpad[0]?.name}</span> from <span className="whitetext">{dataset?.launchpad[0]?.name}.</span></p>
                     <div className="buyitemmain">

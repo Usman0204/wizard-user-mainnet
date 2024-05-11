@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import Router, { useRouter } from 'next/router';
 import { Log } from 'ethers';
 import Loader from '@/hooks/loader';
+import MediaType from './mediaType';
 const Putonsalemethod = () => {
     var router = useRouter();
     const [dateValue, setDateValue] = useState('');
@@ -327,6 +328,7 @@ const Putonsalemethod = () => {
                                     <div className="bottom-cards">
                                         <div className="main-card">
                                             <div className="main-img">
+                                                {/* <MediaType hash={dataset?.nft} classNameD='img-fluid main-img-card' /> */}
                                                 <img
                                                     src={'https://ipfs.io/ipfs' + dataset?.nft}
                                                     alt="img"

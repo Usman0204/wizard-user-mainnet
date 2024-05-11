@@ -14,6 +14,7 @@ import AuctionTimmer from './auctiontimer';
 import CountdownTimer from './auctiontimer';
 import ReactPaginate from 'react-paginate';
 import Loader from '@/hooks/loader';
+import MediaType from './mediaType';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
@@ -175,11 +176,12 @@ const Auctionbid = ({ tab }) => {
                             <Link key={id} href={`/nftdetail?id=${card?._id}`}>
                                 <div className="main-card">
                                     <div className="main-img">
-                                        <img
+                                        <MediaType hash={card?.nft} classNameD='img-fluid main-img-card' />
+                                        {/* <img
                                             src={'https://ipfs.io/ipfs' + card?.nft}
                                             alt="img"
                                             className="img-fluid main-img-card"
-                                        />
+                                        /> */}
                                         <img
                                             src="/assets/landing/static/live-auction-abs.svg"
                                             alt="img"
@@ -237,11 +239,12 @@ const Auctionbid = ({ tab }) => {
                                             <Link key={card.id} href={`/nftdetail?id=${card?._id}`}>
                                                 <div className="main-card">
                                                     <div className="main-img">
-                                                        <img
+                                                        <MediaType hash={card.nft} classNameD='img-fluid main-img-card' />
+                                                        {/* <img
                                                             src={'https://ipfs.io/ipfs' + card.nft}
                                                             alt="img"
                                                             className="img-fluid main-img-card"
-                                                        />
+                                                        /> */}
                                                         <img
                                                             src="/assets/landing/static/live-auction-abs.svg"
                                                             alt="img"

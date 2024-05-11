@@ -9,6 +9,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Link from 'next/link';
 import CountdownTimer from './auctiontimer';
+import MediaType from './mediaType';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
@@ -171,11 +172,12 @@ const Itemcards = ({ dataset, setOffset, offset, loader, tab }) => {
 
                             <Link href={`/nftdetail?id=${card?._id}`} key={card.id} className="main-card">
                                 <div className="main-img">
-                                    <img
+                                    <MediaType hash={card.nft} classNameD='img-fluid main-img-card' />
+                                    {/* <img
                                         src={'https://ipfs.io/ipfs' + card.nft}
                                         alt="img"
                                         className="img-fluid main-img-card"
-                                    />
+                                    /> */}
                                     <img
                                         src="/assets/landing/static/live-auction-abs.svg"
                                         alt="img"
