@@ -1,6 +1,6 @@
 import React from 'react'
 
-const maintenance = () => {
+const Maintenance = () => {
     return (
         <>
             <div className="maintenace-section">
@@ -22,4 +22,4 @@ const maintenance = () => {
     )
 }
 
-export default maintenance
+export default Maintenance

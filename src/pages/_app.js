@@ -39,6 +39,7 @@ import "@/styles/privacypolicy.scss"
 import "@/styles/faqs.scss"
 import "@/styles/walletguide.scss"
 import "@/styles/newcollection.scss"
+import Maintenance from "./components/maintenance";
 
 export default function App({ Component, pageProps }) {
   useEagerConnect();
@@ -68,7 +69,8 @@ export default function App({ Component, pageProps }) {
 
             <title>Wizard Gallery Marketplace</title>
           </Head>
-          <Component {...pageProps} />
+          {/* <Component {...pageProps} /> */}
+          <Maintenance/>
           <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></Script>
           <Script src="https://unpkg.com/react/umd/react.development.js"></Script>
           <Script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></Script>
